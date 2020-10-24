@@ -26,6 +26,21 @@ class ReptiApplication extends StatefulWidget {
 }
 
 class _ReptiApplicationState extends State<ReptiApplication> {
+  var brightness = MediaQueryData.fromWindow(WidgetsBinding.instance.window).platformBrightness;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final window = WidgetsBinding.instance.window;
+
+    window.onPlatformBrightnessChanged = () {
+      setState(() {
+        brightness = window.platformBrightness;
+      });
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     final brightness = MediaQueryData.fromWindow(WidgetsBinding.instance.window).platformBrightness;
@@ -39,10 +54,19 @@ class _ReptiApplicationState extends State<ReptiApplication> {
     );
     final cupertinoTheme = new CupertinoThemeData(
       brightness: brightness, // if null will use the system theme
-      primaryColor: CupertinoDynamicColor.withBrightness(
-        color: Colors.purple,
-        darkColor: Colors.cyan,
-      ),
+      //primaryColor: CupertinoDynamicColor()
+      /*CupertinoDynamicColor(
+          color: Colors.purple,
+          darkColor: Colors.cyan,
+          highContrastColor: Colors.purple,
+          darkHighContrastColor: Colors.cyan,
+          elevatedColor: Colors.purple,
+          darkElevatedColor: Colors.cyan,
+          highContrastElevatedColor: Colors.purple,
+          darkHighContrastElevatedColor: Colors.cyan,
+        )*/
+      /*color: brightness == Brightness.light ? Colors.purple : Colors.cyan,
+        )*/
     );
 
     return Theme(
