@@ -18,7 +18,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
-import 'package:repti/my_homepage.dart';
+import 'package:repti/repti_root_page.dart';
 
 class ReptiApplication extends StatefulWidget {
   @override
@@ -53,31 +53,12 @@ class _ReptiApplicationState extends State<ReptiApplication> {
       primarySwatch: Colors.teal,
     );
     final cupertinoTheme = new CupertinoThemeData(
-      brightness: brightness, // if null will use the system theme
-      //primaryColor: CupertinoDynamicColor()
-      /*CupertinoDynamicColor(
-          color: Colors.purple,
-          darkColor: Colors.cyan,
-          highContrastColor: Colors.purple,
-          darkHighContrastColor: Colors.cyan,
-          elevatedColor: Colors.purple,
-          darkElevatedColor: Colors.cyan,
-          highContrastElevatedColor: Colors.purple,
-          darkHighContrastElevatedColor: Colors.cyan,
-        )*/
-      /*color: brightness == Brightness.light ? Colors.purple : Colors.cyan,
-        )*/
+      brightness: brightness,
     );
 
     return Theme(
       data: brightness == Brightness.light ? materialTheme : materialDarkTheme,
       child: PlatformProvider(
-        //initialPlatform: initialPlatform,
-        // settings: PlatformSettingsData(
-        //   platformStyle: PlatformStyleData(
-        //     web: PlatformStyle.Cupertino,
-        //   ),
-        // ),
         builder: (context) => PlatformApp(
           localizationsDelegates: <LocalizationsDelegate<dynamic>>[
             DefaultMaterialLocalizations.delegate,
@@ -95,7 +76,7 @@ class _ReptiApplicationState extends State<ReptiApplication> {
           cupertino: (_, __) => new CupertinoAppData(
             theme: cupertinoTheme,
           ),
-          home: MyHomePage(title: 'repti'),
+          home: ReptiRootPage(),
         ),
       ),
     );
