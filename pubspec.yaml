@@ -32,6 +32,7 @@ dependencies:
   dart_inject: ^1.0.0
   # ORM
   floor: ^0.17.0
+  uuid: ^2.2.2
 
 dev_dependencies:
   flutter_test:
