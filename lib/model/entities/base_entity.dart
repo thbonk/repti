@@ -21,16 +21,19 @@ abstract class BaseEntity {
   @PrimaryKey()
   final String id;
 
-  @ColumnInfo(name: 'created_at', nullable: false)
-  final String createdAt;
+  @ColumnInfo(
+    name: 'created_at',
+    nullable: false,
+  )
+  final DateTime createdAt;
 
   @ColumnInfo(name: 'updated_at')
-  final String updatedAt;
+  final DateTime updatedAt;
 
   BaseEntity(
     String id,
     this.updatedAt, {
-    String createdAt,
+    DateTime createdAt,
   })  : this.id = id ?? Uuid().v4().toString(),
-        this.createdAt = createdAt ?? DateTime.now().toString();
+        this.createdAt = createdAt ?? DateTime.now();
 }

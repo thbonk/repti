@@ -15,30 +15,36 @@
 */
 
 import 'package:floor/floor.dart';
+import 'package:flutter/foundation.dart';
 
-import 'package:repti/model/entities/base_entity.dart';
+import 'package:repti/model/entities/index.dart';
+import 'base_entity.dart';
 
 @Entity(
-  tableName: 'species',
+  tableName: 'weight',
+  foreignKeys: [
+    ForeignKey(
+      childColumns: ['individual_id'],
+      parentColumns: ['id'],
+      entity: Individual,
+      onDelete: ForeignKeyAction.cascade,
+    )
+  ],
 )
-class Species extends BaseEntity {
-  @ColumnInfo(
-    name: 'name',
-    nullable: false,
-  )
-  String name;
+class Weight extends BaseEntity {
+  @ColumnInfo(name: 'individual_id')
+  final String individualId;
 
-  @ColumnInfo(
-    name: 'scientific_name',
-    nullable: false,
-  )
-  String scientificName;
+  @ColumnInfo(name: 'weight')
+  double weight;
 
-  Species(
-    this.name,
-    this.scientificName, {
+  Weight({
+    @required Individual individual,
+    @required double weight,
     String id,
     DateTime updateTime,
     DateTime createTime,
-  }) : super(id, updateTime, createdAt: createTime);
+  })  : this.individualId = individual.id,
+        this.weight = weight,
+        super(id, updateTime, createdAt: createTime);
 }

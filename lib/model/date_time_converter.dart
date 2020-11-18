@@ -14,7 +14,16 @@
    limitations under the License.
 */
 
-export './species.dart';
-export './individual.dart';
-export './picture.dart';
-export './weight.dart';
+import 'package:floor/floor.dart';
+
+class DateTimeConverter extends TypeConverter<DateTime, int> {
+  @override
+  DateTime decode(int databaseValue) {
+    return DateTime.fromMillisecondsSinceEpoch(databaseValue);
+  }
+
+  @override
+  int encode(DateTime value) {
+    return value.millisecondsSinceEpoch;
+  }
+}

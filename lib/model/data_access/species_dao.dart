@@ -14,7 +14,16 @@
    limitations under the License.
 */
 
-export './species.dart';
-export './individual.dart';
-export './picture.dart';
-export './weight.dart';
+import 'package:floor/floor.dart';
+
+import 'package:repti/model/data_access/index.dart';
+import 'package:repti/model/entities/index.dart';
+
+@dao
+abstract class SpeciesDao extends AbstractDao<Species> {
+  @Query('SELECT * FROM species')
+  Future<List<Species>> findAll();
+
+  @Query('SELECT * FROM species WHERE id = :id')
+  Stream<Species> findSpeciesById(String id);
+}

@@ -14,15 +14,47 @@
    limitations under the License.
 */
 
+import 'package:event_bus/event_bus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:repti/model/data_access/index.dart';
 
 import 'package:repti/repti_root_page.dart';
 
+class DatabaseReadyEvent {
+  ReptiDatabase database;
+
+  DatabaseReadyEvent(this.database);
+}
+
+// ignore: must_be_immutable
 class ReptiApplication extends StatefulWidget {
+  static final ReptiApplication shared = ReptiApplication._internal();
+
+  ReptiDatabase get database => _database;
+  ReptiDatabase _database;
+
+  EventBus get eventBus => _eventBus;
+  EventBus _eventBus = EventBus();
+
+  factory ReptiApplication() => shared;
+
+  ReptiApplication._internal() {
+    _buildDatabase();
+  }
+
   @override
   _ReptiApplicationState createState() => _ReptiApplicationState();
+
+  // Database related methods
+
+  void _buildDatabase() async {
+    _database = await $FloorReptiDatabase.databaseBuilder('repti.sqlite').build().then((value) {
+      eventBus.fire(DatabaseReadyEvent(value));
+      return value;
+    });
+  }
 }
 
 class _ReptiApplicationState extends State<ReptiApplication> {

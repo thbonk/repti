@@ -14,7 +14,15 @@
    limitations under the License.
 */
 
-export './species.dart';
-export './individual.dart';
-export './picture.dart';
-export './weight.dart';
+import 'package:floor/floor.dart';
+
+abstract class AbstractDao<T> {
+  @insert
+  Future<void> insertItem(T item);
+
+  @update
+  Future<void> updateItem(T item);
+
+  @delete
+  Future<void> deleteItem(T item);
+}

@@ -14,7 +14,16 @@
    limitations under the License.
 */
 
-export './species.dart';
-export './individual.dart';
-export './picture.dart';
-export './weight.dart';
+import 'package:floor/floor.dart';
+
+import 'package:repti/model/data_access/index.dart';
+import 'package:repti/model/entities/index.dart';
+
+@dao
+abstract class WeightDao extends AbstractDao<Weight> {
+  @Query('SELECT * FROM weight')
+  Future<List<Individual>> findAll();
+
+  @Query('SELECT * FROM weight WHERE id = :id')
+  Stream<Picture> findPWeightById(String id);
+}

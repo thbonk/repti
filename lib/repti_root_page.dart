@@ -19,6 +19,7 @@ import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 import 'package:repti/master_detail_page.dart';
 
+// ignore: must_be_immutable
 class _DetailsPage extends StatelessWidget implements MasterDetailWidget {
   @override
   PlatformAppBar navigationBar;
@@ -35,6 +36,7 @@ class _DetailsPage extends StatelessWidget implements MasterDetailWidget {
   }
 }
 
+// ignore: must_be_immutable
 class _MasterPage extends StatelessWidget implements MasterDetailWidget {
   @override
   PlatformAppBar navigationBar;

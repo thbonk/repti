@@ -27,9 +27,9 @@ class MasterDetailWidget {
 }
 
 class MasterDetailPage extends StatefulWidget {
-  Widget _master;
-  Widget _detail;
-  double _widthBreakpoint;
+  final Widget _master;
+  final Widget _detail;
+  final double _widthBreakpoint;
 
   MasterDetailPage({
     @required Widget master,
@@ -48,9 +48,9 @@ class MasterDetailPage extends StatefulWidget {
 }
 
 class _MasterDetailPageState extends State<MasterDetailPage> {
-  Widget _master;
-  Widget _detail;
-  double _widthBreakpoint;
+  final Widget _master;
+  final Widget _detail;
+  final double _widthBreakpoint;
 
   var _isLargeScreen = false;
 
