@@ -17,7 +17,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
-import 'package:repti/master_detail_page.dart';
+import 'package:repti/user_interface/master_detail_page.dart';
 
 // ignore: must_be_immutable
 class _DetailsPage extends StatelessWidget implements MasterDetailWidget {

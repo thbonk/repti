@@ -20,7 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:repti/model/data_access/index.dart';
 
-import 'package:repti/repti_root_page.dart';
+import 'package:repti/user_interface/repti_root_page.dart';
 
 class DatabaseReadyEvent {
   ReptiDatabase database;
