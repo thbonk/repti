@@ -14,49 +14,71 @@
    limitations under the License.
 */
 
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:repti/user_interface/species_list.dart';
 
-import 'package:repti/user_interface/master_detail_page.dart';
+class MasterDetailWidget {
+  String get title => "";
 
-// ignore: must_be_immutable
-class _DetailsPage extends StatelessWidget implements MasterDetailWidget {
-  @override
-  PlatformAppBar navigationBar;
+  set navigationBar(PlatformAppBar navbar) {}
+  PlatformAppBar get navigationBar => null;
 
-  @override
-  String get title => "Detail";
-
-  @override
-  Widget build(BuildContext context) => PlatformText("Detail");
-
-  @override
-  void addedToMasterDetailPage() {
-    // TODO: implement addedToMasterDetailPage
-  }
+  void addedToMasterDetailPage() {}
 }
 
-// ignore: must_be_immutable
-class _MasterPage extends StatelessWidget implements MasterDetailWidget {
-  @override
-  PlatformAppBar navigationBar;
+class ReptiRootPage extends StatefulWidget {
+  final double _widthBreakpoint;
+
+  ReptiRootPage({
+    double widthBreakpoint = 600,
+  }) : this._widthBreakpoint = widthBreakpoint;
 
   @override
-  String get title => "Master";
-
-  @override
-  Widget build(BuildContext context) => PlatformText("Master");
-
-  @override
-  void addedToMasterDetailPage() {
-    // TODO: implement addedToMasterDetailPage
-  }
+  _ReptiRootPage createState() => _ReptiRootPage(
+        widthBreakpoint: this._widthBreakpoint,
+      );
 }
 
-class ReptiRootPage extends MasterDetailPage {
-  ReptiRootPage()
-      : super(
-          master: _MasterPage(),
-          detail: _DetailsPage(),
+class _ReptiRootPage extends State<ReptiRootPage> {
+  final double _widthBreakpoint;
+
+  var _isLargeScreen = false;
+
+  _ReptiRootPage({
+    double widthBreakpoint = 600,
+  }) : this._widthBreakpoint = widthBreakpoint;
+
+  @override
+  Widget build(BuildContext context) {
+    return PlatformScaffold(
+      body: OrientationBuilder(builder: (context, orientation) {
+        _isLargeScreen = MediaQuery.of(context).size.width > _widthBreakpoint;
+
+        var detailAppBar = PlatformAppBar(
+          title: PlatformText("detailTitle"),
         );
+
+        return Row(
+          children: <Widget>[
+            Expanded(
+              flex: 3,
+              child: SpeciesList(null),
+            ),
+            _isLargeScreen
+                ? Expanded(
+                    flex: 7,
+                    child: Column(
+                      children: <Widget>[
+                        detailAppBar,
+                        PlatformText("Detail"),
+                      ],
+                    ),
+                  )
+                : Container(),
+          ],
+        );
+      }),
+    );
+  }
 }

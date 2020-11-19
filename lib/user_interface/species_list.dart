@@ -14,30 +14,121 @@
    limitations under the License.
 */
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 
 import 'package:repti/model/entities/index.dart';
-import 'package:repti/user_interface/master_detail_page.dart';
+import 'package:repti/repti_application.dart';
 
 typedef Null SpeciesSelectedCallback(Species species);
 
-class SpeciesList extends StatefulWidget implements MasterDetailPage {
+class SpeciesList extends StatefulWidget {
   SpeciesSelectedCallback speciesSelectedCallback;
 
   SpeciesList(this.speciesSelectedCallback);
 
   @override
   State<SpeciesList> createState() {
-    // TODO: implement createState
     return _SpeciesListState();
   }
 }
 
 class _SpeciesListState extends State<SpeciesList> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Padding(
+      padding: const EdgeInsets.only(right: 1),
+      child: Column(
+        children: <Widget>[
+          PlatformAppBar(
+            title: PlatformText("Species"),
+            trailingActions: <Widget>[
+              PlatformIconButton(
+                materialIcon: const Icon(Icons.add),
+                cupertinoIcon: Icon(
+                  CupertinoIcons.add,
+                  size: 28.0,
+                ),
+                padding: EdgeInsets.only(bottom: 1),
+                onPressed: () {
+                  // ********** TEST START
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return PlatformAlertDialog(
+                          content: Stack(
+                            //overflow: Overflow.visible,
+                            children: <Widget>[
+                              Form(
+                                key: _formKey,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: PlatformTextField(),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: PlatformTextField(),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: PlatformButton(
+                                        child: PlatformText("Save"),
+                                        onPressed: () {
+                                          if (_formKey.currentState.validate()) {
+                                            _formKey.currentState.save();
+                                            Navigator.of(context).pop();
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: PlatformButton(
+                                        child: PlatformText("Cancel"),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      });
+                  // ********** TEST END
+                },
+              ),
+            ],
+          ),
+          Expanded(
+            child: ReptiApplication.shared.database == null
+                ? Container()
+                : FutureBuilder(
+                    builder: (context, snap) {
+                      if (snap.connectionState != ConnectionState.done || snap.hasData == null) {
+                        return Container();
+                      }
+
+                      return ListView.builder(
+                        itemCount: snap.data.length,
+                        itemBuilder: (BuildContext context, int index) =>
+                            PlatformText(snap.data[index].name),
+                      );
+                    },
+                    future: ReptiApplication.shared.database.speciesDao.findAll(),
+                  ),
+          ),
+        ],
+      ),
+    );
   }
 }

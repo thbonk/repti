@@ -24,6 +24,10 @@ abstract class SpeciesDao extends AbstractDao<Species> {
   @Query('SELECT * FROM species')
   Future<List<Species>> findAll();
 
+  Future<int> count() async {
+    return await findAll().then((list) => list.length);
+  }
+
   @Query('SELECT * FROM species WHERE id = :id')
   Stream<Species> findSpeciesById(String id);
 }
