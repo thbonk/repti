@@ -47,12 +47,8 @@ class _SpeciesListState extends State<SpeciesList> {
           PlatformAppBar(
             title: PlatformText("Species"),
             trailingActions: <Widget>[
-              PlatformIconButton(
-                materialIcon: const Icon(Icons.add),
-                cupertinoIcon: Icon(
-                  CupertinoIcons.add,
-                  size: 28.0,
-                ),
+              PlatformButton(
+                child: const Icon(Icons.add),
                 padding: EdgeInsets.only(bottom: 1),
                 onPressed: () {
                   // ********** TEST START
