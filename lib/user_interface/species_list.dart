@@ -40,91 +40,108 @@ class _SpeciesListState extends State<SpeciesList> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 1),
-      child: Column(
-        children: <Widget>[
-          PlatformAppBar(
-            title: PlatformText("Species"),
-            trailingActions: <Widget>[
-              PlatformButton(
-                child: const Icon(Icons.add),
-                padding: EdgeInsets.only(bottom: 1),
-                onPressed: () {
-                  // ********** TEST START
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return PlatformAlertDialog(
-                          content: Stack(
-                            //overflow: Overflow.visible,
-                            children: <Widget>[
-                              Form(
-                                key: _formKey,
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: PlatformTextField(),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: PlatformTextField(),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: PlatformButton(
-                                        child: PlatformText("Save"),
-                                        onPressed: () {
-                                          if (_formKey.currentState.validate()) {
-                                            _formKey.currentState.save();
-                                            Navigator.of(context).pop();
-                                          }
-                                        },
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: PlatformButton(
-                                        child: PlatformText("Cancel"),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      });
-                  // ********** TEST END
-                },
-              ),
-            ],
+    return PlatformScaffold(
+      iosContentPadding: false,
+      iosContentBottomPadding: false,
+      material: (ctx, _) => MaterialScaffoldData(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => _showAlertDialog(context),
+          tooltip: "Add mixture",
+          child: Icon(Icons.add),
+        ),
+      ),
+      appBar: PlatformAppBar(
+        automaticallyImplyLeading: false,
+        title: PlatformText("Species"),
+        cupertino: (ctx, _) => CupertinoNavigationBarData(
+          trailing: CupertinoButton(
+            padding: EdgeInsets.zero,
+            child: Icon(Icons.add),
+            onPressed: () => _showAlertDialog(context),
           ),
-          Expanded(
-            child: ReptiApplication.shared.database == null
-                ? Container()
-                : FutureBuilder(
-                    builder: (context, snap) {
-                      if (snap.connectionState != ConnectionState.done || snap.hasData == null) {
-                        return Container();
-                      }
-
-                      return ListView.builder(
-                        itemCount: snap.data.length,
-                        itemBuilder: (BuildContext context, int index) =>
-                            PlatformText(snap.data[index].name),
-                      );
-                    },
-                    future: ReptiApplication.shared.database.speciesDao.findAll(),
-                  ),
-          ),
-        ],
+        ),
+      ),
+      body: SafeArea(
+        child: SpeciesListWidget(),
       ),
     );
+  }
+
+  Future _showAlertDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return PlatformAlertDialog(
+            content: Stack(
+              //overflow: Overflow.visible,
+              children: <Widget>[
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: PlatformTextField(),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: PlatformTextField(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: PlatformButton(
+                          child: PlatformText("Save"),
+                          onPressed: () {
+                            if (_formKey.currentState.validate()) {
+                              _formKey.currentState.save();
+                              Navigator.of(context).pop();
+                            }
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: PlatformButton(
+                          child: PlatformText("Cancel"),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+}
+
+class SpeciesListWidget extends StatelessWidget {
+  const SpeciesListWidget({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ReptiApplication.shared.database == null
+        ? Container()
+        : FutureBuilder(
+            builder: (context, snap) {
+              if (snap.connectionState != ConnectionState.done ||
+                  snap.hasData == null) {
+                return Container();
+              }
+
+              return ListView.builder(
+                itemCount: snap.data.length,
+                itemBuilder: (BuildContext context, int index) =>
+                    PlatformText(snap.data[index].name),
+              );
+            },
+            future: ReptiApplication.shared.database.speciesDao.findAll(),
+          );
   }
 }
