@@ -14,16 +14,16 @@
    limitations under the License.
 */
 
-import 'package:flutter/material.dart';
+import 'package:floor/floor.dart';
 
-import 'package:repti/repti_application.dart';
-
-/// Entry point of the application
-void main() => runApp(Main());
-
-/// This is the top-level widget that instantiates [ReptiApplication].
-class Main extends StatelessWidget {
-  // This widget is the root of your application.
+class DateTimeConverter extends TypeConverter<DateTime, int> {
   @override
-  Widget build(BuildContext context) => ReptiApplication.shared;
+  DateTime decode(int databaseValue) {
+    return DateTime.fromMillisecondsSinceEpoch(databaseValue);
+  }
+
+  @override
+  int encode(DateTime value) {
+    return value.millisecondsSinceEpoch;
+  }
 }

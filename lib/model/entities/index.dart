@@ -14,16 +14,7 @@
    limitations under the License.
 */
 
-import 'package:flutter/material.dart';
-
-import 'package:repti/repti_application.dart';
-
-/// Entry point of the application
-void main() => runApp(Main());
-
-/// This is the top-level widget that instantiates [ReptiApplication].
-class Main extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) => ReptiApplication.shared;
-}
+export './species.dart';
+export './individual.dart';
+export './picture.dart';
+export './weight.dart';

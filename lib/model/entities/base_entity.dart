@@ -14,16 +14,26 @@
    limitations under the License.
 */
 
-import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
+import 'package:floor/floor.dart';
 
-import 'package:repti/repti_application.dart';
+abstract class BaseEntity {
+  @PrimaryKey()
+  final String id;
 
-/// Entry point of the application
-void main() => runApp(Main());
+  @ColumnInfo(
+    name: 'created_at',
+    nullable: false,
+  )
+  final DateTime createdAt;
 
-/// This is the top-level widget that instantiates [ReptiApplication].
-class Main extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) => ReptiApplication.shared;
+  @ColumnInfo(name: 'updated_at')
+  final DateTime updatedAt;
+
+  BaseEntity(
+    String id,
+    this.updatedAt, {
+    DateTime createdAt,
+  })  : this.id = id ?? Uuid().v4().toString(),
+        this.createdAt = createdAt ?? DateTime.now();
 }

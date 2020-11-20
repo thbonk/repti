@@ -14,16 +14,16 @@
    limitations under the License.
 */
 
-import 'package:flutter/material.dart';
+import 'package:floor/floor.dart';
 
-import 'package:repti/repti_application.dart';
+import 'package:repti/model/data_access/index.dart';
+import 'package:repti/model/entities/index.dart';
 
-/// Entry point of the application
-void main() => runApp(Main());
+@dao
+abstract class PictureDao extends AbstractDao<Picture> {
+  @Query('SELECT * FROM picture')
+  Future<List<Individual>> findAll();
 
-/// This is the top-level widget that instantiates [ReptiApplication].
-class Main extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) => ReptiApplication.shared;
+  @Query('SELECT * FROM picture WHERE id = :id')
+  Stream<Picture> findPictureById(String id);
 }

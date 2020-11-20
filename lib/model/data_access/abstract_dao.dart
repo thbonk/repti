@@ -14,16 +14,15 @@
    limitations under the License.
 */
 
-import 'package:flutter/material.dart';
+import 'package:floor/floor.dart';
 
-import 'package:repti/repti_application.dart';
+abstract class AbstractDao<T> {
+  @insert
+  Future<void> insertItem(T item);
 
-/// Entry point of the application
-void main() => runApp(Main());
+  @update
+  Future<void> updateItem(T item);
 
-/// This is the top-level widget that instantiates [ReptiApplication].
-class Main extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) => ReptiApplication.shared;
+  @delete
+  Future<void> deleteItem(T item);
 }

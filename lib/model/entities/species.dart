@@ -14,16 +14,31 @@
    limitations under the License.
 */
 
-import 'package:flutter/material.dart';
+import 'package:floor/floor.dart';
 
-import 'package:repti/repti_application.dart';
+import 'package:repti/model/entities/base_entity.dart';
 
-/// Entry point of the application
-void main() => runApp(Main());
+@Entity(
+  tableName: 'species',
+)
+class Species extends BaseEntity {
+  @ColumnInfo(
+    name: 'name',
+    nullable: false,
+  )
+  String name;
 
-/// This is the top-level widget that instantiates [ReptiApplication].
-class Main extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) => ReptiApplication.shared;
+  @ColumnInfo(
+    name: 'scientific_name',
+    nullable: false,
+  )
+  String scientificName;
+
+  Species(
+    this.name,
+    this.scientificName, {
+    String id,
+    DateTime updateTime,
+    DateTime createTime,
+  }) : super(id, updateTime, createdAt: createTime);
 }
