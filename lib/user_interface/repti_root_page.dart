@@ -16,7 +16,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
-import 'package:repti/user_interface/species_list.dart';
+import 'package:repti/user_interface/species_list/species_list.dart';
 
 class MasterDetailWidget {
   String get title => "";
@@ -63,7 +63,9 @@ class _ReptiRootPage extends State<ReptiRootPage> {
           children: <Widget>[
             Expanded(
               flex: 3,
-              child: SpeciesList(null),
+              child: SpeciesList((species) {
+                print("Selected: ${species}");
+              }),
             ),
             _isLargeScreen
                 ? Expanded(

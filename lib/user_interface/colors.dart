@@ -14,28 +14,14 @@
    limitations under the License.
 */
 
-import 'package:uuid/uuid.dart';
-import 'package:floor/floor.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 
-abstract class BaseEntity {
-  @PrimaryKey()
-  final String id;
+class ReptiColors {
+  static Brightness get brightness =>
+      MediaQueryData.fromWindow(WidgetsBinding.instance.window).platformBrightness;
 
-  @ColumnInfo(
-    name: 'created_at',
-    nullable: false,
-  )
-  final DateTime createdAt;
-
-  @ColumnInfo(name: 'updated_at')
-  DateTime updatedAt;
-
-  BaseEntity(
-    String id,
-    this.updatedAt, {
-    DateTime createdAt,
-  })  : this.id = id ?? Uuid().v4().toString(),
-        this.createdAt = createdAt ?? DateTime.now() {
-    this.updatedAt = updatedAt ?? this.createdAt;
-  }
+  static Color get gridColor => brightness == Brightness.dark ? Colors.grey[900] : Colors.grey[300];
 }
