@@ -21,6 +21,9 @@
 		E9CAD563256D97100009E735 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9CAD566256D97100009E735 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E9CAD568256D97100009E735 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9F1935E256D9C2E00982FC3 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E9F1935F256D9C3600982FC3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E9F19360256D9C7C00982FC3 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				E9CAD55E256D970F0009E735 /* repti */,
+				E9F19360256D9C7C00982FC3 /* .travis.yml */,
+				E9F1935F256D9C3600982FC3 /* README.md */,
+				E9F1935E256D9C2E00982FC3 /* LICENSE */,
 				E9CAD55D256D970F0009E735 /* Products */,
 			);
 			sourceTree = "<group>";
