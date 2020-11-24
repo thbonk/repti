@@ -21,15 +21,13 @@ import 'package:repti/model/entities/index.dart';
 import 'package:repti/repti_application.dart';
 
 class SpeciesDialog extends StatelessWidget {
-  const SpeciesDialog({
-    Key key,
-    @required GlobalKey<FormState> formKey,
-    @required this.species,
-  })  : _formKey = formKey,
-        super(key: key);
-
-  final GlobalKey<FormState> _formKey;
+  final _formKey = GlobalKey<FormState>();
   final Species species;
+
+  SpeciesDialog({
+    Key key,
+    @required this.species,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

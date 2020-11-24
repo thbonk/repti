@@ -19,34 +19,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:repti/model/entities/index.dart';
-import 'package:repti/repti_application.dart';
 import 'package:repti/user_interface/colors.dart';
 import 'package:repti/user_interface/species_list/species_dialog.dart';
 import 'package:repti/user_interface/species_list/species_list_widget.dart';
 
 typedef Null SpeciesSelectedCallback(Species species);
 
-class SpeciesList extends StatefulWidget {
-  final SpeciesSelectedCallback speciesSelectedCallback;
+class SpeciesList extends StatelessWidget {
+  final SpeciesSelectedCallback _speciesSelectedCallback;
 
-  SpeciesList(this.speciesSelectedCallback);
-
-  @override
-  State<SpeciesList> createState() {
-    return _SpeciesListState(speciesSelectedCallback);
-  }
-}
-
-class _SpeciesListState extends State<SpeciesList> {
-  final _formKey = GlobalKey<FormState>();
-  final SpeciesSelectedCallback speciesSelectedCallback;
-
-  _SpeciesListState(this.speciesSelectedCallback) {
-    ReptiApplication.shared.eventBus.on<DatabaseReadyEvent>().listen((event) => setState(() {}));
-  }
+  SpeciesList(this._speciesSelectedCallback);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(Object context) {
     return PlatformScaffold(
       iosContentPadding: false,
       iosContentBottomPadding: false,
@@ -78,7 +63,7 @@ class _SpeciesListState extends State<SpeciesList> {
               ),
             ),
           ),
-          child: SpeciesListWidget(speciesSelectedCallback),
+          child: SpeciesListWidget(_speciesSelectedCallback),
         ),
       ),
     );
@@ -90,7 +75,7 @@ class _SpeciesListState extends State<SpeciesList> {
         builder: (BuildContext context) {
           final species = Species("", "");
 
-          return SpeciesDialog(formKey: _formKey, species: species);
+          return SpeciesDialog(species: species);
         });
   }
 }

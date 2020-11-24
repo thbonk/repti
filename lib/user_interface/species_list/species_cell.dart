@@ -21,17 +21,15 @@ import 'package:repti/model/entities/index.dart';
 import 'package:repti/user_interface/colors.dart';
 
 class SpeciesCell extends StatelessWidget {
-  final Species species;
+  final Species _species;
 
   const SpeciesCell(
-    this.species, {
+    this._species, {
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var brightness = MediaQueryData.fromWindow(WidgetsBinding.instance.window).platformBrightness;
-
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -41,23 +39,29 @@ class SpeciesCell extends StatelessWidget {
           ),
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 8, left: 16, top: 16),
-            child: PlatformText(
-              species.name,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(bottom: 8, left: 16, top: 16),
+                child: PlatformText(
+                  _species.name,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                  ),
+                ),
               ),
-            ),
+              Padding(
+                padding: EdgeInsets.only(bottom: 16, left: 16),
+                child: PlatformText(_species.scientificName),
+              ),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 16, left: 16),
-            child: PlatformText(species.scientificName),
-          ),
+          Column(crossAxisAlignment: CrossAxisAlignment.end, children: [Icon(Icons.navigate_next)]),
         ],
       ),
     );
