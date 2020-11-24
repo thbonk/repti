@@ -16,6 +16,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:repti/user_interface/individuals_list/individuals_list.dart';
 import 'package:repti/user_interface/species_list/species_list.dart';
 
 class MasterDetailWidget {
@@ -64,6 +65,11 @@ class _ReptiRootPage extends State<ReptiRootPage> {
             Expanded(
               flex: 3,
               child: SpeciesList((species) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => IndividualsList(species, (individual) {}),
+                  ),
+                );
                 print("Selected: ${species}");
               }),
             ),
