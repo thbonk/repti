@@ -11,5 +11,5 @@ jobs:
     #- export PATH="/Library/Developer/Toolchains/swift-5.3-RELEASE.xctoolchain/usr/bin:$PATH"
     #- brew install libsodium llvm
     script:
-    - xcodebuild -target repti -destination 'platform=macOS,arch=x86_64'
+    - xcodebuild -target repti -destination 'platform=macOS,arch=x86_64' -exportOptionsPlist travis-build.plist
 

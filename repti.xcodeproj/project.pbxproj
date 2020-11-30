@@ -43,6 +43,7 @@
 		E9EE9B332574BD40003DF0BC /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E9EE9B342574BD40003DF0BC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E9EE9B402574C280003DF0BC /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
+		E9EE9B482574C883003DF0BC /* travis-build.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "travis-build.plist"; sourceTree = "<group>"; };
 		E9F8DC35257448CE0030842E /* repti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = repti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9F8DC3F257448CE0030842E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9F8DC42257448CE0030842E /* repti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = repti.xcdatamodel; sourceTree = "<group>"; };
@@ -142,6 +143,7 @@
 			children = (
 				E9F8DC37257448CE0030842E /* repti */,
 				E9EE9B402574C280003DF0BC /* .travis.yml */,
+				E9EE9B482574C883003DF0BC /* travis-build.plist */,
 				E9EE9B332574BD40003DF0BC /* LICENSE */,
 				E9EE9B342574BD40003DF0BC /* README.md */,
 				E9F8DC51257448CF0030842E /* reptiTests */,
