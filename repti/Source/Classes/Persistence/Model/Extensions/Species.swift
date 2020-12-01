@@ -14,15 +14,18 @@
  limitations under the License.
  */
 
-import UIKit
+import Foundation
+import CoreData
 
-class ViewController: UIViewController {
+extension Species {
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view.
+  // MARK: - Class Methods
+
+  class func create(in managedObjectContext: NSManagedObjectContext) -> Species {
+    return
+      NSEntityDescription
+        .insertNewObject(
+          forEntityName: Species.entityName,
+                   into: managedObjectContext) as! Species
   }
-
-
 }
-

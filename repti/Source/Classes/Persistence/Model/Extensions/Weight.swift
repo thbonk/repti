@@ -14,15 +14,18 @@
  limitations under the License.
  */
 
-import UIKit
+import Foundation
+import CoreData
 
-class ViewController: UIViewController {
+extension Weight {
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view.
+  // MARK: - Class Methods
+
+  class func create(in managedObjectContext: NSManagedObjectContext) -> Weight {
+    return
+      NSEntityDescription
+      .insertNewObject(
+        forEntityName: Weight.entityName,
+        into: managedObjectContext) as! Weight
   }
-
-
 }
-

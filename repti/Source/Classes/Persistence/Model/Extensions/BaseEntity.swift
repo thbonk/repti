@@ -14,15 +14,24 @@
  limitations under the License.
  */
 
-import UIKit
+import Foundation
+import CoreData
 
-class ViewController: UIViewController {
+extension BaseEntity {
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view.
+  // MARK: - NSManagedObject Overrides
+
+  override func awakeFromInsert() {
+    setPrimitiveValue(UUID(), forKey: "id")
+    setPrimitiveValue(Date(), forKey: "createdAt")
+    setPrimitiveValue(nil, forKey: "updatedAt")
   }
 
-
+  override func willSave() {
+    if updatedAt == nil {
+      setPrimitiveValue(createdAt, forKey: "updatedAt")
+    } else {
+      setPrimitiveValue(Date(), forKey: "updatedAt")
+    }
+  }
 }
-

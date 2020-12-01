@@ -14,15 +14,36 @@
  limitations under the License.
  */
 
-import UIKit
+import Foundation
+import CoreData
 
-class ViewController: UIViewController {
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view.
-  }
-
-
+enum Gender: Int16 {
+  case male = 0
+  case female = 1
+  case unknown = 255
 }
 
+extension Individual {
+
+  // MARK: - Public Properties
+
+  var gender: Gender {
+    set {
+      genderVal = newValue.rawValue
+    }
+    get {
+      return Gender(rawValue: genderVal)!
+    }
+  }
+
+  
+  // MARK: - Class Methods
+
+  class func create(in managedObjectContext: NSManagedObjectContext) -> Individual {
+    return
+      NSEntityDescription
+      .insertNewObject(
+        forEntityName: Individual.entityName,
+        into: managedObjectContext) as! Individual
+  }
+}

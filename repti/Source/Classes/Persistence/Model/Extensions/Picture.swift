@@ -14,15 +14,18 @@
  limitations under the License.
  */
 
-import UIKit
+import Foundation
+import CoreData
 
-class ViewController: UIViewController {
+extension Picture {
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view.
+  // MARK: - Class Methods
+
+  class func create(in managedObjectContext: NSManagedObjectContext) -> Picture {
+    return
+      NSEntityDescription
+      .insertNewObject(
+        forEntityName: Picture.entityName,
+        into: managedObjectContext) as! Picture
   }
-
-
 }
-

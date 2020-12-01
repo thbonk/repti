@@ -1,0 +1,5 @@
+coredata:
+  inputs: repti/repti.xcdatamodeld
+  outputs:
+    templateName: swift5
+    output: repti/Source/Classes/Persistence/Model/Generated/Model.swift
