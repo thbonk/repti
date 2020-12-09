@@ -3,3 +3,11 @@ coredata:
   outputs:
     templateName: swift5
     output: repti/Source/Classes/Persistence/Model/Generated/Model.swift
+
+ib:
+  inputs: repti/Base.lproj/
+  outputs:
+    - templateName: scenes-swift5
+      output: repti/Source/Classes/UI/Generated/Scenes.swift
+    - templateName: segues-swift5
+      output: repti/Source/Classes/UI/Generated/Segues.swift

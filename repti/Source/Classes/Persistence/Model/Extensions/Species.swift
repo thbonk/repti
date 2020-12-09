@@ -17,7 +17,13 @@
 import Foundation
 import CoreData
 
-extension Species {
+protocol SpeciesProtocol {
+  var name: String { get set }
+  var scientificName: String { get set }
+  var individuals: Set<Individual>? { get set }
+}
+
+extension Species: SpeciesProtocol {
 
   // MARK: - Class Methods
 
@@ -28,4 +34,10 @@ extension Species {
           forEntityName: Species.entityName,
                    into: managedObjectContext) as! Species
   }
+}
+
+class SpeciesDAO: SpeciesProtocol {
+  var name: String = ""
+  var scientificName: String = ""
+  var individuals: Set<Individual>? = Set()
 }

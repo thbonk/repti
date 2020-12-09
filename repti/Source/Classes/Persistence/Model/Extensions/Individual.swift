@@ -21,9 +21,28 @@ enum Gender: Int16 {
   case male = 0
   case female = 1
   case unknown = 255
+
+  var displayName: String {
+    switch self {
+    case .male:
+      return NSLocalizedString("Male", comment: "Label Text")
+
+    case .female:
+      return NSLocalizedString("Female", comment: "Label Text")
+
+    case .unknown:
+      return NSLocalizedString("Undefined", comment: "Label Text")
+    }
+  }
 }
 
-extension Individual {
+protocol IndividualProtocol {
+  var name: String { get set }
+  var species: Species { get set }
+  var gender: Gender { get set }
+}
+
+extension Individual: IndividualProtocol {
 
   // MARK: - Public Properties
 
@@ -45,5 +64,21 @@ extension Individual {
       .insertNewObject(
         forEntityName: Individual.entityName,
         into: managedObjectContext) as! Individual
+  }
+}
+
+class IndividualDAO: IndividualProtocol {
+
+  // MARK: -  Public Properties
+
+  var name: String = ""
+  var species: Species
+  var gender: Gender = .unknown
+
+
+  // MARK: - Initialization
+  
+  init(species: Species) {
+    self.species = species
   }
 }

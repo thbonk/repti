@@ -16,11 +16,53 @@
 
 import UIKit
 import CoreData
+import Swinject
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+  // MARK: - Class Properties
 
+  static var shared: AppDelegate {
+    return UIApplication.shared.delegate as! AppDelegate
+  }
+
+
+  // MARK: - Public Properties
+
+  lazy private(set) var container: Container = {
+    let cntnr = Container()
+
+    cntnr.register(CoreDataStore.self) { _ in
+      CoreDataStore()
+    }.inObjectScope(.container)
+
+    cntnr.register(NSFetchRequest<Species>.self) { _ in
+      let fetchRequest: NSFetchRequest<Species> = Species.makeFetchRequest()
+
+      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+      fetchRequest.includesSubentities = true
+      fetchRequest.includesPropertyValues = true
+
+      return fetchRequest
+    }.inObjectScope(.container)
+
+    cntnr.register(NSFetchRequest<Individual>.self) { (_, species: Species!) in
+      let fetchRequest: NSFetchRequest<Individual> = Individual.makeFetchRequest()
+
+      fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+      fetchRequest.includesSubentities = true
+      fetchRequest.includesPropertyValues = true
+      fetchRequest.predicate = NSPredicate(format: "species = %@", species)
+
+      return fetchRequest
+    }
+
+    return cntnr
+  }()
+
+
+  // MARK: - UIApplicationDelegate
 
   func application(
     _ application: UIApplication,
