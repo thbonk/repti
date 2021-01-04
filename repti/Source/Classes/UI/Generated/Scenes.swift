@@ -17,18 +17,15 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<UIKit.UIViewController>(storyboard: LaunchScreen.self)
   }
-  internal enum Main: StoryboardType {
-    internal static let storyboardName = "Main"
+  internal enum MainIPad: StoryboardType {
+    internal static let storyboardName = "Main-iPad"
 
-    internal static let initialScene = InitialSceneType<UIKit.UISplitViewController>(storyboard: Main.self)
+    internal static let initialScene = InitialSceneType<UIKit.UISplitViewController>(storyboard: MainIPad.self)
+  }
+  internal enum MainIPhone: StoryboardType {
+    internal static let storyboardName = "Main-iPhone"
 
-    internal static let addIndividualController = SceneType<repti.AddIndividualController>(storyboard: Main.self, identifier: "AddIndividualController")
-
-    internal static let datePickerController = SceneType<repti.DatePickerController>(storyboard: Main.self, identifier: "DatePickerController")
-
-    internal static let individualDetailsViewController = SceneType<repti.IndividualDetailViewController>(storyboard: Main.self, identifier: "IndividualDetailsViewController")
-
-    internal static let speciesEditorController = SceneType<repti.SpeciesEditorController>(storyboard: Main.self, identifier: "SpeciesEditorController")
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: MainIPhone.self)
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name

@@ -15,6 +15,7 @@
  */
 
 import Foundation
+import Combine
 import CoreData
 
 protocol SpeciesProtocol {
@@ -36,8 +37,22 @@ extension Species: SpeciesProtocol {
   }
 }
 
-class SpeciesDAO: SpeciesProtocol {
+struct  SpeciesDAO: SpeciesProtocol {
+
+  // MARK: - Public Properties
+
   var name: String = ""
   var scientificName: String = ""
   var individuals: Set<Individual>? = Set()
+
+
+  // MARK: - Initialization
+
+  init(species: Species? = nil) {
+    if let species = species {
+      name = species.name
+      scientificName = species.scientificName
+      individuals = species.individuals
+    }
+  }
 }

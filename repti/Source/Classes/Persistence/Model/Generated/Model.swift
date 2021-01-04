@@ -11,6 +11,7 @@ import Foundation
 
 // MARK: - BaseEntity
 
+@objc(BaseEntity)
 internal class BaseEntity: NSManagedObject {
   internal class var entityName: String {
     return "BaseEntity"
@@ -53,6 +54,7 @@ internal class BaseEntity: NSManagedObject {
 
 // MARK: - Individual
 
+@objc(Individual)
 internal class Individual: BaseEntity {
   override internal class var entityName: String {
     return "Individual"
@@ -178,6 +180,7 @@ extension Individual {
 
 // MARK: - Picture
 
+@objc(Picture)
 internal class Picture: BaseEntity {
   override internal class var entityName: String {
     return "Picture"
@@ -205,6 +208,7 @@ internal class Picture: BaseEntity {
 
 // MARK: - Species
 
+@objc(Species)
 internal class Species: BaseEntity {
   override internal class var entityName: String {
     return "Species"
@@ -248,6 +252,7 @@ extension Species {
 
 // MARK: - Weight
 
+@objc(Weight)
 internal class Weight: BaseEntity {
   override internal class var entityName: String {
     return "Weight"

@@ -1,13 +1,13 @@
 coredata:
-  inputs: repti/repti.xcdatamodeld
+  inputs: Repti/Repti.xcdatamodeld
   outputs:
-    templateName: swift5
-    output: repti/Source/Classes/Persistence/Model/Generated/Model.swift
+    templatePath: swiftgen-templates/coredata.stencil
+    output: Repti/Source/Classes/Persistence/Model/Generated/Model.swift
 
 ib:
-  inputs: repti/Base.lproj/
+  inputs: Repti/Base.lproj/
   outputs:
     - templateName: scenes-swift5
-      output: repti/Source/Classes/UI/Generated/Scenes.swift
+      output: Repti/Source/Classes/UI/Generated/Scenes.swift
     - templateName: segues-swift5
-      output: repti/Source/Classes/UI/Generated/Segues.swift
+      output: Repti/Source/Classes/UI/Generated/Segues.swift

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="1">
-    <entity name="BaseEntity" representedClassName=".BaseEntity" isAbstract="YES" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="v1">
+    <entity name="BaseEntity" representedClassName="BaseEntity" isAbstract="YES" syncable="YES">
         <attribute name="createdAt" attributeType="Date" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Individual" representedClassName=".Individual" parentEntity="BaseEntity" syncable="YES">
+    <entity name="Individual" representedClassName="Individual" parentEntity="BaseEntity" syncable="YES">
         <attribute name="dateOfSale" optional="YES" attributeType="Date" usesScalarValueType="YES"/>
         <attribute name="genderVal" attributeType="Integer 16" defaultValueString="255" usesScalarValueType="YES" customClassName="."/>
         <attribute name="hatchingDate" optional="YES" attributeType="Date" usesScalarValueType="YES"/>
@@ -16,26 +16,26 @@
         <relationship name="species" maxCount="1" deletionRule="Nullify" destinationEntity="Species" inverseName="individuals" inverseEntity="Species"/>
         <relationship name="weighings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Weight" inverseName="individual" inverseEntity="Weight"/>
     </entity>
-    <entity name="Picture" representedClassName=".Picture" parentEntity="BaseEntity" syncable="YES">
+    <entity name="Picture" representedClassName="Picture" parentEntity="BaseEntity" syncable="YES">
         <attribute name="data" attributeType="Binary"/>
         <attribute name="filename" attributeType="String"/>
         <relationship name="individual" maxCount="1" deletionRule="Nullify" destinationEntity="Individual" inverseName="pictures" inverseEntity="Individual"/>
     </entity>
-    <entity name="Species" representedClassName=".Species" parentEntity="BaseEntity" syncable="YES">
+    <entity name="Species" representedClassName="Species" parentEntity="BaseEntity" syncable="YES">
         <attribute name="name" attributeType="String"/>
         <attribute name="scientificName" attributeType="String"/>
         <relationship name="individuals" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Individual" inverseName="species" inverseEntity="Individual"/>
     </entity>
-    <entity name="Weight" representedClassName=".Weight" parentEntity="BaseEntity" syncable="YES">
+    <entity name="Weight" representedClassName="Weight" parentEntity="BaseEntity" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="YES"/>
         <attribute name="weight" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="individual" maxCount="1" deletionRule="Nullify" destinationEntity="Individual" inverseName="weighings" inverseEntity="Individual"/>
     </entity>
     <elements>
         <element name="BaseEntity" positionX="-63" positionY="-18" width="128" height="74"/>
-        <element name="Species" positionX="-54" positionY="18" width="128" height="74"/>
         <element name="Individual" positionX="-36" positionY="36" width="128" height="164"/>
         <element name="Picture" positionX="-18" positionY="99" width="128" height="74"/>
+        <element name="Species" positionX="-54" positionY="18" width="128" height="74"/>
         <element name="Weight" positionX="0" positionY="117" width="128" height="74"/>
     </elements>
 </model>
