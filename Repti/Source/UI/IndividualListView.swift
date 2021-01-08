@@ -43,7 +43,18 @@ struct IndividualListView: View {
     List {
       ForEach(individuals.wrappedValue) { individual in
         NavigationLink(
-          destination: Text(individual.name),
+          destination:
+            IndividualDetailView(
+              individual:
+                Binding<Individual>(
+                  get: { return individual },
+                  set: { _ in
+                    do {
+                      try viewContext.save()
+                    } catch {
+                      errorAlert(message: "Error while saving changes to individual.", error: error)
+                    }
+                  })),
           tag: individual.id,
           selection: $selectedId) {
           LazyVGrid(
@@ -51,8 +62,8 @@ struct IndividualListView: View {
             content: {
               Text(individual.name)
                 .font(.headline)
-              Text(genderSign(individual.gender))
-                .font(.headline)
+              Text(individual.gender.displayName)
+                .font(.subheadline)
             })
             .padding(.all, 10)
         }

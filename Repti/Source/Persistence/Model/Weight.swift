@@ -22,7 +22,12 @@
 import Foundation
 import CoreData
 
-extension Weight {
+protocol WeightProtocol {
+  var date: Date { get set }
+  var weight: Float { get set }
+}
+
+extension Weight: WeightProtocol {
 
   // MARK: - Class Methods
 
@@ -33,4 +38,12 @@ extension Weight {
         forEntityName: Weight.entityName,
         into: managedObjectContext) as! Weight
   }
+}
+
+struct WeightDAO: WeightProtocol {
+
+  // MARK: - Public Properties
+
+  var date: Date
+  var weight: Float
 }

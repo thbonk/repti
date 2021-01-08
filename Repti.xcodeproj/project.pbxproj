@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9A517B225A610340088986B /* IndividualDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517B125A610340088986B /* IndividualDetailView.swift */; };
+		E9A517BC25A824180088986B /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517BA25A824180088986B /* SpeciesEditorView.swift */; };
+		E9A517BD25A824180088986B /* IndividualEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517BB25A824180088986B /* IndividualEditorView.swift */; };
+		E9A517C025A824340088986B /* WeighingsEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517BF25A824340088986B /* WeighingsEditorView.swift */; };
+		E9A517C525A82D530088986B /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E9A517C425A82D530088986B /* SwiftUICharts */; };
+		E9A517C925A8E6F30088986B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E9A517C825A8E6F30088986B /* Credits.rtf */; };
 		E9C6356325A3C6AD00BA2748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C6356225A3C6AD00BA2748 /* Assets.xcassets */; };
 		E9C6356625A3C6AD00BA2748 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C6356525A3C6AD00BA2748 /* Preview Assets.xcassets */; };
 		E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9C6356925A3C6AD00BA2748 /* Repti.xcdatamodeld */; };
@@ -19,15 +25,18 @@
 		E9C6359225A3D3C200BA2748 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6358D25A3D3C200BA2748 /* Picture.swift */; };
 		E9C6359325A3D3C200BA2748 /* Individual.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6358E25A3D3C200BA2748 /* Individual.swift */; };
 		E9C6359425A3D3C200BA2748 /* BaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6358F25A3D3C200BA2748 /* BaseEntity.swift */; };
-		E9C635AA25A5838D00BA2748 /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635A625A5838D00BA2748 /* SpeciesEditorView.swift */; };
 		E9C635AB25A5838D00BA2748 /* IndividualListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635A725A5838D00BA2748 /* IndividualListView.swift */; };
 		E9C635AC25A5838D00BA2748 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635A825A5838D00BA2748 /* MasterView.swift */; };
 		E9C635AD25A5838D00BA2748 /* SpeciesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635A925A5838D00BA2748 /* SpeciesListView.swift */; };
-		E9C635B025A5841800BA2748 /* IndividualEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635AF25A5841800BA2748 /* IndividualEditorView.swift */; };
 		E9C635B525A587E900BA2748 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635B425A587E900BA2748 /* Alerts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E9A517B125A610340088986B /* IndividualDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDetailView.swift; sourceTree = "<group>"; };
+		E9A517BA25A824180088986B /* SpeciesEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
+		E9A517BB25A824180088986B /* IndividualEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualEditorView.swift; sourceTree = "<group>"; };
+		E9A517BF25A824340088986B /* WeighingsEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighingsEditorView.swift; sourceTree = "<group>"; };
+		E9A517C825A8E6F30088986B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = SOURCE_ROOT; };
 		E9C6355B25A3C6AB00BA2748 /* Repti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C6356225A3C6AD00BA2748 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9C6356525A3C6AD00BA2748 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -46,11 +55,9 @@
 		E9C6358E25A3D3C200BA2748 /* Individual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Individual.swift; sourceTree = "<group>"; };
 		E9C6358F25A3D3C200BA2748 /* BaseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntity.swift; sourceTree = "<group>"; };
 		E9C6359625A3D43F00BA2748 /* Repti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Repti.entitlements; sourceTree = "<group>"; };
-		E9C635A625A5838D00BA2748 /* SpeciesEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
 		E9C635A725A5838D00BA2748 /* IndividualListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualListView.swift; sourceTree = "<group>"; };
 		E9C635A825A5838D00BA2748 /* MasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		E9C635A925A5838D00BA2748 /* SpeciesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesListView.swift; sourceTree = "<group>"; };
-		E9C635AF25A5841800BA2748 /* IndividualEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualEditorView.swift; sourceTree = "<group>"; };
 		E9C635B425A587E900BA2748 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,12 +66,35 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A517C525A82D530088986B /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E9A517AE25A60D710088986B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E9A517C825A8E6F30088986B /* Credits.rtf */,
+				E9C6359625A3D43F00BA2748 /* Repti.entitlements */,
+				E9C6356225A3C6AD00BA2748 /* Assets.xcassets */,
+				E9C6356C25A3C6AD00BA2748 /* Info.plist */,
+				E9C6356925A3C6AD00BA2748 /* Repti.xcdatamodeld */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E9A517B925A824180088986B /* Editors */ = {
+			isa = PBXGroup;
+			children = (
+				E9A517BA25A824180088986B /* SpeciesEditorView.swift */,
+				E9A517BB25A824180088986B /* IndividualEditorView.swift */,
+				E9A517BF25A824340088986B /* WeighingsEditorView.swift */,
+			);
+			path = Editors;
+			sourceTree = "<group>";
+		};
 		E9C6355225A3C6AB00BA2748 = {
 			isa = PBXGroup;
 			children = (
@@ -87,11 +117,8 @@
 		E9C6355D25A3C6AB00BA2748 /* Repti */ = {
 			isa = PBXGroup;
 			children = (
-				E9C6359625A3D43F00BA2748 /* Repti.entitlements */,
 				E9C6357325A3C72000BA2748 /* Source */,
-				E9C6356225A3C6AD00BA2748 /* Assets.xcassets */,
-				E9C6356C25A3C6AD00BA2748 /* Info.plist */,
-				E9C6356925A3C6AD00BA2748 /* Repti.xcdatamodeld */,
+				E9A517AE25A60D710088986B /* Resources */,
 				E9C6356425A3C6AD00BA2748 /* Preview Content */,
 			);
 			path = Repti;
@@ -118,12 +145,12 @@
 		E9C6357425A3C72000BA2748 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E9A517B925A824180088986B /* Editors */,
 				E9C635B425A587E900BA2748 /* Alerts.swift */,
 				E9C6357525A3C72000BA2748 /* ContentView.swift */,
 				E9C635A825A5838D00BA2748 /* MasterView.swift */,
 				E9C635A725A5838D00BA2748 /* IndividualListView.swift */,
-				E9C635AF25A5841800BA2748 /* IndividualEditorView.swift */,
-				E9C635A625A5838D00BA2748 /* SpeciesEditorView.swift */,
+				E9A517B125A610340088986B /* IndividualDetailView.swift */,
 				E9C635A925A5838D00BA2748 /* SpeciesListView.swift */,
 			);
 			path = UI;
@@ -184,6 +211,9 @@
 			dependencies = (
 			);
 			name = Repti;
+			packageProductDependencies = (
+				E9A517C425A82D530088986B /* SwiftUICharts */,
+			);
 			productName = Repti;
 			productReference = E9C6355B25A3C6AB00BA2748 /* Repti.app */;
 			productType = "com.apple.product-type.application";
@@ -211,6 +241,9 @@
 				Base,
 			);
 			mainGroup = E9C6355225A3C6AB00BA2748;
+			packageReferences = (
+				E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = E9C6355C25A3C6AB00BA2748 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -226,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9C6356625A3C6AD00BA2748 /* Preview Assets.xcassets in Resources */,
+				E9A517C925A8E6F30088986B /* Credits.rtf in Resources */,
 				E9C6356325A3C6AD00BA2748 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,18 +295,20 @@
 				E9C6358925A3D35500BA2748 /* Model.swift in Sources */,
 				E9C6359425A3D3C200BA2748 /* BaseEntity.swift in Sources */,
 				E9C635B525A587E900BA2748 /* Alerts.swift in Sources */,
+				E9A517BD25A824180088986B /* IndividualEditorView.swift in Sources */,
 				E9C6359125A3D3C200BA2748 /* Species.swift in Sources */,
+				E9A517C025A824340088986B /* WeighingsEditorView.swift in Sources */,
 				E9C6357B25A3C72000BA2748 /* Persistence.swift in Sources */,
 				E9C6359325A3D3C200BA2748 /* Individual.swift in Sources */,
+				E9A517B225A610340088986B /* IndividualDetailView.swift in Sources */,
 				E9C6357A25A3C72000BA2748 /* ContentView.swift in Sources */,
-				E9C635AA25A5838D00BA2748 /* SpeciesEditorView.swift in Sources */,
 				E9C635AD25A5838D00BA2748 /* SpeciesListView.swift in Sources */,
 				E9C635AB25A5838D00BA2748 /* IndividualListView.swift in Sources */,
 				E9C635AC25A5838D00BA2748 /* MasterView.swift in Sources */,
 				E9C6359225A3D3C200BA2748 /* Picture.swift in Sources */,
 				E9C6357C25A3C72000BA2748 /* ReptiApp.swift in Sources */,
 				E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */,
-				E9C635B025A5841800BA2748 /* IndividualEditorView.swift in Sources */,
+				E9A517BC25A824180088986B /* SpeciesEditorView.swift in Sources */,
 				E9C6359025A3D3C200BA2748 /* Weight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +504,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E9A517C425A82D530088986B /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E9C6356925A3C6AD00BA2748 /* Repti.xcdatamodeld */ = {
