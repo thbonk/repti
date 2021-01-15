@@ -45,11 +45,12 @@ enum Gender: Int16, CaseIterable, Identifiable {
 
 protocol IndividualProtocol {
   var name: String { get set }
-  var species: Species { get set }
+  var species: Species? { get set }
   var gender: Gender { get set }
 }
 
 extension Individual: IndividualProtocol {
+
 
   // MARK: - Public Properties
 
@@ -79,7 +80,7 @@ struct IndividualDAO: IndividualProtocol {
   // MARK: -  Public Properties
 
   var name: String = ""
-  var species: Species
+  var species: Species?
   var gender: Gender = .unknown
 
 

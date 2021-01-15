@@ -1,8 +1,8 @@
 //
-//  ReptiApp.swift
+//  OptionalValue.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 04.01.21.
+//  Created by Thomas Bonk on 13.01.21.
 //
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
@@ -19,16 +19,12 @@
 //  limitations under the License.
 //
 
-import SwiftUI
+import Foundation
 
-@main
-struct ReptiApp: App {
-  let persistenceController = PersistenceController.shared
-  
-  var body: some Scene {
-    WindowGroup {
-      ContentView()
-        .environment(\.managedObjectContext, persistenceController.container.viewContext)
-    }    
+class OptionalValue<T> {
+  var value: T? = nil
+
+  init(_ initialValue: T? = nil) {
+    self.value = initialValue
   }
 }

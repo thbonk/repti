@@ -26,7 +26,7 @@ struct SpeciesListView: View {
   // MARK - Private Properties
 
   @State
-  private var editItem: Species? = nil
+  private var editItem: OptionalValue<Species> = OptionalValue()
   @State
   private var editMode: EditMode = .inactive
   @State
@@ -60,17 +60,18 @@ struct SpeciesListView: View {
               }
             })
             .padding(.all, 10)
+            .contextMenu {
+              Button {
+                editItem.value = spcs
+                showSpeciesEditor = true
+              } label: {
+                Image(systemName: "pencil")
+                Text("Edit")
+              }
+            }
         }
         .isDetailLink(false)
-        .allowsHitTesting(self.editMode == .inactive ? false : true)
-        .onTapGesture(perform: {
-          DispatchQueue.main.async {
-            editItem = spcs
-          }
-          DispatchQueue.main.async {
-            showSpeciesEditor = true
-          }
-        })
+        //.allowsHitTesting(self.editMode == .inactive ? false : true)
       }
       .onDelete(perform: deleteItems)
     }
@@ -84,11 +85,11 @@ struct SpeciesListView: View {
           Image(systemName: "plus")
         }
         .sheet(isPresented: $showSpeciesEditor, content: {
-          if editMode == .active {
-            SpeciesEditorView(mode: .edit, model: SpeciesDAO(species: editItem), saveAction: self.saveChanged(species:))
-          } else {
-            SpeciesEditorView(mode: .create, saveAction: self.saveNew(species:))
-          }
+          SpeciesEditorView(
+            mode: .edit,
+            model: SpeciesDAO(species: editItem.value),
+            saveAction: editItem.value != nil ? self.saveChanged(species:) : self.saveNew(species:),
+            cancelAction: { editItem.value = nil })
         })
       })
     .environment(\.editMode, self.$editMode)
@@ -98,22 +99,24 @@ struct SpeciesListView: View {
   // MARK: - Private Methods
 
   private func saveChanged(species: SpeciesDAO) {
-    do {
-      editItem?.name = species.name
-      editItem?.scientificName = species.scientificName
+    withAnimation(.easeIn) {
+      do {
+        editItem.value?.name = species.name
+        editItem.value?.scientificName = species.scientificName
 
-      try viewContext.save()
+        try viewContext.save()
 
-      editItem = nil
-    } catch {
-      errorAlert(
-        message: NSLocalizedString("Error while saving changed species.", comment: "Error Message"),
-        error: error)
+        editItem.value = nil
+      } catch {
+        errorAlert(
+          message: NSLocalizedString("Error while saving changed species.", comment: "Error Message"),
+          error: error)
+      }
     }
   }
 
   private func saveNew(species: SpeciesDAO) {
-    withAnimation {
+    withAnimation(.easeIn) {
       let newSpecies = Species.create(in: viewContext)
 
       newSpecies.name = species.name
@@ -130,7 +133,7 @@ struct SpeciesListView: View {
   }
 
   private func deleteItems(offsets: IndexSet) {
-    withAnimation {
+    withAnimation(.easeOut) {
       offsets.map {
         species[$0]
       }.forEach(viewContext.delete)

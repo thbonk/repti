@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="v1">
     <entity name="BaseEntity" representedClassName="BaseEntity" isAbstract="YES" syncable="YES">
-        <attribute name="createdAt" attributeType="Date" usesScalarValueType="YES"/>
-        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="YES"/>
     </entity>
     <entity name="Individual" representedClassName="Individual" parentEntity="BaseEntity" syncable="YES">
         <attribute name="dateOfSale" optional="YES" attributeType="Date" usesScalarValueType="YES"/>
         <attribute name="genderVal" attributeType="Integer 16" defaultValueString="255" usesScalarValueType="YES" customClassName="."/>
         <attribute name="hatchingDate" optional="YES" attributeType="Date" usesScalarValueType="YES"/>
-        <attribute name="name" attributeType="String"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
         <attribute name="ovipositionDate" optional="YES" attributeType="Date" usesScalarValueType="YES"/>
         <attribute name="purchasingDate" optional="YES" attributeType="Date" usesScalarValueType="YES"/>
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Picture" inverseName="individual" inverseEntity="Picture"/>
-        <relationship name="species" maxCount="1" deletionRule="Nullify" destinationEntity="Species" inverseName="individuals" inverseEntity="Species"/>
+        <relationship name="species" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Species" inverseName="individuals" inverseEntity="Species"/>
         <relationship name="weighings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Weight" inverseName="individual" inverseEntity="Weight"/>
     </entity>
     <entity name="Picture" representedClassName="Picture" parentEntity="BaseEntity" syncable="YES">
-        <attribute name="data" attributeType="Binary"/>
-        <attribute name="filename" attributeType="String"/>
-        <relationship name="individual" maxCount="1" deletionRule="Nullify" destinationEntity="Individual" inverseName="pictures" inverseEntity="Individual"/>
+        <attribute name="data" optional="YES" attributeType="Binary"/>
+        <attribute name="filename" attributeType="String" defaultValueString=""/>
+        <relationship name="individual" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Individual" inverseName="pictures" inverseEntity="Individual"/>
     </entity>
     <entity name="Species" representedClassName="Species" parentEntity="BaseEntity" syncable="YES">
-        <attribute name="name" attributeType="String"/>
-        <attribute name="scientificName" attributeType="String"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <attribute name="scientificName" attributeType="String" defaultValueString=""/>
         <relationship name="individuals" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Individual" inverseName="species" inverseEntity="Individual"/>
     </entity>
     <entity name="Weight" representedClassName="Weight" parentEntity="BaseEntity" syncable="YES">
-        <attribute name="date" attributeType="Date" usesScalarValueType="YES"/>
+        <attribute name="date" attributeType="Date" defaultDateTimeInterval="-3600" usesScalarValueType="YES"/>
         <attribute name="weight" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="individual" maxCount="1" deletionRule="Nullify" destinationEntity="Individual" inverseName="weighings" inverseEntity="Individual"/>
+        <relationship name="individual" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Individual" inverseName="weighings" inverseEntity="Individual"/>
     </entity>
     <elements>
         <element name="BaseEntity" positionX="-63" positionY="-18" width="128" height="74"/>

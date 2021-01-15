@@ -31,8 +31,23 @@ internal class BaseEntity: NSManagedObject {
   }
 
   // swiftlint:disable discouraged_optional_boolean discouraged_optional_collection
-  @NSManaged internal var createdAt: Date
-  @NSManaged internal var id: UUID
+  internal var createdAt: Date? {
+    get {
+      let key = "createdAt"
+      willAccessValue(forKey: key)
+      defer { didAccessValue(forKey: key) }
+
+      return primitiveValue(forKey: key) as? Date
+    }
+    set {
+      let key = "createdAt"
+      willChangeValue(forKey: key)
+      defer { didChangeValue(forKey: key) }
+
+      setPrimitiveValue(newValue, forKey: key)
+    }
+  }
+  @NSManaged internal var id: UUID?
   internal var updatedAt: Date? {
     get {
       let key = "updatedAt"
@@ -141,7 +156,7 @@ internal class Individual: BaseEntity {
     }
   }
   @NSManaged internal var pictures: Set<Picture>?
-  @NSManaged internal var species: Species
+  @NSManaged internal var species: Species?
   @NSManaged internal var weighings: Set<Weight>?
   // swiftlint:enable discouraged_optional_boolean discouraged_optional_collection
 }
@@ -200,9 +215,9 @@ internal class Picture: BaseEntity {
   }
 
   // swiftlint:disable discouraged_optional_boolean discouraged_optional_collection
-  @NSManaged internal var data: Data
+  @NSManaged internal var data: Data?
   @NSManaged internal var filename: String
-  @NSManaged internal var individual: Individual
+  @NSManaged internal var individual: Individual?
   // swiftlint:enable discouraged_optional_boolean discouraged_optional_collection
 }
 
@@ -274,7 +289,7 @@ internal class Weight: BaseEntity {
   // swiftlint:disable discouraged_optional_boolean discouraged_optional_collection
   @NSManaged internal var date: Date
   @NSManaged internal var weight: Float
-  @NSManaged internal var individual: Individual
+  @NSManaged internal var individual: Individual?
   // swiftlint:enable discouraged_optional_boolean discouraged_optional_collection
 }
 

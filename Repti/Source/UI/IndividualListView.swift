@@ -55,7 +55,7 @@ struct IndividualListView: View {
                       errorAlert(message: "Error while saving changes to individual.", error: error)
                     }
                   })),
-          tag: individual.id,
+          tag: individual.id!,
           selection: $selectedId) {
           LazyVGrid(
             columns: [GridItem(alignment: .leading), GridItem(alignment: .trailing)],
@@ -91,7 +91,7 @@ struct IndividualListView: View {
       FetchRequest(
         entity: Individual.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \Individual.name, ascending: true)],
-        predicate: NSPredicate(format: "species.id = %@", argumentArray: [species.id]), //NSPredicate(format: "species.id = %@", species.id),
+        predicate: NSPredicate(format: "species.id = %@", argumentArray: [species.id!]), //NSPredicate(format: "species.id = %@", species.id),
         animation: .default)
   }
 

@@ -36,8 +36,13 @@ fileprivate func alert(
         style: .default,
         handler: handler))
 
-  let controller = UIApplication.shared.windows.first!.rootViewController!
-  controller.present(alert, animated: true, completion: nil)
+  DispatchQueue.main.async {
+    if let controller = UIApplication.shared.windows.first?.rootViewController {
+      controller.present(alert, animated: true, completion: nil)
+    } else {
+      fatalError("Unable to show error alert!\n\(message)")
+    }
+  }
 }
 
 func fatalErrorAlert(message: String, error: Error) {

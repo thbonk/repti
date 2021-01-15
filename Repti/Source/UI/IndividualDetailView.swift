@@ -37,6 +37,8 @@ struct IndividualDetailView: View {
   private var showIndividualEditor = false
   @State
   private var showWeighingEditor = false
+  @State
+  private var showWeighingData = false
   @Environment(\.managedObjectContext)
   private var viewContext
 
@@ -49,49 +51,12 @@ struct IndividualDetailView: View {
   var body: some View {
     GeometryReader { geo in
       ScrollView(.vertical) {
-        HStack {
-          Text("Name:").font(.headline)
-          TextField("Enter Name", text: $individual.name)
-          Text("Gender:").font(.headline).padding(.leading, 10)
-          Picker(selection: $individual.genderVal, label: Text("Gender")) {
-            ForEach(Gender.allCases) { gender in
-              Text(gender.displayName).tag(gender.rawValue)
-            }
-          }
-          .pickerStyle(SegmentedPickerStyle())
-        }
-        .padding([.vertical, .trailing], 5)
+        headerSection()
 
         Divider()
           .padding(.top, 20)
 
-        Group {
-          VStack(alignment: .leading) {
-            Text("Dates").font(.title)
-            LazyVGrid(
-              columns: [
-                GridItem(alignment: .trailing), GridItem(alignment: .leading),
-                GridItem(alignment: .trailing), GridItem(alignment: .leading)],
-              content: {
-                Group {
-                  Text("Oviposition Date:").font(.headline)
-                  optionalDatePicker($individual.ovipositionDate)
-
-                  Text("Hatching Date:").font(.headline)
-                  optionalDatePicker($individual.hatchingDate)
-                }.padding(.bottom, 10)
-
-                Group {
-                  Text("Purchasing Date:").font(.headline)
-                  optionalDatePicker($individual.purchasingDate)
-
-                  Text("Sold on:").font(.headline)
-                  optionalDatePicker($individual.dateOfSale)
-                }
-              })
-          }
-        }
-        .padding(.top, 20)
+        datesSection()
 
 /*        Divider().padding(.top, 20)
 
@@ -115,27 +80,7 @@ struct IndividualDetailView: View {
 
         Divider().padding(.top, 20)
 
-        Group {
-          VStack(alignment: .leading) {
-            HStack {
-              Text("Weighings").font(.title)
-              Button(action: { showWeighingEditor = true} ) {
-                Image(systemName: "plus")
-              }
-              .popover(isPresented: $showWeighingEditor, content: {
-                WeighingsEditorView(saveHandler: self.saveWeighing(weight:))
-              })
-            }
-
-            if individual.weighings?.count == 0 {
-              Text("No data availabe.").frame(minWidth: geo.size.width - 30)
-            } else {
-              LineView(data: sortedWeights(), legend: "Weight")
-                .frame(width: geo.size.width - 40)
-            }
-          }
-        }
-        .padding(.top, 20)
+        weighingsSections(geometry: geo)
       }
       .navigationBarTitle(Text(individual.name))
       .padding(.all, 20)
@@ -143,7 +88,135 @@ struct IndividualDetailView: View {
   }
 
 
+  // MARK: - View Sections
+
+  fileprivate func headerSection() -> AnyView {
+    return AnyView(
+      HStack {
+        Text("Name:").font(.headline)
+        TextField("Enter Name", text: $individual.name)
+        Text("Gender:").font(.headline).padding(.leading, 10)
+        Picker(selection: $individual.genderVal, label: Text("Gender")) {
+          ForEach(Gender.allCases) { gender in
+            Text(gender.displayName).tag(gender.rawValue)
+          }
+        }
+        .pickerStyle(SegmentedPickerStyle())
+      }
+      .padding([.vertical, .trailing], 5))
+  }
+
+  fileprivate func datesSection() -> AnyView {
+    return AnyView(
+      Group {
+        VStack(alignment: .leading) {
+          Text("Dates").font(.title)
+          LazyVGrid(
+            columns: [
+              GridItem(alignment: .trailing), GridItem(alignment: .leading),
+              GridItem(alignment: .trailing), GridItem(alignment: .leading)],
+            content: {
+              Group {
+                Text("Oviposition Date:").font(.headline)
+                optionalDatePicker($individual.ovipositionDate)
+
+                Text("Hatching Date:").font(.headline)
+                optionalDatePicker($individual.hatchingDate)
+              }.padding(.bottom, 10)
+
+              Group {
+                Text("Purchasing Date:").font(.headline)
+                optionalDatePicker($individual.purchasingDate)
+
+                Text("Sold on:").font(.headline)
+                optionalDatePicker($individual.dateOfSale)
+              }
+            })
+        }
+      }
+      .padding(.top, 20))
+  }
+
+  fileprivate func weighingsSections(geometry geo: GeometryProxy) -> AnyView {
+    return AnyView(
+      Group {
+        VStack(alignment: .leading) {
+          HStack {
+            Text("Weighings").font(.title)
+            Button(action: { showWeighingEditor = true} ) {
+              Image(systemName: "plus")
+            }
+            .popover(isPresented: $showWeighingEditor, content: {
+              WeighingsEditorView(saveHandler: self.saveWeighing(weight:))
+            })
+          }
+
+          if individual.weighings?.count == 0 {
+            Text("No data availabe.").frame(minWidth: geo.size.width - 30)
+          } else {
+            VStack {
+              Toggle("Show data", isOn: $showWeighingData)
+
+              HStack {
+                LineView(data: sortedWeights(), legend: "Weight")
+                  .frame(maxWidth: (geo.size.width / (showWeighingData ? 2 : 1)) - 40, minHeight: 0, maxHeight: .infinity)
+
+                if showWeighingData {
+                  weighingsDataList()
+                }
+              }
+              .frame(height: 300)
+            }
+          }
+        }
+      }
+      .padding(.top, 20)
+    )
+  }
+
+  fileprivate func weighingsDataList() -> AnyView {
+    return AnyView(
+      VStack(alignment: .leading) {
+        Text("Weight Data")
+          .font(.callout)
+          .padding([.top, .bottom], 20)
+
+        List {
+          ForEach(
+            Array(individual.weighings!)
+              .sorted { (weight1, weight2) -> Bool in
+                weight1.date < weight2.date
+              }) { weighing in
+
+            LazyVGrid(columns: [GridItem(), GridItem()]) {
+              DatePicker("Please enter a date",
+                         selection: Binding<Date>(
+                          get: { return weighing.date },
+                          set: {
+                            weighing.date = $0
+                            try! viewContext.save()
+                          }), //weighing.date,
+                         displayedComponents: .date)
+                .labelsHidden()
+              Text(String(format: "%.0f", weighing.weight))
+            }
+          }
+        }
+        .frame(minHeight: 0, maxHeight: .infinity)
+      }
+    )
+  }
+
+
   // MARK: - Private Methods
+
+  private func weighingDateFormatter() -> DateFormatter {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .none
+
+    return formatter
+  }
 
   private func saveWeighing(weight: WeightDAO) {
     let weighing = Weight.create(in: viewContext)
@@ -181,7 +254,7 @@ struct IndividualDetailView: View {
             "Please enter a date",
             selection:
               Binding<Date>(
-                get: { binding.wrappedValue ?? Date() },
+                get: { binding.wrappedValue! },
                 set: { binding.wrappedValue = $0 }),
             displayedComponents: .date)
             .labelsHidden()
