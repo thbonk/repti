@@ -39,6 +39,35 @@ struct IndividualDetailView: View {
   private var showWeighingEditor = false
   @State
   private var showWeighingData = false
+  @State
+  private var updateAllSectionExpandedFlag = true
+  @State
+  private var sectionsExpanded = true {
+    didSet {
+      if updateAllSectionExpandedFlag {
+        withAnimation {
+          datesSectionExpanded = sectionsExpanded
+          weighingsSectionExpanded = sectionsExpanded
+        }
+      }
+    }
+  }
+  @State
+  private var datesSectionExpanded = true {
+    didSet {
+      updateAllSectionExpandedFlag = false
+      sectionsExpanded = datesSectionExpanded
+      updateAllSectionExpandedFlag = true
+    }
+  }
+  @State
+  private var weighingsSectionExpanded = true {
+    didSet {
+      updateAllSectionExpandedFlag = false
+      sectionsExpanded = weighingsSectionExpanded
+      updateAllSectionExpandedFlag = true
+    }
+  }
   @Environment(\.managedObjectContext)
   private var viewContext
 
@@ -51,12 +80,13 @@ struct IndividualDetailView: View {
   var body: some View {
     GeometryReader { geo in
       ScrollView(.vertical) {
+
         headerSection()
 
         Divider()
           .padding(.top, 20)
 
-        datesSection()
+        datesSection(geometry: geo)
 
 /*        Divider().padding(.top, 20)
 
@@ -83,6 +113,16 @@ struct IndividualDetailView: View {
         weighingsSections(geometry: geo)
       }
       .navigationBarTitle(Text(individual.name))
+      .navigationBarItems(
+        leading: Spacer(),
+        trailing: 
+        HStack {
+          Button(action: { sectionsExpanded = !sectionsExpanded }) {
+            Image(
+              systemName: sectionsExpanded ? "rectangle.arrowtriangle.2.inward" : "rectangle.arrowtriangle.2.outward").font(.largeTitle)
+          }
+        }
+      )
       .padding(.all, 20)
     }
   }
@@ -102,36 +142,53 @@ struct IndividualDetailView: View {
           }
         }
         .pickerStyle(SegmentedPickerStyle())
+        .padding(.trailing, 30)
       }
       .padding([.vertical, .trailing], 5))
   }
 
-  fileprivate func datesSection() -> AnyView {
+  fileprivate func datesSection(geometry geo: GeometryProxy) -> AnyView {
     return AnyView(
       Group {
         VStack(alignment: .leading) {
-          Text("Dates").font(.title)
-          LazyVGrid(
-            columns: [
-              GridItem(alignment: .trailing), GridItem(alignment: .leading),
-              GridItem(alignment: .trailing), GridItem(alignment: .leading)],
-            content: {
-              Group {
-                Text("Oviposition Date:").font(.headline)
-                optionalDatePicker($individual.ovipositionDate)
-
-                Text("Hatching Date:").font(.headline)
-                optionalDatePicker($individual.hatchingDate)
-              }.padding(.bottom, 10)
-
-              Group {
-                Text("Purchasing Date:").font(.headline)
-                optionalDatePicker($individual.purchasingDate)
-
-                Text("Sold on:").font(.headline)
-                optionalDatePicker($individual.dateOfSale)
+          HStack {
+            Text("Dates").font(.title)
+            Button(
+              action: {
+                withAnimation {
+                  datesSectionExpanded = !datesSectionExpanded
+                }
+              }) {
+              if datesSectionExpanded {
+                Image(systemName: "chevron.down")
+              } else {
+                Image(systemName: "chevron.right")
               }
-            })
+            }
+          }.frame(width: geo.size.width, alignment: .leading)
+          if datesSectionExpanded {
+            LazyVGrid(
+              columns: [
+                GridItem(alignment: .trailing), GridItem(alignment: .leading),
+                GridItem(alignment: .trailing), GridItem(alignment: .leading)],
+              content: {
+                Group {
+                  Text("Oviposition Date:").font(.headline)
+                  optionalDatePicker($individual.ovipositionDate)
+
+                  Text("Hatching Date:").font(.headline)
+                  optionalDatePicker($individual.hatchingDate)
+                }.padding(.bottom, 10)
+
+                Group {
+                  Text("Purchasing Date:").font(.headline)
+                  optionalDatePicker($individual.purchasingDate)
+
+                  Text("Sold on:").font(.headline)
+                  optionalDatePicker($individual.dateOfSale)
+                }
+              })
+          }
         }
       }
       .padding(.top, 20))
@@ -143,29 +200,43 @@ struct IndividualDetailView: View {
         VStack(alignment: .leading) {
           HStack {
             Text("Weighings").font(.title)
+            Button(
+              action: {
+                withAnimation {
+                  weighingsSectionExpanded = !weighingsSectionExpanded
+                }
+              }) {
+              if weighingsSectionExpanded {
+                Image(systemName: "chevron.down")
+              } else {
+                Image(systemName: "chevron.right")
+              }
+            }.padding(.trailing, 10)
             Button(action: { showWeighingEditor = true} ) {
               Image(systemName: "plus")
             }
             .popover(isPresented: $showWeighingEditor, content: {
               WeighingsEditorView(saveHandler: self.saveWeighing(weight:))
             })
-          }
+          }.frame(width: geo.size.width, alignment: .leading)
 
-          if individual.weighings?.count == 0 {
-            Text("No data availabe.").frame(minWidth: geo.size.width - 30)
-          } else {
-            VStack {
-              Toggle("Show data", isOn: $showWeighingData)
+          if weighingsSectionExpanded {
+            if individual.weighings?.count == 0 {
+              Text("No data availabe.").frame(minWidth: geo.size.width - 30)
+            } else {
+              VStack {
+                Toggle("Show data", isOn: $showWeighingData)
 
-              HStack {
-                LineView(data: sortedWeights(), legend: "Weight")
-                  .frame(maxWidth: (geo.size.width / (showWeighingData ? 2 : 1)) - 40, minHeight: 0, maxHeight: .infinity)
+                HStack {
+                  LineView(data: sortedWeights(), legend: "Weight")
+                    .frame(maxWidth: (geo.size.width / (showWeighingData ? 2 : 1)) - 40, minHeight: 0, maxHeight: .infinity)
 
-                if showWeighingData {
-                  weighingsDataList()
+                  if showWeighingData {
+                    weighingsDataList()
+                  }
                 }
+                .frame(height: 300)
               }
-              .frame(height: 300)
             }
           }
         }
@@ -182,6 +253,8 @@ struct IndividualDetailView: View {
           .padding([.top, .bottom], 20)
 
         List {
+          let dateFormatter = weighingDateFormatter()
+
           ForEach(
             Array(individual.weighings!)
               .sorted { (weight1, weight2) -> Bool in
@@ -189,20 +262,14 @@ struct IndividualDetailView: View {
               }) { weighing in
 
             LazyVGrid(columns: [GridItem(), GridItem()]) {
-              DatePicker("Please enter a date",
-                         selection: Binding<Date>(
-                          get: { return weighing.date },
-                          set: {
-                            weighing.date = $0
-                            try! viewContext.save()
-                          }), //weighing.date,
-                         displayedComponents: .date)
-                .labelsHidden()
+
+              Text(dateFormatter.string(from: weighing.date))
               Text(String(format: "%.0f", weighing.weight))
             }
           }
         }
         .frame(minHeight: 0, maxHeight: .infinity)
+        .padding(.trailing, 30)
       }
     )
   }

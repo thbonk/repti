@@ -71,7 +71,6 @@ struct SpeciesListView: View {
             }
         }
         .isDetailLink(false)
-        //.allowsHitTesting(self.editMode == .inactive ? false : true)
       }
       .onDelete(perform: deleteItems)
     }

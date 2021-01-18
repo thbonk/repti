@@ -62,7 +62,7 @@ struct WeighingsEditorView: View {
                   model.weight = Float(weight)!
                 }
               }
-              .onAppear(perform: { self.weight = "\(model.weight)" })
+              .onAppear(perform: { self.weight = String(format: "%.0f", model.weight) })
           }
         })
 
