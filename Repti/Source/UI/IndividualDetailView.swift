@@ -119,7 +119,10 @@ struct IndividualDetailView: View {
         HStack {
           Button(action: { sectionsExpanded = !sectionsExpanded }) {
             Image(
-              systemName: sectionsExpanded ? "rectangle.arrowtriangle.2.inward" : "rectangle.arrowtriangle.2.outward").font(.largeTitle)
+              systemName:
+                sectionsExpanded
+                ? "rectangle.arrowtriangle.2.inward"
+                : "rectangle.arrowtriangle.2.outward")
           }
         }
       )
