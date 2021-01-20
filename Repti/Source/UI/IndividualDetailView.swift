@@ -47,6 +47,7 @@ struct IndividualDetailView: View {
       if updateAllSectionExpandedFlag {
         withAnimation {
           datesSectionExpanded = sectionsExpanded
+          picturesSectionExpanded = sectionsExpanded
           weighingsSectionExpanded = sectionsExpanded
         }
       }
@@ -57,6 +58,14 @@ struct IndividualDetailView: View {
     didSet {
       updateAllSectionExpandedFlag = false
       sectionsExpanded = datesSectionExpanded
+      updateAllSectionExpandedFlag = true
+    }
+  }
+  @State
+  private var picturesSectionExpanded  = true {
+    didSet {
+      updateAllSectionExpandedFlag = false
+      sectionsExpanded = picturesSectionExpanded
       updateAllSectionExpandedFlag = true
     }
   }
@@ -88,29 +97,14 @@ struct IndividualDetailView: View {
 
         datesSection(geometry: geo)
 
-/*        Divider().padding(.top, 20)
+        Divider().padding(.top, 20)
 
-        Group {
-          VStack(alignment: .leading) {
-            HStack {
-              Text("Pictures").font(.title)
-              Button(action: {} ) {
-                Image(systemName: "plus")
-              }
-            }
-
-            if individual.pictures?.count == 0 {
-              Text("No pictures availabe.").frame(minWidth: geo.size.width - 30)
-            } else {
-            }
-          }
-        }
-        .padding(.top, 20)
- */
+        picturesSection(geometry: geo)
 
         Divider().padding(.top, 20)
 
         weighingsSections(geometry: geo)
+          .padding(.bottom, 20)
       }
       .navigationBarTitle(Text(individual.name))
       .navigationBarItems(
@@ -195,6 +189,42 @@ struct IndividualDetailView: View {
         }
       }
       .padding(.top, 20))
+  }
+
+  fileprivate func picturesSection(geometry geo: GeometryProxy) -> AnyView {
+    return AnyView(
+      Group {
+        VStack(alignment: .leading) {
+          HStack {
+            Text("Pictures").font(.title)
+            Button(
+              action: {
+                withAnimation {
+                  picturesSectionExpanded = !picturesSectionExpanded
+                }
+              }) {
+              if picturesSectionExpanded {
+                Image(systemName: "chevron.down")
+              } else {
+                Image(systemName: "chevron.right")
+              }
+            }.padding(.trailing, 10)
+            Button(action: {} ) {
+              Image(systemName: "plus")
+            }
+          }
+
+          if picturesSectionExpanded {
+            if individual.pictures?.count == 0 {
+              Text("No pictures availabe.").frame(minWidth: geo.size.width - 30)
+            } else {
+            }
+          }
+        }
+      }
+      .frame(width: geo.size.width, alignment: .leading)
+      .padding(.top, 20)
+    )
   }
 
   fileprivate func weighingsSections(geometry geo: GeometryProxy) -> AnyView {
