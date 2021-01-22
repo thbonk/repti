@@ -39,6 +39,12 @@ struct IndividualDetailView: View {
   private var showWeighingEditor = false
   @State
   private var showWeighingData = false
+
+  @State
+  private var showImagePicker = false
+  @State
+  private var image: Image? = Image("placeholder")
+
   @State
   private var updateAllSectionExpandedFlag = true
   @State
@@ -209,8 +215,13 @@ struct IndividualDetailView: View {
                 Image(systemName: "chevron.right")
               }
             }.padding(.trailing, 10)
-            Button(action: {} ) {
+            Button(action: {
+              showImagePicker = true
+            }) {
               Image(systemName: "plus")
+            }
+            .sheet(isPresented: $showImagePicker) {
+              ImagePicker(selectHandler: savePicture(image:))
             }
           }
 
@@ -218,11 +229,30 @@ struct IndividualDetailView: View {
             if individual.pictures?.count == 0 {
               Text("No pictures availabe.").frame(minWidth: geo.size.width - 30)
             } else {
+              ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .top, spacing: 0) {
+                  ForEach(Array(individual.pictures!)) { picture in
+                    Image(uiImage: UIImage(data: picture.data!)!)
+                      .resizable()
+                      .scaledToFit()
+                      .frame(height: 150)
+                      .cornerRadius(10)
+                      .padding(.all, 10)
+                      .contextMenu {
+                        Button {
+                          delete(picture: picture)
+                        } label: {
+                          Image(systemName: "trash")
+                          Text("Delete")
+                        }
+                      }
+                  }
+                }
+              }
             }
           }
         }
       }
-      .frame(width: geo.size.width, alignment: .leading)
       .padding(.top, 20)
     )
   }
@@ -309,6 +339,30 @@ struct IndividualDetailView: View {
 
 
   // MARK: - Private Methods
+
+  private func savePicture(image: UIImage) {
+    let picture = Picture.create(in: viewContext)
+
+    picture.data = image.jpegData(compressionQuality: 1)
+    picture.filename = "\(individual.name)-\(individual.pictures!.count + 1)"
+    picture.individual = individual
+    individual.addToPictures(picture)
+
+    do {
+      try viewContext.save()
+    } catch {
+      errorAlert(message: "Error while saving a picture.", error: error)
+    }
+  }
+
+  private func delete(picture: Picture) {
+    viewContext.delete(picture)
+    do {
+      try viewContext.save()
+    } catch {
+      errorAlert(message: "Error while deleting a picture.", error: error)
+    }
+  }
 
   private func weighingDateFormatter() -> DateFormatter {
     let formatter = DateFormatter()

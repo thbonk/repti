@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E94CAD2625AEC8F60072E3BA /* OptionalValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CAD2525AEC8F60072E3BA /* OptionalValue.swift */; };
+		E94CAD4925B9FB0A0072E3BA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CAD4825B9FB0A0072E3BA /* ImagePicker.swift */; };
+		E94CAD5325BAEA500072E3BA /* Tatsi in Frameworks */ = {isa = PBXBuildFile; productRef = E94CAD5225BAEA500072E3BA /* Tatsi */; };
 		E9794F4E25A9B52D0063D595 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9794F4D25A9B52D0063D595 /* CloudKit.framework */; };
 		E9A517B225A610340088986B /* IndividualDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517B125A610340088986B /* IndividualDetailView.swift */; };
 		E9A517BC25A824180088986B /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517BA25A824180088986B /* SpeciesEditorView.swift */; };
@@ -35,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		E94CAD2525AEC8F60072E3BA /* OptionalValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalValue.swift; sourceTree = "<group>"; };
+		E94CAD4825B9FB0A0072E3BA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E9794F4D25A9B52D0063D595 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E9A517B125A610340088986B /* IndividualDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDetailView.swift; sourceTree = "<group>"; };
 		E9A517BA25A824180088986B /* SpeciesEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E94CAD5325BAEA500072E3BA /* Tatsi in Frameworks */,
 				E9A517C525A82D530088986B /* SwiftUICharts in Frameworks */,
 				E9794F4E25A9B52D0063D595 /* CloudKit.framework in Frameworks */,
 			);
@@ -86,6 +90,14 @@
 			name = Utility;
 			path = Repti/Source/Utility;
 			sourceTree = SOURCE_ROOT;
+		};
+		E94CAD4725B9FAF30072E3BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E94CAD4825B9FB0A0072E3BA /* ImagePicker.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
 		};
 		E9794F4C25A9B52D0063D595 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -170,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				E9A517B925A824180088986B /* Editors */,
+				E94CAD4725B9FAF30072E3BA /* Views */,
 				E9C635B425A587E900BA2748 /* Alerts.swift */,
 				E9C6357525A3C72000BA2748 /* ContentView.swift */,
 				E9C635A825A5838D00BA2748 /* MasterView.swift */,
@@ -238,6 +251,7 @@
 			name = Repti;
 			packageProductDependencies = (
 				E9A517C425A82D530088986B /* SwiftUICharts */,
+				E94CAD5225BAEA500072E3BA /* Tatsi */,
 			);
 			productName = Repti;
 			productReference = E9C6355B25A3C6AB00BA2748 /* Repti.app */;
@@ -268,6 +282,7 @@
 			mainGroup = E9C6355225A3C6AB00BA2748;
 			packageReferences = (
 				E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */,
+				E94CAD5125BAEA500072E3BA /* XCRemoteSwiftPackageReference "Tatsi" */,
 			);
 			productRefGroup = E9C6355C25A3C6AB00BA2748 /* Products */;
 			projectDirPath = "";
@@ -352,6 +367,7 @@
 				E9C6359225A3D3C200BA2748 /* Picture.swift in Sources */,
 				E9C6357C25A3C72000BA2748 /* ReptiApp.swift in Sources */,
 				E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */,
+				E94CAD4925B9FB0A0072E3BA /* ImagePicker.swift in Sources */,
 				E9A517BC25A824180088986B /* SpeciesEditorView.swift in Sources */,
 				E9C6359025A3D3C200BA2748 /* Weight.swift in Sources */,
 			);
@@ -550,6 +566,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E94CAD5125BAEA500072E3BA /* XCRemoteSwiftPackageReference "Tatsi" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/awkward/Tatsi";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
 		E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView";
@@ -561,6 +585,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E94CAD5225BAEA500072E3BA /* Tatsi */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E94CAD5125BAEA500072E3BA /* XCRemoteSwiftPackageReference "Tatsi" */;
+			productName = Tatsi;
+		};
 		E9A517C425A82D530088986B /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */;
