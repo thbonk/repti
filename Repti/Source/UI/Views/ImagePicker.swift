@@ -27,7 +27,8 @@ struct ImagePicker: UIViewControllerRepresentable {
   public var selectHandler: (UIImage) -> ()
 
   @Environment(\.presentationMode)
-  var presentationMode
+  private var presentationMode
+
 
   class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 

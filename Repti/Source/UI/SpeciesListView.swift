@@ -48,16 +48,14 @@ struct SpeciesListView: View {
       ForEach(species) { spcs in
         NavigationLink(
           destination: IndividualListView(species: spcs).navigationBarTitle(spcs.name, displayMode: .inline)) {
-          LazyVGrid(
-            columns: [GridItem(alignment: .leading), GridItem(alignment: .trailing)],
+          LazyHGrid(
+            rows: [GridItem(alignment: .leading), GridItem(alignment: .trailing)],
             content: {
-              VStack(alignment: .leading) {
                 Text(spcs.name)
                   .font(.headline)
                   .padding(.bottom, 5)
                 Text(spcs.scientificName)
                   .font(.subheadline)
-              }
             })
             .padding(.all, 10)
             .contextMenu {

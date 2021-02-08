@@ -19,7 +19,6 @@
 //  limitations under the License.
 //
 
-
 import SwiftUI
 
 struct SpeciesEditorView: View {
@@ -53,23 +52,10 @@ struct SpeciesEditorView: View {
       .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
       .padding(.top, 20)
 
-      Form {
-        LazyVGrid(
-          columns: [
-            GridItem(alignment: .trailing),
-            GridItem(alignment: .leading)],
-          spacing: 20) {
-
-          Group {
-            Text("Name:")
-            TextField("Enter Name", text: $model.name)
-          }.padding(.top, 10)
-
-          Group {
-            Text("Scientific Name:")
-            TextField("Enter Scientific Name", text: $model.scientificName)
-          }.padding(.bottom, 10)
-        }
+      if UIDevice.current.userInterfaceIdiom == .phone {
+        smallUserInterface()
+      } else {
+        largeUserInterface()
       }
 
       HStack {
@@ -88,6 +74,60 @@ struct SpeciesEditorView: View {
       }
       .padding(.bottom, 20)
     }
+  }
+
+
+  // MARK: - Private Methods
+
+  private func largeUserInterface() -> AnyView {
+    return
+      AnyView(
+        Form {
+          LazyVGrid(
+            columns: [
+              GridItem(alignment: .trailing),
+              GridItem(alignment: .leading)],
+            spacing: 20) {
+
+            Group {
+              Text("Name:").font(.headline)
+              TextField("Enter Name", text: $model.name)
+            }.padding(.top, 10)
+
+            Group {
+              Text("Scientific Name:").font(.headline)
+              TextField("Enter Scientific Name", text: $model.scientificName)
+            }.padding(.bottom, 10)
+          }
+        }
+      )
+  }
+
+  private func smallUserInterface() -> AnyView {
+    return
+      AnyView(
+        Form {
+          LazyVGrid(
+            columns: [
+              GridItem(alignment: .leading)],
+            spacing: 20) {
+
+            Group {
+              VStack(alignment: .leading) {
+                Text("Name:").font(.headline)
+                TextField("Enter Name", text: $model.name)
+              }
+            }.padding(.top, 10)
+
+            Group {
+              VStack(alignment: .leading) {
+                Text("Scientific Name:").font(.headline)
+                TextField("Enter Scientific Name", text: $model.scientificName)
+              }
+            }.padding(.bottom, 10)
+          }
+        }
+      )
   }
 }
 
