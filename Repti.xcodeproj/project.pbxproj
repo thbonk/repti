@@ -10,6 +10,8 @@
 		E94CAD2625AEC8F60072E3BA /* OptionalValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CAD2525AEC8F60072E3BA /* OptionalValue.swift */; };
 		E94CAD5625BC09DE0072E3BA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CAD5525BC09DD0072E3BA /* ImagePicker.swift */; };
 		E9794F4E25A9B52D0063D595 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9794F4D25A9B52D0063D595 /* CloudKit.framework */; };
+		E9A3D43325D6C58A0092CAD3 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3D43225D6C58A0092CAD3 /* AsyncImage.swift */; };
+		E9A3D43D25D6F9790092CAD3 /* Cache in Frameworks */ = {isa = PBXBuildFile; productRef = E9A3D43C25D6F9790092CAD3 /* Cache */; };
 		E9A517B225A610340088986B /* IndividualDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517B125A610340088986B /* IndividualDetailView.swift */; };
 		E9A517BC25A824180088986B /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517BA25A824180088986B /* SpeciesEditorView.swift */; };
 		E9A517BD25A824180088986B /* IndividualEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517BB25A824180088986B /* IndividualEditorView.swift */; };
@@ -40,6 +42,7 @@
 		E94CAD2525AEC8F60072E3BA /* OptionalValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalValue.swift; sourceTree = "<group>"; };
 		E94CAD5525BC09DD0072E3BA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E9794F4D25A9B52D0063D595 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E9A3D43225D6C58A0092CAD3 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		E9A517B125A610340088986B /* IndividualDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDetailView.swift; sourceTree = "<group>"; };
 		E9A517BA25A824180088986B /* SpeciesEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
 		E9A517BB25A824180088986B /* IndividualEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualEditorView.swift; sourceTree = "<group>"; };
@@ -76,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9A3D43D25D6F9790092CAD3 /* Cache in Frameworks */,
 				E9A517C525A82D530088986B /* SwiftUICharts in Frameworks */,
 				E9794F4E25A9B52D0063D595 /* CloudKit.framework in Frameworks */,
 			);
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				E94CAD5525BC09DD0072E3BA /* ImagePicker.swift */,
+				E9A3D43225D6C58A0092CAD3 /* AsyncImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			name = Repti;
 			packageProductDependencies = (
 				E9A517C425A82D530088986B /* SwiftUICharts */,
+				E9A3D43C25D6F9790092CAD3 /* Cache */,
 			);
 			productName = Repti;
 			productReference = E9C6355B25A3C6AB00BA2748 /* Repti.app */;
@@ -285,6 +291,7 @@
 			mainGroup = E9C6355225A3C6AB00BA2748;
 			packageReferences = (
 				E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */,
+				E9A3D43B25D6F9790092CAD3 /* XCRemoteSwiftPackageReference "Cache" */,
 			);
 			productRefGroup = E9C6355C25A3C6AB00BA2748 /* Products */;
 			projectDirPath = "";
@@ -354,6 +361,7 @@
 			files = (
 				E9C6358925A3D35500BA2748 /* Model.swift in Sources */,
 				E9C6359425A3D3C200BA2748 /* BaseEntity.swift in Sources */,
+				E9A3D43325D6C58A0092CAD3 /* AsyncImage.swift in Sources */,
 				E9C635B525A587E900BA2748 /* Alerts.swift in Sources */,
 				E9A517BD25A824180088986B /* IndividualEditorView.swift in Sources */,
 				E9C6359125A3D3C200BA2748 /* Species.swift in Sources */,
@@ -570,6 +578,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E9A3D43B25D6F9790092CAD3 /* XCRemoteSwiftPackageReference "Cache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hyperoslo/Cache";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView";
@@ -581,6 +597,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E9A3D43C25D6F9790092CAD3 /* Cache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9A3D43B25D6F9790092CAD3 /* XCRemoteSwiftPackageReference "Cache" */;
+			productName = Cache;
+		};
 		E9A517C425A82D530088986B /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */;

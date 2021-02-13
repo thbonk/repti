@@ -1,5 +1,5 @@
 //
-//  IndividualDetailView+Small.swift
+//  IndividualDetailView+Large.swift
 //  Repti
 //
 //  Created by Thomas Bonk on 07.02.21.
@@ -22,10 +22,10 @@ import SwiftUI
 import SwiftUICharts
 
 extension IndividualDetailView {
-  func smallUserInterface(geometry geo: GeometryProxy) -> AnyView {
+  func largeUserInterface(geometry geo: GeometryProxy) -> AnyView {
     return AnyView(
       VStack {
-        headerSection(geometry: geo)
+        headerSection()
 
         Divider()
           .padding(.top, 20)
@@ -40,22 +40,18 @@ extension IndividualDetailView {
 
         weighingsSections(geometry: geo)
           .padding(.bottom, 20)
-      })
+    })
   }
 
 
   // MARK: - View Sections
 
-  fileprivate func headerSection(geometry geo: GeometryProxy) -> AnyView {
+  fileprivate func headerSection() -> AnyView {
     return AnyView(
-      LazyVGrid(
-        columns: [
-          GridItem(.flexible(minimum: 10, maximum: geo.size.width / 5), alignment: .trailing),
-          GridItem(alignment: .leading)]) {
+      HStack {
         Text("Name:").font(.headline)
         TextField("Enter Name", text: $individual.name)
-
-        Text("Gender:").font(.headline) //.padding(.leading, 10)
+        Text("Gender:").font(.headline).padding(.leading, 10)
         Picker(selection: $individual.genderVal, label: Text("Gender")) {
           ForEach(Gender.allCases) { gender in
             Text(gender.displayName).tag(gender.rawValue)
@@ -85,26 +81,29 @@ extension IndividualDetailView {
                 Image(systemName: "chevron.right")
               }
             }
-          }
-          .frame(width: geo.size.width, alignment: .leading)
-
+          }.frame(width: geo.size.width, alignment: .leading)
           if datesSectionExpanded {
-            LazyVGrid(columns: [GridItem(alignment: .leading), GridItem(alignment: .leading)]) {
-              Text("Oviposition Date:").font(.headline)
-              optionalDatePicker($individual.ovipositionDate)
+            LazyVGrid(
+              columns: [
+                GridItem(alignment: .trailing), GridItem(alignment: .leading),
+                GridItem(alignment: .trailing), GridItem(alignment: .leading)],
+              content: {
+                Group {
+                  Text("Oviposition Date:").font(.headline)
+                  optionalDatePicker($individual.ovipositionDate)
 
-              Text("Hatching Date:").font(.headline)
-              optionalDatePicker($individual.hatchingDate)
-                .padding(.bottom, 10)
+                  Text("Hatching Date:").font(.headline)
+                  optionalDatePicker($individual.hatchingDate)
+                }.padding(.bottom, 10)
 
+                Group {
+                  Text("Purchasing Date:").font(.headline)
+                  optionalDatePicker($individual.purchasingDate)
 
-              Text("Purchasing Date:").font(.headline)
-              optionalDatePicker($individual.purchasingDate)
-
-              Text("Sold on:").font(.headline)
-              optionalDatePicker($individual.dateOfSale)
-            }
-            .frame(width: geo.size.width - 70, alignment: .leading)
+                  Text("Sold on:").font(.headline)
+                  optionalDatePicker($individual.dateOfSale)
+                }
+              })
           }
         }
       }
@@ -148,6 +147,11 @@ extension IndividualDetailView {
                 HStack(alignment: .top, spacing: 0) {
                   ForEach(Array(individual.pictures!)) { picture in
                     AsyncImage(picture: picture, placeholder: { Image(systemName: "photo.fill") })
+                      //.resizable()
+                      //.scaledToFit()
+                      //.frame(height: 150)
+                      //.cornerRadius(10)
+                      //.padding(.all, 10)
                       .contextMenu {
                         Button {
                           delete(picture: picture)
@@ -200,17 +204,17 @@ extension IndividualDetailView {
               Text("No data availabe.").frame(minWidth: geo.size.width - 30)
             } else {
               VStack {
-                Toggle("Show data", isOn: $showWeighingData).padding(.trailing, 70)
+                Toggle("Show data", isOn: $showWeighingData)
 
-                VStack {
+                HStack {
                   LineView(data: sortedWeights(), legend: "Weight")
-                    //.frame(maxWidth: (geo.size.width / (showWeighingData ? 2 : 1)) - 40, minHeight: 0, maxHeight: .infinity)
+                    .frame(maxWidth: (geo.size.width / (showWeighingData ? 2 : 1)) - 40, minHeight: 0, maxHeight: .infinity)
 
                   if showWeighingData {
                     weighingsDataList()
                   }
                 }
-                .frame(height: 300 * (showWeighingData ? 2 : 1) )
+                .frame(height: 300)
               }
             }
           }
@@ -225,7 +229,7 @@ extension IndividualDetailView {
       VStack(alignment: .leading) {
         Text("Weight Data")
           .font(.callout)
-          .padding(.top, 30)
+          .padding([.top, .bottom], 20)
 
         List {
           let dateFormatter = weighingDateFormatter()
