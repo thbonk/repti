@@ -16,12 +16,11 @@ fileprivate class ImageLoader: ObservableObject {
 
   init(picture: Picture) {
     self.picture = picture
-    NSLog("picture.objectID.description = \(picture.objectID.description)")
   }
 
   func load() {
     DispatchQueue.main.async {
-      self.image = UIImage(data: self.picture.data!)
+      self.image = UIImage(data: (self.picture.pictureData?.data)!)
     }
   }
 }

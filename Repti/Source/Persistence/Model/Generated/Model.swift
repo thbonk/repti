@@ -215,9 +215,36 @@ internal class Picture: BaseEntity {
   }
 
   // swiftlint:disable discouraged_optional_boolean discouraged_optional_collection
-  @NSManaged internal var data: Data?
   @NSManaged internal var filename: String
   @NSManaged internal var individual: Individual?
+  @NSManaged internal var pictureData: PictureData?
+  // swiftlint:enable discouraged_optional_boolean discouraged_optional_collection
+}
+
+// MARK: - PictureData
+
+@objc(PictureData)
+internal class PictureData: BaseEntity {
+  override internal class var entityName: String {
+    return "PictureData"
+  }
+
+  override internal class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
+    return NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext)
+  }
+
+  @available(*, deprecated, renamed: "makeFetchRequest", message: "To avoid collisions with the less concrete method in `NSManagedObject`, please use `makeFetchRequest()` instead.")
+  @nonobjc internal class func fetchRequest() -> NSFetchRequest<PictureData> {
+    return NSFetchRequest<PictureData>(entityName: entityName)
+  }
+
+  @nonobjc internal class func makeFetchRequest() -> NSFetchRequest<PictureData> {
+    return NSFetchRequest<PictureData>(entityName: entityName)
+  }
+
+  // swiftlint:disable discouraged_optional_boolean discouraged_optional_collection
+  @NSManaged internal var data: Data?
+  @NSManaged internal var picture: Picture?
   // swiftlint:enable discouraged_optional_boolean discouraged_optional_collection
 }
 

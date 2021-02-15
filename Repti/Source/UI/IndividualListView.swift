@@ -91,7 +91,7 @@ struct IndividualListView: View {
       FetchRequest(
         entity: Individual.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \Individual.name, ascending: true)],
-        predicate: NSPredicate(format: "species.id = %@", argumentArray: [species.id!]), //NSPredicate(format: "species.id = %@", species.id),
+        predicate: NSPredicate(format: "species.id = %@", argumentArray: [species.id!]),
         animation: .default)
   }
 

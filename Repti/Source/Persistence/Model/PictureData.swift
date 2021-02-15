@@ -1,8 +1,8 @@
 //
-//  Picture.swift
+//  PictureData.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 05.01.21.
+//  Created by Thomas Bonk on 13.02.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,15 +21,15 @@
 import Foundation
 import CoreData
 
-extension Picture {
+extension PictureData {
 
   // MARK: - Class Methods
 
-  class func create(in managedObjectContext: NSManagedObjectContext) -> Picture {
+  class func create(in managedObjectContext: NSManagedObjectContext) -> PictureData {
     return
       NSEntityDescription
       .insertNewObject(
-        forEntityName: Picture.entityName,
-        into: managedObjectContext) as! Picture
+        forEntityName: PictureData.entityName,
+        into: managedObjectContext) as! PictureData
   }
 }

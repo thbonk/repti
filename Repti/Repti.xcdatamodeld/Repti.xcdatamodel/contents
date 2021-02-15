@@ -17,9 +17,13 @@
         <relationship name="weighings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Weight" inverseName="individual" inverseEntity="Weight"/>
     </entity>
     <entity name="Picture" representedClassName="Picture" parentEntity="BaseEntity" syncable="YES">
-        <attribute name="data" optional="YES" attributeType="Binary"/>
         <attribute name="filename" attributeType="String" defaultValueString=""/>
         <relationship name="individual" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Individual" inverseName="pictures" inverseEntity="Individual"/>
+        <relationship name="pictureData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PictureData" inverseName="picture" inverseEntity="PictureData"/>
+    </entity>
+    <entity name="PictureData" representedClassName="PictureData" parentEntity="BaseEntity" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <relationship name="picture" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Picture" inverseName="pictureData" inverseEntity="Picture"/>
     </entity>
     <entity name="Species" representedClassName="Species" parentEntity="BaseEntity" syncable="YES">
         <attribute name="name" attributeType="String" defaultValueString=""/>
@@ -37,5 +41,6 @@
         <element name="Picture" positionX="-18" positionY="99" width="128" height="74"/>
         <element name="Species" positionX="-54" positionY="18" width="128" height="74"/>
         <element name="Weight" positionX="0" positionY="117" width="128" height="74"/>
+        <element name="PictureData" positionX="-18" positionY="90" width="128" height="59"/>
     </elements>
 </model>

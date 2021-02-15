@@ -124,11 +124,14 @@ struct IndividualDetailView: View {
 
   internal func savePicture(image: UIImage) {
     let picture = Picture.create(in: viewContext)
-
-    picture.data = image.jpegData(compressionQuality: 1)
     picture.filename = "\(individual.name)-\(individual.pictures!.count + 1)"
     picture.individual = individual
     individual.addToPictures(picture)
+
+    let pictureData = PictureData.create(in: viewContext)
+    pictureData.data = image.jpegData(compressionQuality: 1)
+    pictureData.picture = picture
+    picture.pictureData = pictureData
 
     do {
       try viewContext.save()

@@ -19,7 +19,10 @@
 //  limitations under the License.
 //
 
+import Foundation
+import UIKit
 import SwiftUI
+import PhotosUI
 
 struct ImagePicker: UIViewControllerRepresentable {
 
@@ -30,7 +33,7 @@ struct ImagePicker: UIViewControllerRepresentable {
   private var presentationMode
 
 
-  class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+  class Coordinator: NSObject, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
 
     private var selectHandler: ((UIImage) -> ())? = nil
 
@@ -41,6 +44,22 @@ struct ImagePicker: UIViewControllerRepresentable {
       _presentationMode = presentationMode
     }
 
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+      results.forEach { result in
+        if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
+          result.itemProvider.loadObject(ofClass: UIImage.self) { [self] image, error in
+            DispatchQueue.main.async {
+              if let image = image as? UIImage {
+                self.selectHandler?(image)
+              }
+            }
+          }
+        }
+      }
+
+      picker.dismiss(animated: true)
+    }
+
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
       let uiImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
@@ -49,9 +68,9 @@ struct ImagePicker: UIViewControllerRepresentable {
       selectHandler?(uiImage)
     }
 
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-      presentationMode.dismiss()
-    }
+    //func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    //  presentationMode.dismiss()
+    //}
 
   }
 
@@ -59,13 +78,19 @@ struct ImagePicker: UIViewControllerRepresentable {
     return Coordinator(presentationMode: presentationMode, selectHandler: selectHandler)
   }
 
-  func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
-    let picker = UIImagePickerController()
+  func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> PHPickerViewController {
+    var configuration = PHPickerConfiguration()
+
+    configuration.filter = .images
+    configuration.selectionLimit = 0
+
+    let picker = PHPickerViewController(configuration: configuration)
     picker.delegate = context.coordinator
+
     return picker
   }
 
-  func updateUIViewController(_ uiViewController: UIImagePickerController,
+  func updateUIViewController(_ uiViewController: PHPickerViewController,
                               context: UIViewControllerRepresentableContext<ImagePicker>) {
 
   }
