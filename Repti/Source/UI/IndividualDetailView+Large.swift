@@ -145,13 +145,10 @@ extension IndividualDetailView {
             } else {
               ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {
-                  ForEach(Array(individual.pictures!)) { picture in
+                  let pictures = Array(individual.pictures!)
+
+                  ForEach(pictures) { picture in
                     AsyncImage(picture: picture, placeholder: { Image(systemName: "photo.fill") })
-                      //.resizable()
-                      //.scaledToFit()
-                      //.frame(height: 150)
-                      //.cornerRadius(10)
-                      //.padding(.all, 10)
                       .contextMenu {
                         Button {
                           delete(picture: picture)
@@ -160,6 +157,12 @@ extension IndividualDetailView {
                           Text("Delete")
                         }
                       }
+                      .onTapGesture {
+                        showImageViewer = true
+                      }
+                      .sheet(isPresented: $showImageViewer, content: {
+                        ImageViewer(pictures: pictures, currentPicture: picture)
+                      })
                   }
                 }
               }

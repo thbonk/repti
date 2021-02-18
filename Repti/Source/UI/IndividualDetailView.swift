@@ -83,6 +83,8 @@ struct IndividualDetailView: View {
       updateAllSectionExpandedFlag = true
     }
   }
+  @State
+  internal var showImageViewer = false
   @Environment(\.managedObjectContext)
   internal var viewContext
 
