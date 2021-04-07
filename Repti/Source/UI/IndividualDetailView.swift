@@ -39,9 +39,10 @@ struct IndividualDetailView: View {
   internal var showWeighingEditor = false
   @State
   internal var showWeighingData = false
-
   @State
   internal var showImagePicker = false
+  @State
+  internal var showDocumentPicker = false
   @State
   internal var image: Image? = Image("placeholder")
 
@@ -55,6 +56,7 @@ struct IndividualDetailView: View {
           datesSectionExpanded = sectionsExpanded
           picturesSectionExpanded = sectionsExpanded
           weighingsSectionExpanded = sectionsExpanded
+          documentsSectionExpanded = sectionsExpanded
         }
       }
     }
@@ -62,29 +64,31 @@ struct IndividualDetailView: View {
   @State
   internal var datesSectionExpanded = true {
     didSet {
-      updateAllSectionExpandedFlag = false
-      sectionsExpanded = datesSectionExpanded
-      updateAllSectionExpandedFlag = true
+      sectionExpandStateChanged(datesSectionExpanded)
     }
   }
   @State
   internal var picturesSectionExpanded  = true {
     didSet {
-      updateAllSectionExpandedFlag = false
-      sectionsExpanded = picturesSectionExpanded
-      updateAllSectionExpandedFlag = true
+      sectionExpandStateChanged(picturesSectionExpanded)
     }
   }
   @State
   internal var weighingsSectionExpanded = true {
     didSet {
-      updateAllSectionExpandedFlag = false
-      sectionsExpanded = weighingsSectionExpanded
-      updateAllSectionExpandedFlag = true
+      sectionExpandStateChanged(weighingsSectionExpanded)
+    }
+  }
+  @State
+  internal var documentsSectionExpanded = true {
+    didSet {
+      sectionExpandStateChanged(documentsSectionExpanded)
     }
   }
   @State
   internal var showImageViewer = false
+  @State
+  private var fileUrl = URL(fileURLWithPath: "/")
   @Environment(\.managedObjectContext)
   internal var viewContext
 
@@ -122,7 +126,148 @@ struct IndividualDetailView: View {
   }
 
 
+  // MARK: - View Sections
+
+  internal func sectionExpandStateChanged(_ expanded: Bool) {
+    updateAllSectionExpandedFlag = false
+    sectionsExpanded = expanded
+    updateAllSectionExpandedFlag = true
+  }
+
+  internal func picturesSection(geometry geo: GeometryProxy) -> AnyView {
+    return AnyView(
+      Group {
+        VStack(alignment: .leading) {
+          HStack {
+            Text("Pictures").font(.title)
+            Button(
+              action: {
+                withAnimation {
+                  picturesSectionExpanded = !picturesSectionExpanded
+                }
+              }) {
+              if picturesSectionExpanded {
+                Image(systemName: "chevron.down")
+              } else {
+                Image(systemName: "chevron.right")
+              }
+            }.padding(.trailing, 10)
+            Button(action: {
+              showImagePicker = true
+            }) {
+              Image(systemName: "plus")
+            }
+            .sheet(isPresented: $showImagePicker) {
+              ImagePicker(selectHandler: savePicture(image:))
+            }
+          }
+          .frame(width: geo.size.width, alignment: .leading)
+
+          if picturesSectionExpanded {
+            if individual.pictures?.count == 0 {
+              Text("No pictures availabe.").frame(minWidth: geo.size.width - 30)
+            } else {
+              ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .top, spacing: 0) {
+                  let pictures = Array(individual.pictures!)
+
+                  ForEach(pictures) { picture in
+                    AsyncImage(picture: picture, placeholder: { Image(systemName: "photo.fill") })
+                      .contextMenu {
+                        Button {
+                          delete(picture: picture)
+                        } label: {
+                          Image(systemName: "trash")
+                          Text("Delete")
+                        }
+                      }
+                      .onTapGesture {
+                        showImageViewer = true
+                      }
+                      .sheet(isPresented: $showImageViewer, content: {
+                        ImageViewer(pictures: pictures, currentPicture: picture)
+                      })
+                  }
+                }
+              }
+              .padding(.trailing, 40)
+            }
+          }
+        }
+      }
+      .padding(.top, 20)
+    )
+  }
+
+  internal func documentsSection(geometry geo: GeometryProxy) -> AnyView {
+    return AnyView(
+      Group {
+        VStack(alignment: .leading) {
+          HStack {
+            Text("Documents").font(.title)
+            Button(
+              action: {
+                withAnimation {
+                  documentsSectionExpanded = !documentsSectionExpanded
+                }
+              }) {
+              if documentsSectionExpanded {
+                Image(systemName: "chevron.down")
+              } else {
+                Image(systemName: "chevron.right")
+              }
+            }.padding(.trailing, 10)
+            Button(action: {
+              showDocumentPicker = true
+            }) {
+              Image(systemName: "plus")
+            }
+            .sheet(isPresented: $showDocumentPicker) {
+              DocumentPicker(documentSelectedHandler: saveDocument(fileUrl:))
+            }
+          }
+          .frame(width: geo.size.width, alignment: .leading)
+
+          if documentsSectionExpanded {
+            if individual.documents?.count == 0 {
+              Text("No documents availabe.").frame(minWidth: geo.size.width - 30)
+            } else {
+              Text("Documents list goeas here").frame(minWidth: geo.size.width - 30)
+            }
+          }
+        }
+      }
+      .padding(.top, 20)
+    )
+  }
+
+
   // MARK: - Private Methods
+
+  internal func saveDocument(fileUrl: URL) {
+    do {
+      let fileAttributes = try FileManager.default.attributesOfItem(atPath: fileUrl.path)
+      let filedate = fileAttributes[.creationDate] as! Date
+      let filename = fileUrl.lastPathComponent
+      let filedata = try Data(contentsOf: fileUrl, options: .uncached)
+      let document = Document.create(in: viewContext)
+      let documentData = DocumentData.create(in: viewContext)
+
+      document.filename = filename
+      document.notes = ""
+      document.date = filedate
+      document.documentData = documentData
+      document.individual = individual
+      individual.addToDocuments(document)
+
+      documentData.data = filedata
+      documentData.document = document
+
+      try viewContext.save()
+    } catch {
+      errorAlert(message: "Error while importing the document.", error: error)
+    }
+  }
 
   internal func savePicture(image: UIImage) {
     let picture = Picture.create(in: viewContext)

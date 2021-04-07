@@ -37,6 +37,9 @@
 		E9C635AC25A5838D00BA2748 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635A825A5838D00BA2748 /* MasterView.swift */; };
 		E9C635AD25A5838D00BA2748 /* SpeciesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635A925A5838D00BA2748 /* SpeciesListView.swift */; };
 		E9C635B525A587E900BA2748 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635B425A587E900BA2748 /* Alerts.swift */; };
+		E9CCBBA825E2488F0056845C /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBA725E2488F0056845C /* Document.swift */; };
+		E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBAA25E248DE0056845C /* DocumentData.swift */; };
+		E9CCBBB325E4C8260056845C /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBB225E4C8260056845C /* DocumentPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +78,12 @@
 		E9C635A825A5838D00BA2748 /* MasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
 		E9C635A925A5838D00BA2748 /* SpeciesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesListView.swift; sourceTree = "<group>"; };
 		E9C635B425A587E900BA2748 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		E9CCBBA325E13A530056845C /* ReptiV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV2.xcdatamodel; sourceTree = "<group>"; };
+		E9CCBBA525E247D90056845C /* ReptiV3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV3.xcdatamodel; sourceTree = "<group>"; };
+		E9CCBBA725E2488F0056845C /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		E9CCBBAA25E248DE0056845C /* DocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentData.swift; sourceTree = "<group>"; };
+		E9CCBBAF25E42EE40056845C /* ReptiV4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV4.xcdatamodel; sourceTree = "<group>"; };
+		E9CCBBB225E4C8260056845C /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +111,7 @@
 		E94CAD4725B9FAF30072E3BA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E9CCBBB225E4C8260056845C /* DocumentPicker.swift */,
 				E94CAD5525BC09DD0072E3BA /* ImagePicker.swift */,
 				E9A3D43225D6C58A0092CAD3 /* AsyncImage.swift */,
 				E937113A25DB098800712744 /* ImageViewer.swift */,
@@ -226,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				E9C6358F25A3D3C200BA2748 /* BaseEntity.swift */,
+				E9CCBBA725E2488F0056845C /* Document.swift */,
+				E9CCBBAA25E248DE0056845C /* DocumentData.swift */,
 				E9C6358E25A3D3C200BA2748 /* Individual.swift */,
 				E9C6358D25A3D3C200BA2748 /* Picture.swift */,
 				E9A3D44B25D7CAF40092CAD3 /* PictureData.swift */,
@@ -373,6 +385,7 @@
 				E94CAD2625AEC8F60072E3BA /* OptionalValue.swift in Sources */,
 				E9A3D44C25D7CAF40092CAD3 /* PictureData.swift in Sources */,
 				E9A517B225A610340088986B /* IndividualDetailView.swift in Sources */,
+				E9CCBBB325E4C8260056845C /* DocumentPicker.swift in Sources */,
 				E9C6357A25A3C72000BA2748 /* ContentView.swift in Sources */,
 				E937113B25DB098800712744 /* ImageViewer.swift in Sources */,
 				E9C635AD25A5838D00BA2748 /* SpeciesListView.swift in Sources */,
@@ -381,8 +394,10 @@
 				E9BF42AB25D07052005C6FC3 /* IndividualDetailView+Large.swift in Sources */,
 				E9C6359225A3D3C200BA2748 /* Picture.swift in Sources */,
 				E9C6357C25A3C72000BA2748 /* ReptiApp.swift in Sources */,
+				E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */,
 				E9BF42A825D06F3F005C6FC3 /* IndividualDetailView+Small.swift in Sources */,
 				E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */,
+				E9CCBBA825E2488F0056845C /* Document.swift in Sources */,
 				E94CAD5625BC09DE0072E3BA /* ImagePicker.swift in Sources */,
 				E9A517BC25A824180088986B /* SpeciesEditorView.swift in Sources */,
 				E9C6359025A3D3C200BA2748 /* Weight.swift in Sources */,
@@ -524,7 +539,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3;
+				MARKETING_VERSION = 4;
 				PRODUCT_BUNDLE_IDENTIFIER = de.meandmymac.universal.Repti;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -549,7 +564,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3;
+				MARKETING_VERSION = 4;
 				PRODUCT_BUNDLE_IDENTIFIER = de.meandmymac.universal.Repti;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -604,9 +619,12 @@
 		E9C6356925A3C6AD00BA2748 /* Repti.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E9CCBBAF25E42EE40056845C /* ReptiV4.xcdatamodel */,
+				E9CCBBA525E247D90056845C /* ReptiV3.xcdatamodel */,
+				E9CCBBA325E13A530056845C /* ReptiV2.xcdatamodel */,
 				E9C6356A25A3C6AD00BA2748 /* Repti.xcdatamodel */,
 			);
-			currentVersion = E9C6356A25A3C6AD00BA2748 /* Repti.xcdatamodel */;
+			currentVersion = E9CCBBA525E247D90056845C /* ReptiV3.xcdatamodel */;
 			path = Repti.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
