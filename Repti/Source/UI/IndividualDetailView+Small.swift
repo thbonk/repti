@@ -39,6 +39,10 @@ extension IndividualDetailView {
         Divider().padding(.top, 20)
 
         weighingsSections(geometry: geo)
+
+        Divider().padding(.top, 20)
+
+        documentsSection(geometry: geo)
           .padding(.bottom, 20)
       })
   }
@@ -109,71 +113,6 @@ extension IndividualDetailView {
         }
       }
       .padding(.top, 20))
-  }
-
-  fileprivate func picturesSection(geometry geo: GeometryProxy) -> AnyView {
-    return AnyView(
-      Group {
-        VStack(alignment: .leading) {
-          HStack {
-            Text("Pictures").font(.title)
-            Button(
-              action: {
-                withAnimation {
-                  picturesSectionExpanded = !picturesSectionExpanded
-                }
-              }) {
-              if picturesSectionExpanded {
-                Image(systemName: "chevron.down")
-              } else {
-                Image(systemName: "chevron.right")
-              }
-            }.padding(.trailing, 10)
-            Button(action: {
-              showImagePicker = true
-            }) {
-              Image(systemName: "plus")
-            }
-            .sheet(isPresented: $showImagePicker) {
-              ImagePicker(selectHandler: savePicture(image:))
-            }
-          }
-          .frame(width: geo.size.width, alignment: .leading)
-
-          if picturesSectionExpanded {
-            if individual.pictures?.count == 0 {
-              Text("No pictures availabe.").frame(minWidth: geo.size.width - 30)
-            } else {
-              ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 0) {
-                  let pictures = Array(individual.pictures!)
-
-                  ForEach(pictures) { picture in
-                    AsyncImage(picture: picture, placeholder: { Image(systemName: "photo.fill") })
-                      .contextMenu {
-                        Button {
-                          delete(picture: picture)
-                        } label: {
-                          Image(systemName: "trash")
-                          Text("Delete")
-                        }
-                      }
-                      .onTapGesture {
-                        showImageViewer = true
-                      }
-                      .sheet(isPresented: $showImageViewer, content: {
-                        ImageViewer(pictures: pictures, currentPicture: picture)
-                      })
-                  }
-                }
-              }
-              .padding(.trailing, 40)
-            }
-          }
-        }
-      }
-      .padding(.top, 20)
-    )
   }
 
   fileprivate func weighingsSections(geometry geo: GeometryProxy) -> AnyView {

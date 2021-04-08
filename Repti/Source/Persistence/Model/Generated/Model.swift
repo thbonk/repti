@@ -67,6 +67,63 @@ internal class BaseEntity: NSManagedObject {
   // swiftlint:enable discouraged_optional_boolean discouraged_optional_collection
 }
 
+// MARK: - Document
+
+@objc(Document)
+internal class Document: BaseEntity {
+  override internal class var entityName: String {
+    return "Document"
+  }
+
+  override internal class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
+    return NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext)
+  }
+
+  @available(*, deprecated, renamed: "makeFetchRequest", message: "To avoid collisions with the less concrete method in `NSManagedObject`, please use `makeFetchRequest()` instead.")
+  @nonobjc internal class func fetchRequest() -> NSFetchRequest<Document> {
+    return NSFetchRequest<Document>(entityName: entityName)
+  }
+
+  @nonobjc internal class func makeFetchRequest() -> NSFetchRequest<Document> {
+    return NSFetchRequest<Document>(entityName: entityName)
+  }
+
+  // swiftlint:disable discouraged_optional_boolean discouraged_optional_collection
+  @NSManaged internal var date: Date?
+  @NSManaged internal var filename: String?
+  @NSManaged internal var notes: String?
+  @NSManaged internal var documentData: DocumentData?
+  @NSManaged internal var individual: Individual?
+  // swiftlint:enable discouraged_optional_boolean discouraged_optional_collection
+}
+
+// MARK: - DocumentData
+
+@objc(DocumentData)
+internal class DocumentData: BaseEntity {
+  override internal class var entityName: String {
+    return "DocumentData"
+  }
+
+  override internal class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
+    return NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext)
+  }
+
+  @available(*, deprecated, renamed: "makeFetchRequest", message: "To avoid collisions with the less concrete method in `NSManagedObject`, please use `makeFetchRequest()` instead.")
+  @nonobjc internal class func fetchRequest() -> NSFetchRequest<DocumentData> {
+    return NSFetchRequest<DocumentData>(entityName: entityName)
+  }
+
+  @nonobjc internal class func makeFetchRequest() -> NSFetchRequest<DocumentData> {
+    return NSFetchRequest<DocumentData>(entityName: entityName)
+  }
+
+  // swiftlint:disable discouraged_optional_boolean discouraged_optional_collection
+  @NSManaged internal var data: Data?
+  @NSManaged internal var document: Document?
+  // swiftlint:enable discouraged_optional_boolean discouraged_optional_collection
+}
+
 // MARK: - Individual
 
 @objc(Individual)
@@ -155,10 +212,27 @@ internal class Individual: BaseEntity {
       setPrimitiveValue(newValue, forKey: key)
     }
   }
+  @NSManaged internal var documents: Set<Document>?
   @NSManaged internal var pictures: Set<Picture>?
   @NSManaged internal var species: Species?
   @NSManaged internal var weighings: Set<Weight>?
   // swiftlint:enable discouraged_optional_boolean discouraged_optional_collection
+}
+
+// MARK: Relationship Documents
+
+extension Individual {
+  @objc(addDocumentsObject:)
+  @NSManaged public func addToDocuments(_ value: Document)
+
+  @objc(removeDocumentsObject:)
+  @NSManaged public func removeFromDocuments(_ value: Document)
+
+  @objc(addDocuments:)
+  @NSManaged public func addToDocuments(_ values: Set<Document>)
+
+  @objc(removeDocuments:)
+  @NSManaged public func removeFromDocuments(_ values: Set<Document>)
 }
 
 // MARK: Relationship Pictures
