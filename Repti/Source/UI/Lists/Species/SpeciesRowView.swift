@@ -1,9 +1,8 @@
 //
-//  ContentView.swift
+//  SpeciesRowView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 04.01.21.
-//
+//  Created by Thomas Bonk on 09.04.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,30 +19,38 @@
 //
 
 import SwiftUI
-import CoreData
 
-struct ContentView: View {
+struct SpeciesRowView: View {
 
   // MARK: - Public Properties
-  
+
+  var parent: SpeciesListView
+  var species: Species
+
   var body: some View {
-    if UIDevice.current.userInterfaceIdiom == .phone {
-      NavigationView {
-        SpeciesListView()
+    LazyHGrid(rows: [GridItem(alignment: .leading), GridItem(alignment: .trailing)]) {
+        Text(species.name)
+          .font(.headline)
+          .padding(.bottom, 5)
+        Text(species.scientificName)
+          .font(.subheadline)
       }
-    } else {
-      NavigationView {
-        MasterView {
-          SpeciesListView()
+      .padding(.all, 10)
+      .contextMenu {
+        Button {
+          parent.edit(species: self.species)
+        } label: {
+          HStack {
+            Image(systemName: "square.and.pencil")
+            Text(LocalizedStringKey("Edit"))
+          }
         }
-        Text("No individual selected!")
       }
-    }
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SpeciesRowView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    SpeciesRowView(parent: SpeciesListView(), species: Species())
   }
 }

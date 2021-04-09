@@ -7,24 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E937113B25DB098800712744 /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937113A25DB098800712744 /* ImageViewer.swift */; };
+		E91858A8261FA8AF00F34037 /* SpeciesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91858A7261FA8AF00F34037 /* SpeciesListView.swift */; };
+		E91858AD2620134900F34037 /* SpeciesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91858AC2620134900F34037 /* SpeciesRowView.swift */; };
 		E94CAD2625AEC8F60072E3BA /* OptionalValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CAD2525AEC8F60072E3BA /* OptionalValue.swift */; };
-		E94CAD5625BC09DE0072E3BA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CAD5525BC09DD0072E3BA /* ImagePicker.swift */; };
 		E9794F4E25A9B52D0063D595 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9794F4D25A9B52D0063D595 /* CloudKit.framework */; };
-		E9A3D43325D6C58A0092CAD3 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3D43225D6C58A0092CAD3 /* AsyncImage.swift */; };
+		E997916A261ECBFD0047AC27 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E9979169261ECBFD0047AC27 /* PureSwiftUI */; };
 		E9A3D44C25D7CAF40092CAD3 /* PictureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3D44B25D7CAF40092CAD3 /* PictureData.swift */; };
-		E9A517B225A610340088986B /* IndividualDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517B125A610340088986B /* IndividualDetailView.swift */; };
-		E9A517BC25A824180088986B /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517BA25A824180088986B /* SpeciesEditorView.swift */; };
-		E9A517BD25A824180088986B /* IndividualEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517BB25A824180088986B /* IndividualEditorView.swift */; };
-		E9A517C025A824340088986B /* WeighingsEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A517BF25A824340088986B /* WeighingsEditorView.swift */; };
 		E9A517C525A82D530088986B /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E9A517C425A82D530088986B /* SwiftUICharts */; };
 		E9A517C925A8E6F30088986B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E9A517C825A8E6F30088986B /* Credits.rtf */; };
-		E9BF42A825D06F3F005C6FC3 /* IndividualDetailView+Small.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BF42A725D06F3F005C6FC3 /* IndividualDetailView+Small.swift */; };
-		E9BF42AB25D07052005C6FC3 /* IndividualDetailView+Large.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BF42AA25D07052005C6FC3 /* IndividualDetailView+Large.swift */; };
 		E9C6356325A3C6AD00BA2748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C6356225A3C6AD00BA2748 /* Assets.xcassets */; };
 		E9C6356625A3C6AD00BA2748 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C6356525A3C6AD00BA2748 /* Preview Assets.xcassets */; };
 		E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9C6356925A3C6AD00BA2748 /* Repti.xcdatamodeld */; };
-		E9C6357A25A3C72000BA2748 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6357525A3C72000BA2748 /* ContentView.swift */; };
+		E9C6357A25A3C72000BA2748 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6357525A3C72000BA2748 /* RootView.swift */; };
 		E9C6357B25A3C72000BA2748 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6357725A3C72000BA2748 /* Persistence.swift */; };
 		E9C6357C25A3C72000BA2748 /* ReptiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6357925A3C72000BA2748 /* ReptiApp.swift */; };
 		E9C6358925A3D35500BA2748 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6358825A3D35500BA2748 /* Model.swift */; };
@@ -33,35 +27,24 @@
 		E9C6359225A3D3C200BA2748 /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6358D25A3D3C200BA2748 /* Picture.swift */; };
 		E9C6359325A3D3C200BA2748 /* Individual.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6358E25A3D3C200BA2748 /* Individual.swift */; };
 		E9C6359425A3D3C200BA2748 /* BaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6358F25A3D3C200BA2748 /* BaseEntity.swift */; };
-		E9C635AB25A5838D00BA2748 /* IndividualListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635A725A5838D00BA2748 /* IndividualListView.swift */; };
-		E9C635AC25A5838D00BA2748 /* MasterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635A825A5838D00BA2748 /* MasterView.swift */; };
-		E9C635AD25A5838D00BA2748 /* SpeciesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635A925A5838D00BA2748 /* SpeciesListView.swift */; };
 		E9C635B525A587E900BA2748 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635B425A587E900BA2748 /* Alerts.swift */; };
 		E9CCBBA825E2488F0056845C /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBA725E2488F0056845C /* Document.swift */; };
 		E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBAA25E248DE0056845C /* DocumentData.swift */; };
-		E9CCBBB325E4C8260056845C /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBB225E4C8260056845C /* DocumentPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E937113A25DB098800712744 /* ImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
+		E91858A7261FA8AF00F34037 /* SpeciesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesListView.swift; sourceTree = "<group>"; };
+		E91858AC2620134900F34037 /* SpeciesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesRowView.swift; sourceTree = "<group>"; };
 		E94CAD2525AEC8F60072E3BA /* OptionalValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalValue.swift; sourceTree = "<group>"; };
-		E94CAD5525BC09DD0072E3BA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		E9794F4D25A9B52D0063D595 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		E9A3D43225D6C58A0092CAD3 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		E9A3D44B25D7CAF40092CAD3 /* PictureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureData.swift; sourceTree = "<group>"; };
-		E9A517B125A610340088986B /* IndividualDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDetailView.swift; sourceTree = "<group>"; };
-		E9A517BA25A824180088986B /* SpeciesEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
-		E9A517BB25A824180088986B /* IndividualEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualEditorView.swift; sourceTree = "<group>"; };
-		E9A517BF25A824340088986B /* WeighingsEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighingsEditorView.swift; sourceTree = "<group>"; };
 		E9A517C825A8E6F30088986B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = SOURCE_ROOT; };
-		E9BF42A725D06F3F005C6FC3 /* IndividualDetailView+Small.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndividualDetailView+Small.swift"; sourceTree = "<group>"; };
-		E9BF42AA25D07052005C6FC3 /* IndividualDetailView+Large.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IndividualDetailView+Large.swift"; sourceTree = "<group>"; };
 		E9C6355B25A3C6AB00BA2748 /* Repti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C6356225A3C6AD00BA2748 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9C6356525A3C6AD00BA2748 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E9C6356A25A3C6AD00BA2748 /* Repti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Repti.xcdatamodel; sourceTree = "<group>"; };
 		E9C6356C25A3C6AD00BA2748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E9C6357525A3C72000BA2748 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E9C6357525A3C72000BA2748 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		E9C6357725A3C72000BA2748 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E9C6357925A3C72000BA2748 /* ReptiApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReptiApp.swift; sourceTree = "<group>"; };
 		E9C6358225A3C86F00BA2748 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -74,16 +57,12 @@
 		E9C6358E25A3D3C200BA2748 /* Individual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Individual.swift; sourceTree = "<group>"; };
 		E9C6358F25A3D3C200BA2748 /* BaseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntity.swift; sourceTree = "<group>"; };
 		E9C6359625A3D43F00BA2748 /* Repti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Repti.entitlements; sourceTree = "<group>"; };
-		E9C635A725A5838D00BA2748 /* IndividualListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualListView.swift; sourceTree = "<group>"; };
-		E9C635A825A5838D00BA2748 /* MasterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterView.swift; sourceTree = "<group>"; };
-		E9C635A925A5838D00BA2748 /* SpeciesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesListView.swift; sourceTree = "<group>"; };
 		E9C635B425A587E900BA2748 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		E9CCBBA325E13A530056845C /* ReptiV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV2.xcdatamodel; sourceTree = "<group>"; };
 		E9CCBBA525E247D90056845C /* ReptiV3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV3.xcdatamodel; sourceTree = "<group>"; };
 		E9CCBBA725E2488F0056845C /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		E9CCBBAA25E248DE0056845C /* DocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentData.swift; sourceTree = "<group>"; };
 		E9CCBBAF25E42EE40056845C /* ReptiV4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV4.xcdatamodel; sourceTree = "<group>"; };
-		E9CCBBB225E4C8260056845C /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A517C525A82D530088986B /* SwiftUICharts in Frameworks */,
+				E997916A261ECBFD0047AC27 /* PureSwiftUI in Frameworks */,
 				E9794F4E25A9B52D0063D595 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E91858AA2620132100F34037 /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				E91858AB2620133000F34037 /* Species */,
+			);
+			path = Lists;
+			sourceTree = "<group>";
+		};
+		E91858AB2620133000F34037 /* Species */ = {
+			isa = PBXGroup;
+			children = (
+				E91858A7261FA8AF00F34037 /* SpeciesListView.swift */,
+				E91858AC2620134900F34037 /* SpeciesRowView.swift */,
+			);
+			path = Species;
+			sourceTree = "<group>";
+		};
 		E94CAD2425AEC8C80072E3BA /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,17 +104,6 @@
 			name = Utility;
 			path = Repti/Source/Utility;
 			sourceTree = SOURCE_ROOT;
-		};
-		E94CAD4725B9FAF30072E3BA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E9CCBBB225E4C8260056845C /* DocumentPicker.swift */,
-				E94CAD5525BC09DD0072E3BA /* ImagePicker.swift */,
-				E9A3D43225D6C58A0092CAD3 /* AsyncImage.swift */,
-				E937113A25DB098800712744 /* ImageViewer.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
 		};
 		E9794F4C25A9B52D0063D595 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -137,16 +123,6 @@
 				E9C6356C25A3C6AD00BA2748 /* Info.plist */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		E9A517B925A824180088986B /* Editors */ = {
-			isa = PBXGroup;
-			children = (
-				E9A517BA25A824180088986B /* SpeciesEditorView.swift */,
-				E9A517BB25A824180088986B /* IndividualEditorView.swift */,
-				E9A517BF25A824340088986B /* WeighingsEditorView.swift */,
-			);
-			path = Editors;
 			sourceTree = "<group>";
 		};
 		E9C6355225A3C6AB00BA2748 = {
@@ -201,16 +177,8 @@
 		E9C6357425A3C72000BA2748 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				E9A517B925A824180088986B /* Editors */,
-				E94CAD4725B9FAF30072E3BA /* Views */,
-				E9C635B425A587E900BA2748 /* Alerts.swift */,
-				E9C6357525A3C72000BA2748 /* ContentView.swift */,
-				E9C635A825A5838D00BA2748 /* MasterView.swift */,
-				E9C635A725A5838D00BA2748 /* IndividualListView.swift */,
-				E9A517B125A610340088986B /* IndividualDetailView.swift */,
-				E9BF42A725D06F3F005C6FC3 /* IndividualDetailView+Small.swift */,
-				E9BF42AA25D07052005C6FC3 /* IndividualDetailView+Large.swift */,
-				E9C635A925A5838D00BA2748 /* SpeciesListView.swift */,
+				E9C6357525A3C72000BA2748 /* RootView.swift */,
+				E91858AA2620132100F34037 /* Lists */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -228,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				E9C6357925A3C72000BA2748 /* ReptiApp.swift */,
+				E9C635B425A587E900BA2748 /* Alerts.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -276,6 +245,7 @@
 			name = Repti;
 			packageProductDependencies = (
 				E9A517C425A82D530088986B /* SwiftUICharts */,
+				E9979169261ECBFD0047AC27 /* PureSwiftUI */,
 			);
 			productName = Repti;
 			productReference = E9C6355B25A3C6AB00BA2748 /* Repti.app */;
@@ -306,6 +276,7 @@
 			mainGroup = E9C6355225A3C6AB00BA2748;
 			packageReferences = (
 				E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */,
+				E9979168261ECBFD0047AC27 /* XCRemoteSwiftPackageReference "pure-swift-ui" */,
 			);
 			productRefGroup = E9C6355C25A3C6AB00BA2748 /* Products */;
 			projectDirPath = "";
@@ -375,31 +346,20 @@
 			files = (
 				E9C6358925A3D35500BA2748 /* Model.swift in Sources */,
 				E9C6359425A3D3C200BA2748 /* BaseEntity.swift in Sources */,
-				E9A3D43325D6C58A0092CAD3 /* AsyncImage.swift in Sources */,
 				E9C635B525A587E900BA2748 /* Alerts.swift in Sources */,
-				E9A517BD25A824180088986B /* IndividualEditorView.swift in Sources */,
+				E91858AD2620134900F34037 /* SpeciesRowView.swift in Sources */,
+				E91858A8261FA8AF00F34037 /* SpeciesListView.swift in Sources */,
 				E9C6359125A3D3C200BA2748 /* Species.swift in Sources */,
-				E9A517C025A824340088986B /* WeighingsEditorView.swift in Sources */,
 				E9C6357B25A3C72000BA2748 /* Persistence.swift in Sources */,
 				E9C6359325A3D3C200BA2748 /* Individual.swift in Sources */,
 				E94CAD2625AEC8F60072E3BA /* OptionalValue.swift in Sources */,
 				E9A3D44C25D7CAF40092CAD3 /* PictureData.swift in Sources */,
-				E9A517B225A610340088986B /* IndividualDetailView.swift in Sources */,
-				E9CCBBB325E4C8260056845C /* DocumentPicker.swift in Sources */,
-				E9C6357A25A3C72000BA2748 /* ContentView.swift in Sources */,
-				E937113B25DB098800712744 /* ImageViewer.swift in Sources */,
-				E9C635AD25A5838D00BA2748 /* SpeciesListView.swift in Sources */,
-				E9C635AB25A5838D00BA2748 /* IndividualListView.swift in Sources */,
-				E9C635AC25A5838D00BA2748 /* MasterView.swift in Sources */,
-				E9BF42AB25D07052005C6FC3 /* IndividualDetailView+Large.swift in Sources */,
+				E9C6357A25A3C72000BA2748 /* RootView.swift in Sources */,
 				E9C6359225A3D3C200BA2748 /* Picture.swift in Sources */,
 				E9C6357C25A3C72000BA2748 /* ReptiApp.swift in Sources */,
 				E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */,
-				E9BF42A825D06F3F005C6FC3 /* IndividualDetailView+Small.swift in Sources */,
 				E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */,
 				E9CCBBA825E2488F0056845C /* Document.swift in Sources */,
-				E94CAD5625BC09DE0072E3BA /* ImagePicker.swift in Sources */,
-				E9A517BC25A824180088986B /* SpeciesEditorView.swift in Sources */,
 				E9C6359025A3D3C200BA2748 /* Weight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,8 +503,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.meandmymac.universal.Repti;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "2,6";
 			};
 			name = Debug;
 		};
@@ -568,8 +529,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.meandmymac.universal.Repti;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "2,6";
 			};
 			name = Release;
 		};
@@ -597,6 +559,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E9979168261ECBFD0047AC27 /* XCRemoteSwiftPackageReference "pure-swift-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CodeSlicing/pure-swift-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 		E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView";
@@ -608,6 +578,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E9979169261ECBFD0047AC27 /* PureSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9979168261ECBFD0047AC27 /* XCRemoteSwiftPackageReference "pure-swift-ui" */;
+			productName = PureSwiftUI;
+		};
 		E9A517C425A82D530088986B /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E9A517C325A82D530088986B /* XCRemoteSwiftPackageReference "ChartView" */;

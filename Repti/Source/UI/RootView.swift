@@ -1,9 +1,8 @@
 //
-//  MasterView.swift
+//  RootView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 05.01.21.
-//
+//  Created by Thomas Bonk on 04.01.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,32 +19,24 @@
 //
 
 import SwiftUI
+import CoreData
 
-struct MasterView<Content>: View where Content : View {
-
+struct RootView: View {
+  
   // MARK: - Public Properties
-
-  var content: Content
-
-  var body: Content {
-    content
+  
+  var body: some View {
+    NavigationView {
+      SpeciesListView()
+      EmptyView()
+      EmptyView()
+    }
   }
-
-
-  // MARK: - Initialization
-
-  init(@ViewBuilder content: () -> Content) {
-    self.content = content()
-  }
-
-
-  // MARK: - Type Aliases
-
-  public typealias Body = Content
 }
 
-struct MasterView_Previews: PreviewProvider {
-    static var previews: some View {
-      MasterView { Text("Master View") }
-    }
+struct ContentView_Previews: PreviewProvider {
+  static var previews: some View {
+    RootView()
+      .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+  }
 }

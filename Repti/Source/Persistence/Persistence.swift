@@ -3,7 +3,6 @@
 //  Repti
 //
 //  Created by Thomas Bonk on 04.01.21.
-//
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
