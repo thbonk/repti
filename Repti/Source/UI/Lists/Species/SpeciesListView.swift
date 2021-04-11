@@ -37,7 +37,7 @@ struct SpeciesListView: View {
     .listStyle(PlainListStyle())
     .navigationBarTitle(LocalizedStringKey("Species"))
     .navigationBarTitleDisplayMode(.inline)
-    .toolbar(content: toolbar)
+    .toolbar { toolbar() }
     .environment(\.editMode, self.$editMode)
     .sheet(isPresented: $showSpeciesEditor) {
       SpeciesEditorView(
@@ -103,7 +103,7 @@ struct SpeciesListView: View {
     spcs.individuals = species.individuals
 
     try viewContext.save()
-    
+
     editSpecies.value = nil
   }
 

@@ -32,6 +32,7 @@
 		E9C635B525A587E900BA2748 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635B425A587E900BA2748 /* Alerts.swift */; };
 		E9CCBBA825E2488F0056845C /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBA725E2488F0056845C /* Document.swift */; };
 		E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBAA25E248DE0056845C /* DocumentData.swift */; };
+		E9F52A152622FB390076830C /* IndividualRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F52A142622FB390076830C /* IndividualRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		E9CCBBA725E2488F0056845C /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		E9CCBBAA25E248DE0056845C /* DocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentData.swift; sourceTree = "<group>"; };
 		E9CCBBAF25E42EE40056845C /* ReptiV4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV4.xcdatamodel; sourceTree = "<group>"; };
+		E9F52A142622FB390076830C /* IndividualRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				E9699CE32621983300CB25AE /* IndividualsListView.swift */,
+				E9F52A142622FB390076830C /* IndividualRowView.swift */,
 			);
 			path = Individuals;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */,
 				E9CCBBA825E2488F0056845C /* Document.swift in Sources */,
 				E9699CDA26208DBF00CB25AE /* SpeciesEditorView.swift in Sources */,
+				E9F52A152622FB390076830C /* IndividualRowView.swift in Sources */,
 				E9C6359025A3D3C200BA2748 /* Weight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

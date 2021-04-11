@@ -24,22 +24,92 @@ struct IndividualsListView: View {
 
   // MARK: - Public Properties
 
-  @State
-  public var species: Species? = nil
+  public var species: Species
 
   public var body: some View {
-    RenderIf(species != nil) {
-      Text("List goes here")
+    RenderIf(individuals.wrappedValue.isNotEmpty) {
+      List {
+        ForEach(individuals.wrappedValue, id: \.self) { individual in
+          IndividualRowView(individual: individual)
+            .padding(.vertical, 10)
+        }
+        .onDelete(perform: deleteItems)
+      }
+      .listStyle(PlainListStyle())
     }.elseRender {
-      Text(LocalizedStringKey("No species selected!"))
+      Text(LocalizedStringKey("No \(species.name) found."))
     }
-    .navigationBarTitle(species == nil ? LocalizedStringKey("Individuals") : LocalizedStringKey(species!.name))
+    .navigationBarTitle(species.name)
+    .navigationBarItems(leading: leadingBarItems(), trailing: trailingBarItems())
     .navigationBarTitleDisplayMode(.inline)
+    .environment(\.editMode, self.$editMode)
+  }
+
+
+  // MARK: - Private Properties
+
+  @Environment(\.managedObjectContext)
+  private var viewContext
+
+  @State
+  private var editMode: EditMode = .inactive
+
+  @State
+  private var selectedId: UUID? = nil
+
+  private var individuals: FetchRequest<Individual>
+
+
+  // MARK: - Initialization
+  
+  init(species spcs: Species) {
+    self.species = spcs
+    self.individuals =
+      FetchRequest(
+        entity: Individual.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Individual.name, ascending: true)],
+        predicate: NSPredicate(format: "species.id = %@", argumentArray: [spcs.id!]),
+        animation: .default)
+  }
+
+
+  // MARK: - Private methods
+
+  private func deleteItems(offsets: IndexSet) {
+    withAnimation {
+      offsets.map {
+        individuals.wrappedValue[$0]
+      }.forEach(viewContext.delete)
+
+      do {
+        try viewContext.save()
+      } catch {
+        errorAlert(
+          message: NSLocalizedString("Error while deleting an individual.", comment: "Error Message"),
+          error: error)
+      }
+    }
+  }
+
+  private func leadingBarItems() -> some View {
+    return HStack(alignment: .center) {
+      EditButton()
+    }
+  }
+
+  private func trailingBarItems() -> some View {
+    return HStack(alignment: .center) {
+      Button {
+        //showIndividualEditor = true
+      } label: {
+        Text(LocalizedStringKey("Add"))
+      }
+    }
   }
 }
 
 struct IndividualsListView_Previews: PreviewProvider {
   static var previews: some View {
-    IndividualsListView()
+    IndividualsListView(species: Species())
   }
 }

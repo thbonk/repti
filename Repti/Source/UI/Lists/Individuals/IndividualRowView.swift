@@ -1,8 +1,8 @@
 //
-//  RootView.swift
+//  IndividualRowView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 04.01.21.
+//  Created by Thomas Bonk on 11.04.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +20,26 @@
 
 import SwiftUI
 
-struct RootView: View {
-  
+struct IndividualRowView: View {
+
   // MARK: - Public Properties
-  
-  var body: some View {
-    NavigationView {
-      SpeciesListView()
-      EmptyView()
-      EmptyView()
-    }
+
+  public var individual: Individual
+
+  public var body: some View {
+    LazyVGrid(
+      columns: [GridItem(alignment: .leading), GridItem(alignment: .trailing)],
+      content: {
+        Text(individual.name)
+          .font(.headline)
+        Text(individual.gender.displayName)
+          .font(.subheadline)
+      })
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct IndividualRowView_Previews: PreviewProvider {
   static var previews: some View {
-    RootView()
-      .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    IndividualRowView(individual: Individual())
   }
 }
