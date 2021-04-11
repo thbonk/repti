@@ -30,9 +30,16 @@ protocol SpeciesProtocol {
 
 extension Species: SpeciesProtocol {
 
+  // MARK: - Public Properties
+
+  public var dao: SpeciesDAO {
+    return SpeciesDAO(species: self)
+  }
+
+
   // MARK: - Class Methods
 
-  class func create(in managedObjectContext: NSManagedObjectContext) -> Species {
+  public class func create(in managedObjectContext: NSManagedObjectContext) -> Species {
     return
       NSEntityDescription
         .insertNewObject(

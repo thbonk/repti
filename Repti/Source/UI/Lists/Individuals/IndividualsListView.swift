@@ -1,8 +1,8 @@
 //
-//  ReptiApp.swift
+//  IndividualsListView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 04.01.21.
+//  Created by Thomas Bonk on 10.04.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,17 +18,28 @@
 //  limitations under the License.
 //
 
-import SwiftUI
+import PureSwiftUI
 
-@main
-struct ReptiApp: App {
+struct IndividualsListView: View {
 
   // MARK: - Public Properties
-  
-  var body: some Scene {
-    WindowGroup {
-      RootView()
-        .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-    }    
+
+  @State
+  public var species: Species? = nil
+
+  public var body: some View {
+    RenderIf(species != nil) {
+      Text("List goes here")
+    }.elseRender {
+      Text(LocalizedStringKey("No species selected!"))
+    }
+    .navigationBarTitle(species == nil ? LocalizedStringKey("Individuals") : LocalizedStringKey(species!.name))
+    .navigationBarTitleDisplayMode(.inline)
+  }
+}
+
+struct IndividualsListView_Previews: PreviewProvider {
+  static var previews: some View {
+    IndividualsListView()
   }
 }

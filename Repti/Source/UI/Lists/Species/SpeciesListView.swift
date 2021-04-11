@@ -25,24 +25,45 @@ struct SpeciesListView: View {
   // MARK: - Public Properties
 
   var body: some View {
-    List(species, id: \.id) { spcs in
-      NavigationLink(destination: EmptyView()) {
-        SpeciesRowView(parent: self, species: spcs)
+    List {
+      ForEach(species, id: \.id) { spcs in
+        NavigationLink(destination: IndividualsListView(species: spcs)) {
+          SpeciesRowView(parent: self, species: spcs)
+        }
+        .isDetailLink(true)
       }
-      .isDetailLink(true)
+      .onDelete(perform: deleteItems)
     }
     .listStyle(PlainListStyle())
     .navigationBarTitle(LocalizedStringKey("Species"))
     .navigationBarTitleDisplayMode(.inline)
     .toolbar(content: toolbar)
     .environment(\.editMode, self.$editMode)
+    .sheet(isPresented: $showSpeciesEditor) {
+      SpeciesEditorView(
+        species: editSpecies.value!.dao,
+           mode: editSpecies.value!.mode,
+         onSave: save(species:)) {
+
+        editSpecies.value = nil
+      }
+    }
   }
 
 
   // MARK: - Private Properties
 
+  @Environment(\.managedObjectContext)
+  private var viewContext
+
   @State
   private var editMode: EditMode = .inactive
+
+  @State
+  private var showSpeciesEditor = false
+
+  @State
+  private var editSpecies = OptionalValue<(species: Species?, dao: SpeciesDAO, mode: SpeciesEditorView.Mode)>()
 
   @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Species.name, ascending: true)], animation: .default)
   private var species: FetchedResults<Species>
@@ -51,21 +72,55 @@ struct SpeciesListView: View {
   // MARK: - Public Method
 
   public func edit(species: Species) {
-    
+    editSpecies.value = (species: species, dao: species.dao, mode: .edit)
+    showSpeciesEditor = true
   }
 
 
-  // MARK: - Private Methods
+  // MARK: - Private Methods: Edit
+
+  private func deleteItems(offsets: IndexSet) {
+    withAnimation(.easeOut) {
+      offsets.map {
+        species[$0]
+      }.forEach(viewContext.delete)
+
+      do {
+        try viewContext.save()
+      } catch {
+        errorAlert(
+          message: "Error while deleting a species.",
+          error: error)
+      }
+    }
+  }
+
+  private func save(species: SpeciesDAO) throws {
+    let spcs = editSpecies.value?.species ?? Species.create(in: viewContext)
+
+    spcs.name = species.name
+    spcs.scientificName = species.scientificName
+    spcs.individuals = species.individuals
+
+    try viewContext.save()
+    
+    editSpecies.value = nil
+  }
+
+
+  // MARK: - Private Methods: UI
 
   private func toolbar() -> some View {
     return
       HStack {
-        Button {
-        } label: {
-          Image(systemName: "plus.rectangle.fill")
-        }
-
         EditButton()
+
+        Button {
+          editSpecies.value = (species: nil, dao: SpeciesDAO(), mode: .create)
+          showSpeciesEditor = true
+        } label: {
+          Text(LocalizedStringKey("Add"))
+        }
       }
   }
 }

@@ -10,6 +10,8 @@
 		E91858A8261FA8AF00F34037 /* SpeciesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91858A7261FA8AF00F34037 /* SpeciesListView.swift */; };
 		E91858AD2620134900F34037 /* SpeciesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91858AC2620134900F34037 /* SpeciesRowView.swift */; };
 		E94CAD2625AEC8F60072E3BA /* OptionalValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94CAD2525AEC8F60072E3BA /* OptionalValue.swift */; };
+		E9699CDA26208DBF00CB25AE /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9699CD926208DBF00CB25AE /* SpeciesEditorView.swift */; };
+		E9699CE42621983300CB25AE /* IndividualsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9699CE32621983300CB25AE /* IndividualsListView.swift */; };
 		E9794F4E25A9B52D0063D595 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9794F4D25A9B52D0063D595 /* CloudKit.framework */; };
 		E997916A261ECBFD0047AC27 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E9979169261ECBFD0047AC27 /* PureSwiftUI */; };
 		E9A3D44C25D7CAF40092CAD3 /* PictureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3D44B25D7CAF40092CAD3 /* PictureData.swift */; };
@@ -36,6 +38,8 @@
 		E91858A7261FA8AF00F34037 /* SpeciesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesListView.swift; sourceTree = "<group>"; };
 		E91858AC2620134900F34037 /* SpeciesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesRowView.swift; sourceTree = "<group>"; };
 		E94CAD2525AEC8F60072E3BA /* OptionalValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalValue.swift; sourceTree = "<group>"; };
+		E9699CD926208DBF00CB25AE /* SpeciesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
+		E9699CE32621983300CB25AE /* IndividualsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualsListView.swift; sourceTree = "<group>"; };
 		E9794F4D25A9B52D0063D595 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E9A3D44B25D7CAF40092CAD3 /* PictureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureData.swift; sourceTree = "<group>"; };
 		E9A517C825A8E6F30088986B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = SOURCE_ROOT; };
@@ -82,6 +86,7 @@
 		E91858AA2620132100F34037 /* Lists */ = {
 			isa = PBXGroup;
 			children = (
+				E9699CE22621980F00CB25AE /* Individuals */,
 				E91858AB2620133000F34037 /* Species */,
 			);
 			path = Lists;
@@ -104,6 +109,22 @@
 			name = Utility;
 			path = Repti/Source/Utility;
 			sourceTree = SOURCE_ROOT;
+		};
+		E9699CD826208DA700CB25AE /* Editors */ = {
+			isa = PBXGroup;
+			children = (
+				E9699CD926208DBF00CB25AE /* SpeciesEditorView.swift */,
+			);
+			path = Editors;
+			sourceTree = "<group>";
+		};
+		E9699CE22621980F00CB25AE /* Individuals */ = {
+			isa = PBXGroup;
+			children = (
+				E9699CE32621983300CB25AE /* IndividualsListView.swift */,
+			);
+			path = Individuals;
+			sourceTree = "<group>";
 		};
 		E9794F4C25A9B52D0063D595 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -178,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				E9C6357525A3C72000BA2748 /* RootView.swift */,
+				E9699CD826208DA700CB25AE /* Editors */,
 				E91858AA2620132100F34037 /* Lists */,
 			);
 			path = UI;
@@ -345,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9C6358925A3D35500BA2748 /* Model.swift in Sources */,
+				E9699CE42621983300CB25AE /* IndividualsListView.swift in Sources */,
 				E9C6359425A3D3C200BA2748 /* BaseEntity.swift in Sources */,
 				E9C635B525A587E900BA2748 /* Alerts.swift in Sources */,
 				E91858AD2620134900F34037 /* SpeciesRowView.swift in Sources */,
@@ -360,6 +383,7 @@
 				E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */,
 				E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */,
 				E9CCBBA825E2488F0056845C /* Document.swift in Sources */,
+				E9699CDA26208DBF00CB25AE /* SpeciesEditorView.swift in Sources */,
 				E9C6359025A3D3C200BA2748 /* Weight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

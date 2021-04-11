@@ -19,7 +19,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 struct RootView: View {
   
@@ -28,7 +27,7 @@ struct RootView: View {
   var body: some View {
     NavigationView {
       SpeciesListView()
-      EmptyView()
+      IndividualsListView()
       EmptyView()
     }
   }
