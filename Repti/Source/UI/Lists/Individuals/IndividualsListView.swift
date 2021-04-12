@@ -52,6 +52,9 @@ struct IndividualsListView: View {
   private var viewContext
 
   @State
+  private var showIndividualEditor = false
+
+  @State
   private var editMode: EditMode = .inactive
 
   @State
@@ -100,7 +103,7 @@ struct IndividualsListView: View {
   private func trailingBarItems() -> some View {
     return HStack(alignment: .center) {
       Button {
-        //showIndividualEditor = true
+        showIndividualEditor = true
       } label: {
         Text(LocalizedStringKey("Add"))
       }

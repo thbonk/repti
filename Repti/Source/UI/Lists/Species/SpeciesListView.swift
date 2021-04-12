@@ -27,7 +27,10 @@ struct SpeciesListView: View {
   var body: some View {
     List {
       ForEach(species, id: \.id) { spcs in
-        NavigationLink(destination: IndividualsListView(species: spcs)) {
+        NavigationLink(
+          destination: IndividualsListView(species: spcs),
+          tag: spcs.id!,
+          selection: $selectedId) {
           SpeciesRowView(parent: self, species: spcs)
         }
         .isDetailLink(true)
@@ -64,6 +67,9 @@ struct SpeciesListView: View {
 
   @State
   private var editSpecies = OptionalValue<(species: Species?, dao: SpeciesDAO, mode: SpeciesEditorView.Mode)>()
+
+  @State
+  private var selectedId: UUID!
 
   @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Species.name, ascending: true)], animation: .default)
   private var species: FetchedResults<Species>
