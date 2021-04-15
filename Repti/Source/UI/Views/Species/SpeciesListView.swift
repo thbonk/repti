@@ -31,6 +31,7 @@ struct SpeciesListView: View {
           destination: IndividualsListView(species: spcs),
           tag: spcs.id!,
           selection: $selectedId) {
+          
           SpeciesRowView(parent: self, species: spcs)
         }
         .isDetailLink(true)
@@ -40,7 +41,7 @@ struct SpeciesListView: View {
     .listStyle(PlainListStyle())
     .navigationBarTitle(LocalizedStringKey("Species"))
     .navigationBarTitleDisplayMode(.inline)
-    .toolbar { toolbar() }
+    .navigationBarItems(leading: leadingBarItems(), trailing: trailingBarItems())
     .environment(\.editMode, self.$editMode)
     .sheet(isPresented: $showSpeciesEditor) {
       SpeciesEditorView(
@@ -116,18 +117,21 @@ struct SpeciesListView: View {
 
   // MARK: - Private Methods: UI
 
-  private func toolbar() -> some View {
-    return
-      HStack {
-        EditButton()
+  private func leadingBarItems() -> some View {
+    return HStack(alignment: .center) {
+      EditButton()
+    }
+  }
 
-        Button {
-          editSpecies.value = (species: nil, dao: SpeciesDAO(), mode: .create)
-          showSpeciesEditor = true
-        } label: {
-          Text(LocalizedStringKey("Add"))
-        }
+  private func trailingBarItems() -> some View {
+    return HStack(alignment: .center) {
+      Button {
+        editSpecies.value = (species: nil, dao: SpeciesDAO(), mode: .create)
+        showSpeciesEditor = true
+      } label: {
+        Text(LocalizedStringKey("Add"))
       }
+    }
   }
 }
 

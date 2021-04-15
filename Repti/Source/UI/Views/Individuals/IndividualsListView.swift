@@ -30,8 +30,25 @@ struct IndividualsListView: View {
     RenderIf(individuals.wrappedValue.isNotEmpty) {
       List {
         ForEach(individuals.wrappedValue, id: \.self) { individual in
-          IndividualRowView(individual: individual)
-            .padding(.vertical, 10)
+          NavigationLink(
+            destination:
+              IndividualDetailsView(
+                individual:
+                  Binding<Individual>(
+                    get: { return individual },
+                    set: { _ in
+                      do {
+                        try viewContext.save()
+                      } catch {
+                        errorAlert(message: "Error while saving changes to individual.", error: error)
+                      }
+                    })),
+            tag: individual.id!,
+            selection: $selectedId) {
+
+            IndividualRowView(individual: individual)
+              .padding(.vertical, 10)
+          }
         }
         .onDelete(perform: deleteItems)
       }
@@ -58,7 +75,7 @@ struct IndividualsListView: View {
   private var editMode: EditMode = .inactive
 
   @State
-  private var selectedId: UUID? = nil
+  private var selectedId: UUID!
 
   private var individuals: FetchRequest<Individual>
 
@@ -110,6 +127,9 @@ struct IndividualsListView: View {
     }
   }
 }
+
+
+// MARK: - Preview
 
 struct IndividualsListView_Previews: PreviewProvider {
   static var previews: some View {
