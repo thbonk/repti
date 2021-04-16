@@ -18,9 +18,14 @@
 		E9699CDA26208DBF00CB25AE /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9699CD926208DBF00CB25AE /* SpeciesEditorView.swift */; };
 		E9794F4E25A9B52D0063D595 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9794F4D25A9B52D0063D595 /* CloudKit.framework */; };
 		E997916A261ECBFD0047AC27 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E9979169261ECBFD0047AC27 /* PureSwiftUI */; };
+		E99A29A72629B510005423A2 /* PicturesSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A29A62629B510005423A2 /* PicturesSubview.swift */; };
+		E99A29AA2629B9BF005423A2 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A29A92629B9BF005423A2 /* AsyncImage.swift */; };
+		E99A29AD2629BA8D005423A2 /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A29AC2629BA8D005423A2 /* AsyncImageLoader.swift */; };
 		E9A3D44C25D7CAF40092CAD3 /* PictureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3D44B25D7CAF40092CAD3 /* PictureData.swift */; };
 		E9A517C525A82D530088986B /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E9A517C425A82D530088986B /* SwiftUICharts */; };
 		E9A517C925A8E6F30088986B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E9A517C825A8E6F30088986B /* Credits.rtf */; };
+		E9AE47F62628B0A70084B20B /* WeighingsEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AE47F52628B0A70084B20B /* WeighingsEditorView.swift */; };
+		E9C2DDF326286F74002BC9BF /* WeighingsSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2DDF226286F74002BC9BF /* WeighingsSubview.swift */; };
 		E9C6356325A3C6AD00BA2748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C6356225A3C6AD00BA2748 /* Assets.xcassets */; };
 		E9C6356625A3C6AD00BA2748 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C6356525A3C6AD00BA2748 /* Preview Assets.xcassets */; };
 		E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9C6356925A3C6AD00BA2748 /* Repti.xcdatamodeld */; };
@@ -50,8 +55,13 @@
 		E94CAD2525AEC8F60072E3BA /* OptionalValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalValue.swift; sourceTree = "<group>"; };
 		E9699CD926208DBF00CB25AE /* SpeciesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
 		E9794F4D25A9B52D0063D595 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E99A29A62629B510005423A2 /* PicturesSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesSubview.swift; sourceTree = "<group>"; };
+		E99A29A92629B9BF005423A2 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		E99A29AC2629BA8D005423A2 /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
 		E9A3D44B25D7CAF40092CAD3 /* PictureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureData.swift; sourceTree = "<group>"; };
 		E9A517C825A8E6F30088986B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = SOURCE_ROOT; };
+		E9AE47F52628B0A70084B20B /* WeighingsEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighingsEditorView.swift; sourceTree = "<group>"; };
+		E9C2DDF226286F74002BC9BF /* WeighingsSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighingsSubview.swift; sourceTree = "<group>"; };
 		E9C6355B25A3C6AB00BA2748 /* Repti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C6356225A3C6AD00BA2748 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9C6356525A3C6AD00BA2748 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -95,6 +105,7 @@
 		E92FB1B7262784FC004D488A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E99A29A92629B9BF005423A2 /* AsyncImage.swift */,
 				E92FB1B8262784FC004D488A /* Individuals */,
 				E92FB1BB262784FC004D488A /* IndividualDetails */,
 				E92FB1BC262784FC004D488A /* Species */,
@@ -117,6 +128,8 @@
 				E92FB1C426278513004D488A /* IndividualDetailsView.swift */,
 				E92FB1CB26278FBE004D488A /* GeneralDataSubview.swift */,
 				E92FB1CE2627FFC6004D488A /* DatesSubview.swift */,
+				E9C2DDF226286F74002BC9BF /* WeighingsSubview.swift */,
+				E99A29A62629B510005423A2 /* PicturesSubview.swift */,
 			);
 			path = IndividualDetails;
 			sourceTree = "<group>";
@@ -151,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				E9699CD926208DBF00CB25AE /* SpeciesEditorView.swift */,
+				E9AE47F52628B0A70084B20B /* WeighingsEditorView.swift */,
 			);
 			path = Editors;
 			sourceTree = "<group>";
@@ -238,6 +252,7 @@
 		E9C6357625A3C72000BA2748 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				E99A29AC2629BA8D005423A2 /* AsyncImageLoader.swift */,
 				E9C6357725A3C72000BA2748 /* Persistence.swift */,
 				E9C6358625A3D35500BA2748 /* Model */,
 			);
@@ -397,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9C6358925A3D35500BA2748 /* Model.swift in Sources */,
+				E99A29AA2629B9BF005423A2 /* AsyncImage.swift in Sources */,
 				E9C6359425A3D3C200BA2748 /* BaseEntity.swift in Sources */,
 				E9C635B525A587E900BA2748 /* Alerts.swift in Sources */,
 				E9C6359125A3D3C200BA2748 /* Species.swift in Sources */,
@@ -408,16 +424,20 @@
 				E94CAD2625AEC8F60072E3BA /* OptionalValue.swift in Sources */,
 				E9A3D44C25D7CAF40092CAD3 /* PictureData.swift in Sources */,
 				E92FB1C526278513004D488A /* IndividualDetailsView.swift in Sources */,
+				E99A29AD2629BA8D005423A2 /* AsyncImageLoader.swift in Sources */,
 				E9C6357A25A3C72000BA2748 /* RootView.swift in Sources */,
+				E9AE47F62628B0A70084B20B /* WeighingsEditorView.swift in Sources */,
 				E9C6359225A3D3C200BA2748 /* Picture.swift in Sources */,
 				E9C6357C25A3C72000BA2748 /* ReptiApp.swift in Sources */,
 				E92FB1C1262784FC004D488A /* SpeciesListView.swift in Sources */,
 				E92FB1CC26278FBE004D488A /* GeneralDataSubview.swift in Sources */,
 				E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */,
 				E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */,
+				E9C2DDF326286F74002BC9BF /* WeighingsSubview.swift in Sources */,
 				E92FB1CF2627FFC6004D488A /* DatesSubview.swift in Sources */,
 				E9CCBBA825E2488F0056845C /* Document.swift in Sources */,
 				E9699CDA26208DBF00CB25AE /* SpeciesEditorView.swift in Sources */,
+				E99A29A72629B510005423A2 /* PicturesSubview.swift in Sources */,
 				E9C6359025A3D3C200BA2748 /* Weight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

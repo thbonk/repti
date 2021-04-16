@@ -30,10 +30,11 @@ struct GeneralDataSubview: View {
   var body: some View {
     // Name and Gender
     VStack(alignment: .leading) {
-      Text(individual.name).font(.title)
       HStack {
         Text("Name:").font(.headline)
-        TextField("Enter Name", text: $individual.name).textFieldStyle(RoundedBorderTextFieldStyle())
+        TextField("Enter Name", text: $individual.name)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+          .padding(.trailing, 10)
         Text("Gender:").font(.headline)
         Picker(selection: $individual.genderVal, label: Text("Gender")) {
           ForEach(Gender.allCases) { gender in

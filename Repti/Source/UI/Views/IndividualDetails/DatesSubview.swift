@@ -78,6 +78,7 @@ struct DatesSubview: View {
           }
         }
       }
+      .disabled(!expanded)
     }
   }
 

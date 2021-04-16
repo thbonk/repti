@@ -1,8 +1,8 @@
 //
-//  IndividualRowView.swift
+//  AsyncImage.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 11.04.21.
+//  Created by Thomas Bonk on 16.04.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,27 +20,27 @@
 
 import SwiftUI
 
-struct IndividualRowView: View {
+struct AsyncImage: View {
 
   // MARK: - Public Properties
 
-  @ObservedObject
-  public var individual: Individual
+  @StateObject
+  public var loader: AsyncImageLoader
 
-  public var body: some View {
-    LazyVGrid(
-      columns: [GridItem(alignment: .leading), GridItem(alignment: .trailing)],
-      content: {
-        Text(individual.name)
-          .font(.headline)
-        Text(individual.gender.displayName)
-          .font(.subheadline)
-      })
+  var body: some View {
+    loader.image
+      .resizable()
+      .scaledToFit()
+      .frame(height: 200)
+      .cornerRadius(10)
+      .padding(.horizontal, 10)
+      .padding(.vertical, 20)
+      .onAppear(perform: loader.load)
   }
 }
 
-struct IndividualRowView_Previews: PreviewProvider {
+struct AsyncImage_Previews: PreviewProvider {
   static var previews: some View {
-    IndividualRowView(individual: Individual())
+    AsyncImage(loader: AsyncImageLoader(picture: Picture()))
   }
 }

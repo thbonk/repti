@@ -28,6 +28,12 @@ protocol WeightProtocol {
 
 extension Weight: WeightProtocol {
 
+  // MARK: - Public Properties
+
+  public var dao: WeightDAO {
+    return WeightDAO(date: self.date, weight: self.weight)
+  }
+
   // MARK: - Class Methods
 
   class func create(in managedObjectContext: NSManagedObjectContext) -> Weight {
@@ -45,4 +51,17 @@ struct WeightDAO: WeightProtocol {
 
   var date: Date
   var weight: Float
+
+
+  // MARK: - Initialization
+
+  init(date: Date, weight: Float) {
+    self.date = date
+    self.weight = weight
+  }
+
+  init(weighing: Weight) {
+    self.date = weighing.date
+    self.weight = weighing.weight
+  }
 }

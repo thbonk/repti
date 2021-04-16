@@ -31,9 +31,10 @@ struct IndividualDetailsView: View {
     Form {
       GeneralDataSubview(individual: $individual)
       DatesSubview(individual: $individual, expanded: $datesExpanded)
+      WeighingsSubview(individual: $individual, expanded: $weighingsExpanded)
+      PicturesSubview(individual: $individual, expanded: $picturesExpanded)
     }
     .navigationBarTitle(individual.name)
-    .navigationBarTitleDisplayMode(.inline)
   }
 
 
@@ -41,6 +42,10 @@ struct IndividualDetailsView: View {
 
   @State
   private var datesExpanded: Bool = true
+  @State
+  private var weighingsExpanded: Bool = true
+  @State
+  private var picturesExpanded: Bool = true
 }
 
 
