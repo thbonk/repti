@@ -29,6 +29,14 @@ struct RootView: View {
       SpeciesListView()
       EmptyView()
       EmptyView()
+    }.onAppear {
+      let controller = UIApplication.shared.windows.first { $0.isKeyWindow }!.rootViewController
+
+      guard let split = controller?.children[0] as? UISplitViewController else {
+        NSLog("\(String(describing: controller?.children[0])) is not a split view")
+        return
+      }
+      split.preferredDisplayMode = .twoBesideSecondary
     }
   }
 }
