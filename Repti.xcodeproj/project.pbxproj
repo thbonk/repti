@@ -21,6 +21,7 @@
 		E99A29A72629B510005423A2 /* PicturesSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A29A62629B510005423A2 /* PicturesSubview.swift */; };
 		E99A29AA2629B9BF005423A2 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A29A92629B9BF005423A2 /* AsyncImage.swift */; };
 		E99A29AD2629BA8D005423A2 /* AsyncImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A29AC2629BA8D005423A2 /* AsyncImageLoader.swift */; };
+		E9A0328F2642FD6E002DFE91 /* ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A0328E2642FD6E002DFE91 /* ImageViewer.swift */; };
 		E9A3D44C25D7CAF40092CAD3 /* PictureData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3D44B25D7CAF40092CAD3 /* PictureData.swift */; };
 		E9A517C525A82D530088986B /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E9A517C425A82D530088986B /* SwiftUICharts */; };
 		E9A517C925A8E6F30088986B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E9A517C825A8E6F30088986B /* Credits.rtf */; };
@@ -58,6 +59,7 @@
 		E99A29A62629B510005423A2 /* PicturesSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesSubview.swift; sourceTree = "<group>"; };
 		E99A29A92629B9BF005423A2 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		E99A29AC2629BA8D005423A2 /* AsyncImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageLoader.swift; sourceTree = "<group>"; };
+		E9A0328E2642FD6E002DFE91 /* ImageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewer.swift; sourceTree = "<group>"; };
 		E9A3D44B25D7CAF40092CAD3 /* PictureData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureData.swift; sourceTree = "<group>"; };
 		E9A517C825A8E6F30088986B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = SOURCE_ROOT; };
 		E9AE47F52628B0A70084B20B /* WeighingsEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighingsEditorView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				E99A29A92629B9BF005423A2 /* AsyncImage.swift */,
+				E9A0328E2642FD6E002DFE91 /* ImageViewer.swift */,
 				E92FB1B8262784FC004D488A /* Individuals */,
 				E92FB1BB262784FC004D488A /* IndividualDetails */,
 				E92FB1BC262784FC004D488A /* Species */,
@@ -432,6 +435,7 @@
 				E92FB1C1262784FC004D488A /* SpeciesListView.swift in Sources */,
 				E92FB1CC26278FBE004D488A /* GeneralDataSubview.swift in Sources */,
 				E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */,
+				E9A0328F2642FD6E002DFE91 /* ImageViewer.swift in Sources */,
 				E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */,
 				E9C2DDF326286F74002BC9BF /* WeighingsSubview.swift in Sources */,
 				E92FB1CF2627FFC6004D488A /* DatesSubview.swift in Sources */,

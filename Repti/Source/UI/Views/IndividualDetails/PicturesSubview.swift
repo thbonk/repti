@@ -35,7 +35,9 @@ struct PicturesSubview: View {
       RenderIf((individual.weighings?.count ?? 0) > 0) {
         ScrollView(.horizontal, showsIndicators: true) {
           HStack(alignment: .top, spacing: 0) {
-            ForEach(sortedPictures(), id: \.id) { picture in
+            let pictures = sortedPictures()
+
+            ForEach(pictures, id: \.id) { picture in
               AsyncImage(loader: AsyncImageLoader(picture: picture))
              /*   .contextMenu {
                   Button {
@@ -44,13 +46,13 @@ struct PicturesSubview: View {
                     Image(systemName: "trash")
                     Text("Delete")
                   }
-                }
+                }*/
                 .onTapGesture {
                   showImageViewer = true
                 }
-                .sheet(isPresented: $showImageViewer, content: {
+                .sheet(isPresented: $showImageViewer) {
                   ImageViewer(pictures: pictures, currentPicture: picture)
-                })*/
+                }
             }
           }
         }
@@ -70,6 +72,12 @@ struct PicturesSubview: View {
       }
     }
   }
+
+
+  // MARK: - Private Properties
+
+  @State
+  internal var showImageViewer = false
 
 
   // MARK: - Private Methods
