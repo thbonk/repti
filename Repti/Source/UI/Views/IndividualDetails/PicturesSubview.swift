@@ -64,9 +64,13 @@ struct PicturesSubview: View {
         Text(LocalizedStringKey("Pictures")).font(.title)
         Spacer()
         Button {
+          showImagePicker = true
         } label: {
           Image(systemName: "rectangle.badge.plus")
             .padding(.horizontal, 10)
+        }
+        .sheet(isPresented: $showImagePicker) {
+          ImagePicker(selectHandler: savePicture(image:))
         }
         .disabled(!expanded)
       }
@@ -77,10 +81,34 @@ struct PicturesSubview: View {
   // MARK: - Private Properties
 
   @State
-  internal var showImageViewer = false
+  private var showImagePicker = false
+
+  @State
+  private var showImageViewer = false
+
+  @Environment(\.managedObjectContext)
+  private var viewContext
 
 
   // MARK: - Private Methods
+
+  private func savePicture(image: UIImage) {
+    let picture = Picture.create(in: viewContext)
+    picture.filename = "\(individual.name)-\(individual.pictures!.count + 1)"
+    picture.individual = individual
+    individual.addToPictures(picture)
+
+    let pictureData = PictureData.create(in: viewContext)
+    pictureData.data = image.jpegData(compressionQuality: 1)
+    pictureData.picture = picture
+    picture.pictureData = pictureData
+
+    do {
+      try viewContext.save()
+    } catch {
+      errorAlert(message: "Error while saving a picture.", error: error)
+    }
+  }
 
   private func sortedPictures() -> [Picture] {
     return
