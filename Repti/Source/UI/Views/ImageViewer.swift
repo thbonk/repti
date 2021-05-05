@@ -15,6 +15,10 @@ struct ImageViewer: View {
     withAnimation(.easeInOut) {
       GeometryReader { geo in
         ZStack {
+          let opacity = 0.4
+          let buttonImageSize: CGFloat = 28.0
+          let buttonOffset = buttonImageSize
+
           Image(uiImage: UIImage(data: currentPicture.pictureData!.data!)!)
             .resizable()
             .scaledToFill()
@@ -25,16 +29,22 @@ struct ImageViewer: View {
             presentationMode.wrappedValue.dismiss()
           } label: {
             Image(systemName: "xmark.circle.fill")
+              .font(.system(size: buttonImageSize))
+              .opacity(opacity)
           }
-          .offset(x: -geo.size.width / 2 + 20, y: -geo.size.height / 2 + 20)
+          .buttonStyle(PlainButtonStyle())
+          .offset(x: -geo.size.width / 2 + buttonOffset, y: -geo.size.height / 2 + buttonOffset)
           Button {
             if let index = pictures.firstIndex(of: currentPicture) {
               currentPicture = pictures[index - 1]
             }
           } label: {
             Image(systemName: "chevron.left.circle.fill")
+              .font(.system(size: buttonImageSize))
+              .opacity(opacity)
           }
-          .offset(x: -geo.size.width / 2 + 20)
+          .buttonStyle(PlainButtonStyle())
+          .offset(x: -geo.size.width / 2 + buttonOffset)
           .disabled(isFirstPicture)
           Button {
             if let index = pictures.firstIndex(of: currentPicture) {
@@ -42,8 +52,11 @@ struct ImageViewer: View {
             }
           } label: {
             Image(systemName: "chevron.right.circle.fill")
+              .font(.system(size: buttonImageSize))
+              .opacity(opacity)
           }
-          .offset(x: geo.size.width / 2 - 20)
+          .buttonStyle(PlainButtonStyle())
+          .offset(x: geo.size.width / 2 - buttonOffset)
           .disabled(isLastPicture)
         }
       }
