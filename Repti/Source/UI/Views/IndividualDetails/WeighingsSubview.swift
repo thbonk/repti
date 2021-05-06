@@ -35,7 +35,7 @@ struct WeighingsSubview: View {
     DisclosureGroup(isExpanded: $expanded, content: {
       RenderIf((individual.weighings?.count ?? 0) > 0) {
         HStack {
-          BarChartView(dataPoints: sortedWeights())
+          LineChartView(dataPoints: sortedWeights())
             .popover(isPresented: $showWeighingEditor) {
               WeighingsEditorView(
                 weight: editWeighing.value!.dao,
