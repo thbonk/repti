@@ -124,8 +124,8 @@ struct WeighingsSubview: View {
       }
       .map { weight in
         DataPoint(
-           value: Double(weight.weight),
-           label: LocalizedStringKey(dateFormatter.string(from: weight.date)),
+          value: Double(weight.weight),
+          label: LocalizedStringKey(dateFormatter.string(from: weight.date)),
           legend: legend)
       }
   }
@@ -144,10 +144,10 @@ struct WeighingsSubview: View {
   private func weighingsDataList() -> some View {
     return
       VStack(alignment: .leading) {
-        Text(LocalizedStringKey("Weight Data"))
-          .font(.callout)
-          .padding([.top, .bottom], 20)
-
+        LazyVGrid(columns: [GridItem(), GridItem()]) {
+          Text("Date").fontWeight(.bold)
+          Text("Weight").fontWeight(.bold)
+        }
         List {
           let dateFormatter = weighingDateFormatter()
 
