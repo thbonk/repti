@@ -35,9 +35,8 @@ struct WeighingsSubview: View {
     DisclosureGroup(isExpanded: $expanded, content: {
       RenderIf((individual.weighings?.count ?? 0) > 0) {
         HStack {
-          LineView(data: sortedWeights(), legend: "Weight")
+          BarChartView(dataPoints: sortedWeights())
             .popover(isPresented: $showWeighingEditor) {
-
               WeighingsEditorView(
                 weight: editWeighing.value!.dao,
                 mode: editWeighing.value!.mode,
@@ -114,14 +113,20 @@ struct WeighingsSubview: View {
     editWeighing.value = nil
   }
 
-  private func sortedWeights() -> [Double] {
+  private func sortedWeights() -> [DataPoint] {
+    let legend = Legend(color: .red, label: "Weight", order: 1)
+    let dateFormatter = weighingDateFormatter()
+
     return
       Array(individual.weighings!)
       .sorted { (weight1, weight2) -> Bool in
         weight1.date < weight2.date
       }
       .map { weight in
-        Double(weight.weight)
+        DataPoint(
+           value: Double(weight.weight),
+           label: LocalizedStringKey(dateFormatter.string(from: weight.date)),
+          legend: legend)
       }
   }
 
