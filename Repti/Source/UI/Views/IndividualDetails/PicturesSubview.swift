@@ -39,14 +39,14 @@ struct PicturesSubview: View {
 
             ForEach(pictures, id: \.id) { picture in
               AsyncImage(loader: AsyncImageLoader(picture: picture))
-             /*   .contextMenu {
+                .contextMenu {
                   Button {
                     delete(picture: picture)
                   } label: {
                     Image(systemName: "trash")
                     Text("Delete")
                   }
-                }*/
+                }
                 .onTapGesture {
                   showImageViewer = true
                 }
@@ -107,6 +107,15 @@ struct PicturesSubview: View {
       try viewContext.save()
     } catch {
       errorAlert(message: "Error while saving a picture.", error: error)
+    }
+  }
+
+  internal func delete(picture: Picture) {
+    viewContext.delete(picture)
+    do {
+      try viewContext.save()
+    } catch {
+      errorAlert(message: "Error while deleting a picture.", error: error)
     }
   }
 

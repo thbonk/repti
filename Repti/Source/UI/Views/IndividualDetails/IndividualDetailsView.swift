@@ -33,6 +33,7 @@ struct IndividualDetailsView: View {
       DatesSubview(individual: $individual, expanded: $datesExpanded)
       WeighingsSubview(individual: $individual, expanded: $weighingsExpanded)
       PicturesSubview(individual: $individual, expanded: $picturesExpanded)
+      DocumentsSubview(individual: $individual, expanded: $documentsExpanded)
     }
     .navigationBarTitle(individual.name)
   }
@@ -46,6 +47,8 @@ struct IndividualDetailsView: View {
   private var weighingsExpanded: Bool = true
   @State
   private var picturesExpanded: Bool = true
+  @State
+  private var documentsExpanded: Bool = true
 }
 
 
