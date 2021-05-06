@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E91D5A3826433D5000D74507 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E91D5A3726433D5000D74507 /* SwiftUICharts */; };
+		E91D5A3A2643ADAF00D74507 /* DocumentsSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91D5A392643ADAF00D74507 /* DocumentsSubview.swift */; };
 		E92FB1BF262784FC004D488A /* IndividualRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92FB1B9262784FC004D488A /* IndividualRowView.swift */; };
 		E92FB1C0262784FC004D488A /* IndividualsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92FB1BA262784FC004D488A /* IndividualsListView.swift */; };
 		E92FB1C1262784FC004D488A /* SpeciesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92FB1BD262784FC004D488A /* SpeciesListView.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E91D5A392643ADAF00D74507 /* DocumentsSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsSubview.swift; sourceTree = "<group>"; };
 		E92FB1B9262784FC004D488A /* IndividualRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualRowView.swift; sourceTree = "<group>"; };
 		E92FB1BA262784FC004D488A /* IndividualsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualsListView.swift; sourceTree = "<group>"; };
 		E92FB1BD262784FC004D488A /* SpeciesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesListView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				E92FB1CE2627FFC6004D488A /* DatesSubview.swift */,
 				E9C2DDF226286F74002BC9BF /* WeighingsSubview.swift */,
 				E99A29A62629B510005423A2 /* PicturesSubview.swift */,
+				E91D5A392643ADAF00D74507 /* DocumentsSubview.swift */,
 			);
 			path = IndividualDetails;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				E9C6358925A3D35500BA2748 /* Model.swift in Sources */,
 				E99A29AA2629B9BF005423A2 /* AsyncImage.swift in Sources */,
 				E9C6359425A3D3C200BA2748 /* BaseEntity.swift in Sources */,
+				E91D5A3A2643ADAF00D74507 /* DocumentsSubview.swift in Sources */,
 				E9C635B525A587E900BA2748 /* Alerts.swift in Sources */,
 				E9C6359125A3D3C200BA2748 /* Species.swift in Sources */,
 				E92FB1BF262784FC004D488A /* IndividualRowView.swift in Sources */,
