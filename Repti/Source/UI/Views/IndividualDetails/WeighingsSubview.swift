@@ -36,7 +36,7 @@ struct WeighingsSubview: View {
       RenderIf((individual.weighings?.count ?? 0) > 0) {
         HStack {
           LineChartView(dataPoints: sortedWeights())
-            .popover(isPresented: $showWeighingEditor) {
+            .sheet(isPresented: $showWeighingEditor) {
               WeighingsEditorView(
                 weight: editWeighing.value!.dao,
                 mode: editWeighing.value!.mode,

@@ -72,8 +72,14 @@ struct WeighingsEditorView: View {
             })
             .keyboardType(.numberPad)
         }
-
-        Section {
+      }
+      .padding(.horizontal, 10)
+      .navigationTitle(
+        mode == .create
+          ? LocalizedStringKey("Add Weighing")
+          : LocalizedStringKey("Edit Weighing"))
+      .toolbar(content: {
+        ToolbarItem(placement: .navigationBarLeading) {
           Button {
             do {
               try onSave?(weight)
@@ -87,17 +93,16 @@ struct WeighingsEditorView: View {
             Text(LocalizedStringKey("Save"))
           }
         }
-      }
-      .padding(.horizontal, 10)
-      .navigationTitle(
-        mode == .create
-          ? LocalizedStringKey("Add Weighing")
-          : LocalizedStringKey("Edit Weighing"))
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            presentationMode.wrappedValue.dismiss()
+            onDismiss?()
+          } label: {
+            Text(LocalizedStringKey("Cancel"))
+          }
+        }
+      })
       .navigationBarTitleDisplayMode(.inline)
-    }
-    .frame(minWidth: 300, minHeight: 290)
-    .onDisappear {
-      onDismiss?()
     }
   }
 

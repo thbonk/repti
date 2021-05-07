@@ -19,6 +19,7 @@
 //
 
 import PureSwiftUI
+import UniformTypeIdentifiers
 
 struct DocumentsSubview: View {
 
@@ -64,12 +65,23 @@ struct DocumentsSubview: View {
         Text(LocalizedStringKey("Documents")).font(.title)
         Spacer()
         Button {
-
+          showDocumentPicker = false
+          // fix broken picker sheet
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            showDocumentPicker = true
+          }
         } label: {
           Image(systemName: "doc.badge.plus")
             .padding(.horizontal, 10)
         }
         .disabled(!expanded)
+        .fileImporter(
+                      isPresented: $showDocumentPicker,
+              allowedContentTypes: [.data],
+          allowsMultipleSelection: false) { result in
+                      // add fileUrl.startAccessingSecurityScopedResource() before doc.viewFile(fileUrl: fileUrl)
+            NSLog("\(result)")
+          }
       }
     }
   }
@@ -79,6 +91,13 @@ struct DocumentsSubview: View {
 
   @Binding
   var expanded: Bool
+
+
+  // MARK: - Private Properties
+
+  @State
+  private var showDocumentPicker = false
+
 
 
   // MARK: Private Methods
