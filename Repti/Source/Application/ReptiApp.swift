@@ -3,7 +3,6 @@
 //  Repti
 //
 //  Created by Thomas Bonk on 04.01.21.
-//
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,15 +19,29 @@
 //
 
 import SwiftUI
+import FeatureFlagsPackage
 
 @main
 struct ReptiApp: App {
-  let persistenceController = PersistenceController.shared
+
+  // MARK: - Public Properties
   
   var body: some Scene {
     WindowGroup {
-      ContentView()
-        .environment(\.managedObjectContext, persistenceController.container.viewContext)
-    }    
+      RootView()
+        .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        .environment(\.repti_enable_documents, Feature.isEnabled(.repti_enable_documents))
+    }
+  }
+
+
+  // MARK: - Initialization
+
+  init() {
+    guard let featuresURL = Bundle.main.url(forResource: "features", withExtension: "json") else {
+      return
+    }
+
+    FeatureFlags.configurationURL = featuresURL
   }
 }

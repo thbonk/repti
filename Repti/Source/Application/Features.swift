@@ -1,8 +1,8 @@
 //
-//  AsyncImage.swift
+//  Features.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 16.04.21.
+//  Created by Thomas Bonk on 07.05.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,28 +19,19 @@
 //
 
 import SwiftUI
+import FeatureFlagsPackage
 
-struct AsyncImage: View {
-
-  // MARK: - Public Properties
-
-  @StateObject
-  public var loader: AsyncImageLoader
-
-  var body: some View {
-    loader.image
-      .resizable()
-      .scaledToFit()
-      .frame(height: 200)
-      .cornerRadius(10)
-      .padding(.horizontal, 10)
-      .padding(.vertical, 20)
-      .onAppear(perform: loader.load)
-  }
+extension Feature.Name {
+  static let repti_enable_documents = Feature.Name(rawValue: "repti_enable_documents")
 }
 
-struct AsyncImage_Previews: PreviewProvider {
-  static var previews: some View {
-    AsyncImage(loader: AsyncImageLoader(picture: Picture()))
+private struct repti_enable_documents_key: EnvironmentKey {
+  static let defaultValue: Bool = false
+}
+
+extension EnvironmentValues {
+  var repti_enable_documents: Bool {
+    get { self[repti_enable_documents_key.self] }
+    set { self[repti_enable_documents_key.self] = newValue }
   }
 }

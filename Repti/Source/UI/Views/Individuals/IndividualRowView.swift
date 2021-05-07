@@ -1,9 +1,8 @@
 //
-//  MasterView.swift
+//  IndividualRowView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 05.01.21.
-//
+//  Created by Thomas Bonk on 11.04.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,31 +20,27 @@
 
 import SwiftUI
 
-struct MasterView<Content>: View where Content : View {
+struct IndividualRowView: View {
 
   // MARK: - Public Properties
 
-  var content: Content
+  @ObservedObject
+  public var individual: Individual
 
-  var body: Content {
-    content
+  public var body: some View {
+    LazyVGrid(
+      columns: [GridItem(alignment: .leading), GridItem(alignment: .trailing)],
+      content: {
+        Text(individual.name)
+          .font(.headline)
+        Text(individual.gender.displayName)
+          .font(.subheadline)
+      })
   }
-
-
-  // MARK: - Initialization
-
-  init(@ViewBuilder content: () -> Content) {
-    self.content = content()
-  }
-
-
-  // MARK: - Type Aliases
-
-  public typealias Body = Content
 }
 
-struct MasterView_Previews: PreviewProvider {
-    static var previews: some View {
-      MasterView { Text("Master View") }
-    }
+struct IndividualRowView_Previews: PreviewProvider {
+  static var previews: some View {
+    IndividualRowView(individual: Individual())
+  }
 }

@@ -26,11 +26,41 @@ import PhotosUI
 
 struct ImagePicker: UIViewControllerRepresentable {
 
+  // MARK: - Public Properties
+
   @State
   public var selectHandler: (UIImage) -> ()
 
+
+  // MARK: - Private Properties
+  
   @Environment(\.presentationMode)
   private var presentationMode
+
+
+  // MARK: - UIViewControllerRepresentable
+
+  func makeCoordinator() -> Coordinator {
+    return Coordinator(presentationMode: presentationMode, selectHandler: selectHandler)
+  }
+
+  func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> PHPickerViewController {
+    var configuration = PHPickerConfiguration()
+
+    configuration.filter = .images
+    configuration.selectionLimit = 0
+
+    let picker = PHPickerViewController(configuration: configuration)
+    picker.delegate = context.coordinator
+
+    return picker
+  }
+
+  func updateUIViewController(
+    _ uiViewController: PHPickerViewController,
+    context: UIViewControllerRepresentableContext<ImagePicker>) {
+
+  }
 
 
   class Coordinator: NSObject, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
@@ -73,28 +103,6 @@ struct ImagePicker: UIViewControllerRepresentable {
     //}
 
   }
-
-  func makeCoordinator() -> Coordinator {
-    return Coordinator(presentationMode: presentationMode, selectHandler: selectHandler)
-  }
-
-  func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> PHPickerViewController {
-    var configuration = PHPickerConfiguration()
-
-    configuration.filter = .images
-    configuration.selectionLimit = 0
-
-    let picker = PHPickerViewController(configuration: configuration)
-    picker.delegate = context.coordinator
-
-    return picker
-  }
-
-  func updateUIViewController(_ uiViewController: PHPickerViewController,
-                              context: UIViewControllerRepresentableContext<ImagePicker>) {
-
-  }
-
 }
 
 

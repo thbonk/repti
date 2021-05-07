@@ -1,5 +1,5 @@
 //
-//  AsyncImage.swift
+//  AsyncImageLoader.swift
 //  Repti
 //
 //  Created by Thomas Bonk on 16.04.21.
@@ -19,28 +19,37 @@
 //
 
 import SwiftUI
+import Foundation
 
-struct AsyncImage: View {
+class AsyncImageLoader: ObservableObject {
 
-  // MARK: - Public Properties
+  // MARK: - Private Properties
 
-  @StateObject
-  public var loader: AsyncImageLoader
+  @Published
+  public private(set) var image: Image = Image(systemName: "photo")
 
-  var body: some View {
-    loader.image
-      .resizable()
-      .scaledToFit()
-      .frame(height: 200)
-      .cornerRadius(10)
-      .padding(.horizontal, 10)
-      .padding(.vertical, 20)
-      .onAppear(perform: loader.load)
+
+  // MARK: - Private Properties
+
+  private var picture: Picture
+
+
+  // MARK: - Initialization
+
+  init(picture: Picture) {
+    self.picture = picture
   }
-}
 
-struct AsyncImage_Previews: PreviewProvider {
-  static var previews: some View {
-    AsyncImage(loader: AsyncImageLoader(picture: Picture()))
+  func load() {
+    DispatchQueue.global(qos: .background).async {
+      if let pictureData = self.picture.pictureData?.data {
+        if let uiImg = UIImage(data: pictureData) {
+          let img = Image(uiImage: uiImg)
+          DispatchQueue.main.async {
+            self.image = img
+          }
+        }
+      }
+    }
   }
 }

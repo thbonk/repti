@@ -2,8 +2,7 @@
 //  SpeciesEditorView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 04.01.21.
-//
+//  Created by Thomas Bonk on 09.04.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,116 +22,82 @@ import SwiftUI
 
 struct SpeciesEditorView: View {
 
+  // MARK: - Public Typealiases
+
+  public typealias OnSaveCallback = (SpeciesDAO) throws -> ()
+  public typealias OnCancelCallback = () -> ()
+
+
   // MARK: - Public Enums
 
-  enum Mode {
+  public enum Mode {
     case create
     case edit
   }
 
-  // MARK: - Public Proeprties
 
-  var mode: Mode
+  // MARK: - Public Properties
 
   @State
-  var model: SpeciesDAO = SpeciesDAO()
+  public var species: SpeciesDAO
 
-  @Environment(\.presentationMode) var presentationMode
+  public var mode: Mode = .create
 
-  var saveAction: ((SpeciesDAO) -> ())? = nil
-  var cancelAction: (() -> ())? = nil
+  public var onSave: OnSaveCallback?
+  public var onCancel: OnCancelCallback?
 
-  var body: some View {
-    VStack {
-      Text(
-        mode == .create
-          ? NSLocalizedString("Add Species", comment: "Label")
-          : NSLocalizedString("Edit Species", comment: "Label")
-      )
-      .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-      .padding(.top, 20)
+  public var body: some View {
+    NavigationView {
+      Form {
+        Section(header: Text("Species Name")) {
+          TextField(LocalizedStringKey("Enter name of species"), text: $species.name)
+        }
+        Section(header: Text("Scientific Name")) {
+          TextField(LocalizedStringKey("Enter scientific name of species"), text: $species.scientificName)
+        }
 
-      if UIDevice.current.userInterfaceIdiom == .phone {
-        smallUserInterface()
-      } else {
-        largeUserInterface()
+        Section {
+          HStack {
+            Button {
+              do {
+                try onSave?(species)
+                presentationMode.wrappedValue.dismiss()
+              } catch {
+                errorAlert(
+                  message: "Error while saving a species.",
+                  error: error)
+              }
+            } label: {
+              Text(LocalizedStringKey("Save"))
+                .padding(.all, 5)
+            }
+            Spacer()
+            Button {
+              DispatchQueue.main.async {
+                onCancel?()
+              }
+              presentationMode.wrappedValue.dismiss()
+            } label: {
+              Text(LocalizedStringKey("Cancel"))
+                .padding(.all, 5)
+            }
+          }
+        }
       }
-
-      HStack {
-        Button(
-          action: {
-            saveAction?(model)
-            self.presentationMode.wrappedValue.dismiss()
-          },
-          label: { Text("Save") })
-        Button(
-          action: {
-            cancelAction?()
-            self.presentationMode.wrappedValue.dismiss()
-          },
-          label: { Text("Cancel") })
-      }
-      .padding(.bottom, 20)
+      .navigationBarTitle(mode == .create ? LocalizedStringKey("Add Species") : LocalizedStringKey("Edit Species"))
+      .navigationBarTitleDisplayMode(.inline)
     }
   }
 
 
-  // MARK: - Private Methods
+  // MARK: - Private Properties
 
-  private func largeUserInterface() -> AnyView {
-    return
-      AnyView(
-        Form {
-          LazyVGrid(
-            columns: [
-              GridItem(alignment: .trailing),
-              GridItem(alignment: .leading)],
-            spacing: 20) {
-
-            Group {
-              Text("Name:").font(.headline)
-              TextField("Enter Name", text: $model.name)
-            }.padding(.top, 10)
-
-            Group {
-              Text("Scientific Name:").font(.headline)
-              TextField("Enter Scientific Name", text: $model.scientificName)
-            }.padding(.bottom, 10)
-          }
-        }
-      )
-  }
-
-  private func smallUserInterface() -> AnyView {
-    return
-      AnyView(
-        Form {
-          LazyVGrid(
-            columns: [
-              GridItem(alignment: .leading)],
-            spacing: 20) {
-
-            Group {
-              VStack(alignment: .leading) {
-                Text("Name:").font(.headline)
-                TextField("Enter Name", text: $model.name)
-              }
-            }.padding(.top, 10)
-
-            Group {
-              VStack(alignment: .leading) {
-                Text("Scientific Name:").font(.headline)
-                TextField("Enter Scientific Name", text: $model.scientificName)
-              }
-            }.padding(.bottom, 10)
-          }
-        }
-      )
-  }
+  @Environment(\.presentationMode)
+  var presentationMode
 }
 
 struct SpeciesEditorView_Previews: PreviewProvider {
   static var previews: some View {
-    SpeciesEditorView(mode: .create, model: SpeciesDAO())
+    SpeciesEditorView(species: Species().dao)
   }
 }

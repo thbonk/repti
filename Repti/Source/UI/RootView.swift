@@ -1,8 +1,8 @@
 //
-//  AsyncImage.swift
+//  RootView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 16.04.21.
+//  Created by Thomas Bonk on 04.01.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,27 +20,30 @@
 
 import SwiftUI
 
-struct AsyncImage: View {
-
+struct RootView: View {
+  
   // MARK: - Public Properties
-
-  @StateObject
-  public var loader: AsyncImageLoader
-
+  
   var body: some View {
-    loader.image
-      .resizable()
-      .scaledToFit()
-      .frame(height: 200)
-      .cornerRadius(10)
-      .padding(.horizontal, 10)
-      .padding(.vertical, 20)
-      .onAppear(perform: loader.load)
+    NavigationView {
+      SpeciesListView()
+      EmptyView()
+      EmptyView()
+    }.onAppear {
+      let controller = UIApplication.shared.windows.first { $0.isKeyWindow }!.rootViewController
+
+      guard let split = controller?.children[0] as? UISplitViewController else {
+        NSLog("\(String(describing: controller?.children[0])) is not a split view")
+        return
+      }
+      split.preferredDisplayMode = .twoBesideSecondary
+    }
   }
 }
 
-struct AsyncImage_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    AsyncImage(loader: AsyncImageLoader(picture: Picture()))
+    RootView()
+      .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
   }
 }

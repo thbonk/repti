@@ -3,7 +3,6 @@
 //  Repti
 //
 //  Created by Thomas Bonk on 05.01.21.
-//
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,9 +30,16 @@ protocol SpeciesProtocol {
 
 extension Species: SpeciesProtocol {
 
+  // MARK: - Public Properties
+
+  public var dao: SpeciesDAO {
+    return SpeciesDAO(species: self)
+  }
+
+
   // MARK: - Class Methods
 
-  class func create(in managedObjectContext: NSManagedObjectContext) -> Species {
+  public class func create(in managedObjectContext: NSManagedObjectContext) -> Species {
     return
       NSEntityDescription
         .insertNewObject(

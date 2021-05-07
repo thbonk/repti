@@ -2,8 +2,7 @@
 //  WeighingsEditorView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 08.01.21.
-//
+//  Created by Thomas Bonk on 15.04.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,61 +23,107 @@ import Combine
 
 struct WeighingsEditorView: View {
 
-  // MARK: - Private Properties
+  // MARK: - Public Typealiases
 
-  @State
-  private var model: WeightDAO = WeightDAO(date: Date(), weight: 0)
-  @State
-  private var weight = ""
-  @Environment(\.presentationMode)
-  private var presentationMode
+  public typealias OnSaveCallback = (WeightDAO) throws -> ()
+  public typealias OnDismissCallback = () -> ()
+
+
+  // MARK: - Public Enums
+
+  public enum Mode {
+    case create
+    case edit
+  }
 
 
   // MARK: - Public Properties
 
-  var saveHandler: ((WeightDAO) -> ())? = nil
+  @State
+  public var weight: WeightDAO
 
+  public var mode: Mode
+
+  public var onSave: OnSaveCallback?
+  public var onDismiss: OnDismissCallback?
+
+  
   var body: some View {
-    Group {
-      LazyVGrid(
-        columns: [
-          GridItem(alignment: .trailing), GridItem(alignment: .leading)],
-        content: {
-          Group {
-            Text("Date:").font(.headline)
-            DatePicker(
-              "Please enter a date",
-              selection: $model.date,
-              displayedComponents: .date)
-              .labelsHidden()
+    NavigationView {
+      Form {
+        Section(header: Text(LocalizedStringKey("Date"))) {
+          DatePicker(
+            LocalizedStringKey("Please enter a date"),
+            selection: $weight.date,
+            displayedComponents: .date)
+            .labelsHidden()
+        }
 
-            Text("Weight:").font(.headline)
-            TextField("Enter weight", text: $weight)
-              .keyboardType(.numberPad)
-              .onReceive(Just(weight)) { newValue in
-                let filtered = newValue.filter { "0123456789.".contains($0) }
-                if filtered == newValue && filtered.count > 0 {
-                  weight = filtered
-                  model.weight = Float(weight)!
-                }
+        Section(header: Text(LocalizedStringKey("Weight"))) {
+          TextField(
+            LocalizedStringKey("Enter weight"),
+            text: $weightString)
+            .onReceive(Just(weightString), perform: { newValue in
+              let filtered = newValue.filter { "0123456789.".contains($0) }
+              if filtered == newValue && filtered.count > 0 {
+                weightString = filtered
+                weight.weight = Float(weightString)!
               }
-              .onAppear(perform: { self.weight = String(format: "%.0f", model.weight) })
+            })
+            .keyboardType(.numberPad)
+        }
+      }
+      .onAppear {
+        weightString = String(format: "%.0f", weight.weight)
+      }
+      .padding(.horizontal, 10)
+      .navigationTitle(
+        mode == .create
+          ? LocalizedStringKey("Add Weighing")
+          : LocalizedStringKey("Edit Weighing"))
+      .toolbar(content: {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button {
+            do {
+              try onSave?(weight)
+              presentationMode.wrappedValue.dismiss()
+            } catch {
+              errorAlert(
+                message: "Error while saving a weighing.",
+                error: error)
+            }
+          } label: {
+            Text(LocalizedStringKey("Save"))
           }
-        })
-
-      Button("Save", action: {
-        saveHandler?(model)
-        self.presentationMode.wrappedValue.dismiss()
+        }
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            presentationMode.wrappedValue.dismiss()
+            onDismiss?()
+          } label: {
+            Text(LocalizedStringKey("Cancel"))
+          }
+        }
       })
-      .padding(.top, 20)
+      .navigationBarTitleDisplayMode(.inline)
     }
-    .padding(.all, 20)
-    .frame(minWidth: 250, maxWidth: .infinity, minHeight: 50, maxHeight: .infinity)
   }
+
+
+  // MARK: - Private Properties
+
+  @State
+  private var weightString = ""
+
+  @Environment(\.presentationMode)
+  private var presentationMode
 }
+
+
+// MARK: - Preview
 
 struct WeighingsEditorView_Previews: PreviewProvider {
   static var previews: some View {
-    WeighingsEditorView()
+    WeighingsEditorView(weight: Weight().dao, mode: .create)
   }
 }
