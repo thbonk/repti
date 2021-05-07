@@ -48,10 +48,17 @@ struct PicturesSubview: View {
                   }
                 }
                 .onTapGesture {
+                  selectedPicture = picture
                   showImageViewer = true
                 }
+                // This is a little bit hacky, but otherwise doesn't work reliably
+                .onLongPressGesture(minimumDuration: 0.0, maximumDistance: 1, pressing: { _ in
+                  selectedPicture = picture
+                }, perform: {
+                  selectedPicture = picture
+                })
                 .sheet(isPresented: $showImageViewer) {
-                  ImageViewer(pictures: pictures, currentPicture: picture)
+                  ImageViewer(pictures: pictures, currentPicture: selectedPicture)
                 }
             }
           }
@@ -85,6 +92,9 @@ struct PicturesSubview: View {
 
   @State
   private var showImageViewer = false
+
+  @State
+  private var selectedPicture: Picture!
 
   @Environment(\.managedObjectContext)
   private var viewContext

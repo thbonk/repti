@@ -73,6 +73,9 @@ struct WeighingsEditorView: View {
             .keyboardType(.numberPad)
         }
       }
+      .onAppear {
+        weightString = String(format: "%.0f", weight.weight)
+      }
       .padding(.horizontal, 10)
       .navigationTitle(
         mode == .create

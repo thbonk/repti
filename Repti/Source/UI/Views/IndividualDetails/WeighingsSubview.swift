@@ -88,7 +88,8 @@ struct WeighingsSubview: View {
   @Environment(\.managedObjectContext)
   private var viewContext
 
-  
+  @State
+  private var selectedWeighing: Weight!
 
 
   // MARK: - Private Methods
@@ -107,6 +108,15 @@ struct WeighingsSubview: View {
     }
 
     try viewContext.save()
+  }
+
+  private func delete(weighing: Weight) {
+    viewContext.delete(weighing)
+    do {
+      try viewContext.save()
+    } catch {
+      errorAlert(message: "Error while saving a picture.", error: error)
+    }
   }
 
   private func editorDismissed() {
@@ -156,14 +166,28 @@ struct WeighingsSubview: View {
               Text(dateFormatter.string(from: weighing.date))
               Text(String(format: "%.0f", weighing.weight))
             }
+            // This is a little bit hacky, but otherwise doesn't work reliably
+            .onLongPressGesture(minimumDuration: 0.0, maximumDistance: 1, pressing: { _ in
+              selectedWeighing = weighing
+            }, perform: {
+              selectedWeighing = weighing
+            })
             .contextMenu {
               Button {
-                editWeighing.value = (weight: weighing, dao: WeightDAO(weighing: weighing), mode: .edit)
+                editWeighing.value = (weight: selectedWeighing, dao: WeightDAO(weighing: selectedWeighing), mode: .edit)
                 showWeighingEditor = true
               } label: {
                 HStack {
                   Image(systemName: "square.and.pencil")
                   Text(LocalizedStringKey("Edit"))
+                }
+              }
+              Button {
+                delete(weighing: selectedWeighing)
+              } label: {
+                HStack {
+                  Image(systemName: "trash.circle")
+                  Text(LocalizedStringKey("Delete"))
                 }
               }
             }
