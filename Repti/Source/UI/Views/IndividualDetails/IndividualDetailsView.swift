@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-import SwiftUI
+import PureSwiftUI
 
 struct IndividualDetailsView: View {
 
@@ -33,7 +33,9 @@ struct IndividualDetailsView: View {
       DatesSubview(individual: $individual, expanded: $datesExpanded)
       WeighingsSubview(individual: $individual, expanded: $weighingsExpanded)
       PicturesSubview(individual: $individual, expanded: $picturesExpanded)
-      DocumentsSubview(individual: $individual, expanded: $documentsExpanded)
+      RenderIf(enableDocuments) {
+        DocumentsSubview(individual: $individual, expanded: $documentsExpanded)
+      }
     }
     .navigationBarTitle(individual.name)
   }
@@ -49,6 +51,9 @@ struct IndividualDetailsView: View {
   private var picturesExpanded: Bool = true
   @State
   private var documentsExpanded: Bool = true
+
+  @Environment(\.repti_enable_documents)
+  private var enableDocuments
 }
 
 

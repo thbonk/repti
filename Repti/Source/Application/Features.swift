@@ -1,8 +1,8 @@
 //
-//  ReptiApp.swift
+//  Features.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 04.01.21.
+//  Created by Thomas Bonk on 07.05.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,27 +21,17 @@
 import SwiftUI
 import FeatureFlagsPackage
 
-@main
-struct ReptiApp: App {
+extension Feature.Name {
+  static let repti_enable_documents = Feature.Name(rawValue: "repti_enable_documents")
+}
 
-  // MARK: - Public Properties
-  
-  var body: some Scene {
-    WindowGroup {
-      RootView()
-        .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-        .environment(\.repti_enable_documents, Feature.isEnabled(.repti_enable_documents))
-    }
-  }
+private struct repti_enable_documents_key: EnvironmentKey {
+  static let defaultValue: Bool = false
+}
 
-
-  // MARK: - Initialization
-
-  init() {
-    guard let featuresURL = Bundle.main.url(forResource: "features", withExtension: "json") else {
-      return
-    }
-
-    FeatureFlags.configurationURL = featuresURL
+extension EnvironmentValues {
+  var repti_enable_documents: Bool {
+    get { self[repti_enable_documents_key.self] }
+    set { self[repti_enable_documents_key.self] = newValue }
   }
 }

@@ -65,10 +65,10 @@ struct DocumentsSubview: View {
         Text(LocalizedStringKey("Documents")).font(.title)
         Spacer()
         Button {
-          showDocumentPicker = false
+          showFileImporter = false
           // fix broken picker sheet
           DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            showDocumentPicker = true
+            showFileImporter = true
           }
         } label: {
           Image(systemName: "doc.badge.plus")
@@ -76,10 +76,10 @@ struct DocumentsSubview: View {
         }
         .disabled(!expanded)
         .fileImporter(
-                      isPresented: $showDocumentPicker,
+                      isPresented: $showFileImporter,
               allowedContentTypes: [.data],
           allowsMultipleSelection: false) { result in
-                      // add fileUrl.startAccessingSecurityScopedResource() before doc.viewFile(fileUrl: fileUrl)
+                      // add fileUrl.startAccessingSecurityScopedResource() before accessing file
             NSLog("\(result)")
           }
       }
@@ -96,7 +96,7 @@ struct DocumentsSubview: View {
   // MARK: - Private Properties
 
   @State
-  private var showDocumentPicker = false
+  private var showFileImporter = false
 
 
 
