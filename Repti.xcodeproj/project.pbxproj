@@ -97,6 +97,8 @@
 		E9CCBBA725E2488F0056845C /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		E9CCBBAA25E248DE0056845C /* DocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentData.swift; sourceTree = "<group>"; };
 		E9CCBBAF25E42EE40056845C /* ReptiV4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV4.xcdatamodel; sourceTree = "<group>"; };
+		E9F6D4D82646EB690055AA3E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E9F6D4D92646EBA60055AA3E /* ExternalConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ExternalConfig.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				E9C6356225A3C6AD00BA2748 /* Assets.xcassets */,
 				E9C6356C25A3C6AD00BA2748 /* Info.plist */,
 				E91D5A402645D6AE00D74507 /* features.json */,
+				E9F6D4D92646EBA60055AA3E /* ExternalConfig.xcconfig */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				E9C6358325A3C86F00BA2748 /* LICENSE */,
 				E9C6358225A3C86F00BA2748 /* README.md */,
 				E9C6358425A3C86F00BA2748 /* swiftgen.yml */,
+				E9F6D4D82646EB690055AA3E /* .gitignore */,
 				E9C6355D25A3C6AB00BA2748 /* Repti */,
 				E92FB1C826278D09004D488A /* swiftgen-templates */,
 				E9C6355C25A3C6AB00BA2748 /* Products */,
@@ -404,7 +408,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n#buildNumber=$(($buildNumber + 1))\nbuildNumber=`date \"+%Y%m%d-%H%M%S\"`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+			shellScript = "#buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\n#buildNumber=$(($buildNumber + 1))\n# buildNumber=`date \"+%Y%m%d-%H%M%S\"`\n# /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\necho \"buildNumber=\"`date \"+%Y%m%d-%H%M%S\"` > \"${PROJECT_DIR}/Repti/ExternalConfig.xcconfig\"\n#echo `date \"+%Y%m%d-%H%M%S\"` >> \"${PROJECT_DIR}/Repti/ExternalConfig.xcconfig\"\n#echo \"\\n\" >> \"${PROJECT_DIR}/Repti/ExternalConfig.xcconfig\"\n";
 		};
 		E9C6358025A3C82300BA2748 /* swiftgen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -471,6 +475,7 @@
 /* Begin XCBuildConfiguration section */
 		E9C6356D25A3C6AD00BA2748 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9F6D4D92646EBA60055AA3E /* ExternalConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -532,6 +537,7 @@
 		};
 		E9C6356E25A3C6AD00BA2748 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9F6D4D92646EBA60055AA3E /* ExternalConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -587,6 +593,7 @@
 		};
 		E9C6357025A3C6AD00BA2748 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9F6D4D92646EBA60055AA3E /* ExternalConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -613,6 +620,7 @@
 		};
 		E9C6357125A3C6AD00BA2748 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9F6D4D92646EBA60055AA3E /* ExternalConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

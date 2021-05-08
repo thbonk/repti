@@ -17,13 +17,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>20210507-222321</string>
+	<string>$(buildNumber)</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.lifestyle</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>ABCDEF</string>
+	<string>Import Fotos</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
