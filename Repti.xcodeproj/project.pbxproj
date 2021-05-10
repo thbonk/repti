@@ -47,6 +47,7 @@
 		E9C635B525A587E900BA2748 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C635B425A587E900BA2748 /* Alerts.swift */; };
 		E9CCBBA825E2488F0056845C /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBA725E2488F0056845C /* Document.swift */; };
 		E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBAA25E248DE0056845C /* DocumentData.swift */; };
+		E9F6D4DC264724D10055AA3E /* SwiftUILib.DocumentPicker in Frameworks */ = {isa = PBXBuildFile; productRef = E9F6D4DB264724D10055AA3E /* SwiftUILib.DocumentPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E91D5A3826433D5000D74507 /* SwiftUICharts in Frameworks */,
+				E9F6D4DC264724D10055AA3E /* SwiftUILib.DocumentPicker in Frameworks */,
 				E91D5A3F2645D59500D74507 /* FeatureFlags in Frameworks */,
 				E997916A261ECBFD0047AC27 /* PureSwiftUI in Frameworks */,
 				E9794F4E25A9B52D0063D595 /* CloudKit.framework in Frameworks */,
@@ -320,9 +322,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9C6356F25A3C6AD00BA2748 /* Build configuration list for PBXNativeTarget "Repti" */;
 			buildPhases = (
+				E94CAD1E25AEC6230072E3BA /* Set Build Number */,
 				E9C6358025A3C82300BA2748 /* swiftgen */,
 				E9C6355725A3C6AB00BA2748 /* Sources */,
-				E94CAD1E25AEC6230072E3BA /* Set Build Number */,
 				E9C6355825A3C6AB00BA2748 /* Frameworks */,
 				E9C6355925A3C6AB00BA2748 /* Resources */,
 			);
@@ -335,6 +337,7 @@
 				E9979169261ECBFD0047AC27 /* PureSwiftUI */,
 				E91D5A3726433D5000D74507 /* SwiftUICharts */,
 				E91D5A3E2645D59500D74507 /* FeatureFlags */,
+				E9F6D4DB264724D10055AA3E /* SwiftUILib.DocumentPicker */,
 			);
 			productName = Repti;
 			productReference = E9C6355B25A3C6AB00BA2748 /* Repti.app */;
@@ -367,6 +370,7 @@
 				E9979168261ECBFD0047AC27 /* XCRemoteSwiftPackageReference "pure-swift-ui" */,
 				E91D5A3626433D5000D74507 /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
 				E91D5A3D2645D59500D74507 /* XCRemoteSwiftPackageReference "FeatureFlags" */,
+				E9F6D4DA264724D10055AA3E /* XCRemoteSwiftPackageReference "document-picker" */,
 			);
 			productRefGroup = E9C6355C25A3C6AB00BA2748 /* Products */;
 			projectDirPath = "";
@@ -693,6 +697,14 @@
 				minimumVersion = 2.1.0;
 			};
 		};
+		E9F6D4DA264724D10055AA3E /* XCRemoteSwiftPackageReference "document-picker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftuilib/document-picker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -710,6 +722,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E9979168261ECBFD0047AC27 /* XCRemoteSwiftPackageReference "pure-swift-ui" */;
 			productName = PureSwiftUI;
+		};
+		E9F6D4DB264724D10055AA3E /* SwiftUILib.DocumentPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9F6D4DA264724D10055AA3E /* XCRemoteSwiftPackageReference "document-picker" */;
+			productName = SwiftUILib.DocumentPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 

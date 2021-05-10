@@ -20,6 +20,7 @@
 
 import PureSwiftUI
 import UniformTypeIdentifiers
+import SwiftUILib_DocumentPicker
 
 struct DocumentsSubview: View {
 
@@ -63,6 +64,13 @@ struct DocumentsSubview: View {
     }) {
       HStack {
         Text(LocalizedStringKey("Documents")).font(.title)
+        .documentPicker(
+          isPresented: $showFileImporter,
+          documentTypes: ["org.openxmlformats.wordprocessingml.document", "com.adobe.pdf"]) {
+
+        } onDocumentsPicked: { urls in
+          NSLog("\(urls)")
+        }
         Spacer()
         Button {
           showFileImporter = false
@@ -75,13 +83,14 @@ struct DocumentsSubview: View {
             .padding(.horizontal, 10)
         }
         .disabled(!expanded)
-        .fileImporter(
+
+        /*.fileImporter(
                       isPresented: $showFileImporter,
               allowedContentTypes: [.data],
           allowsMultipleSelection: false) { result in
                       // add fileUrl.startAccessingSecurityScopedResource() before accessing file
             NSLog("\(result)")
-          }
+          }*/
       }
     }
   }
