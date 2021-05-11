@@ -50,7 +50,6 @@ protocol IndividualProtocol {
 
 extension Individual: IndividualProtocol {
 
-
   // MARK: - Public Properties
 
   var gender: Gender {
