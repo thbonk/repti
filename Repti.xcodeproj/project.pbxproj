@@ -48,6 +48,7 @@
 		E9CCBBA825E2488F0056845C /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBA725E2488F0056845C /* Document.swift */; };
 		E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CCBBAA25E248DE0056845C /* DocumentData.swift */; };
 		E9F6D4DC264724D10055AA3E /* SwiftUILib.DocumentPicker in Frameworks */ = {isa = PBXBuildFile; productRef = E9F6D4DB264724D10055AA3E /* SwiftUILib.DocumentPicker */; };
+		E9F6D4DE2649AA440055AA3E /* DocumentEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F6D4DD2649AA440055AA3E /* DocumentEditorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		E9CCBBAF25E42EE40056845C /* ReptiV4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV4.xcdatamodel; sourceTree = "<group>"; };
 		E9F6D4D82646EB690055AA3E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E9F6D4D92646EBA60055AA3E /* ExternalConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ExternalConfig.xcconfig; sourceTree = "<group>"; };
+		E9F6D4DD2649AA440055AA3E /* DocumentEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEditorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			children = (
 				E9699CD926208DBF00CB25AE /* SpeciesEditorView.swift */,
 				E9AE47F52628B0A70084B20B /* WeighingsEditorView.swift */,
+				E9F6D4DD2649AA440055AA3E /* DocumentEditorView.swift */,
 			);
 			path = Editors;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				E92FB1CF2627FFC6004D488A /* DatesSubview.swift in Sources */,
 				E9CCBBA825E2488F0056845C /* Document.swift in Sources */,
 				E9699CDA26208DBF00CB25AE /* SpeciesEditorView.swift in Sources */,
+				E9F6D4DE2649AA440055AA3E /* DocumentEditorView.swift in Sources */,
 				E9A0329126431B67002DFE91 /* ImagePicker.swift in Sources */,
 				E99A29A72629B510005423A2 /* PicturesSubview.swift in Sources */,
 				E9C6359025A3D3C200BA2748 /* Weight.swift in Sources */,

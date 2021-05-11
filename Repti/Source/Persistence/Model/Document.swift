@@ -21,7 +21,13 @@
 import Foundation
 import CoreData
 
-extension Document {
+protocol DocumentProtocol {
+  var date: Date? { get set }
+  var filename: String? { get set }
+  var notes: String? { get set }
+}
+
+extension Document: DocumentProtocol {
 
   // MARK: - Class Methods
 
@@ -31,5 +37,32 @@ extension Document {
       .insertNewObject(
         forEntityName: Document.entityName,
         into: managedObjectContext) as! Document
+  }
+}
+
+struct DocumentDAO: DocumentProtocol {
+
+  // MARK: - Public Properties
+
+  var date: Date?
+  var filename: String?
+  var notes: String? = ""
+
+  var fileURL: URL? = nil
+
+
+  // MARK: - Initialization
+
+  init(document: Document) {
+    self.date = document.date!
+    self.filename = document.filename!
+    self.notes = document.notes!
+  }
+
+  init(date: Date, filename: String, notes: String = "", fileURL: URL? = nil) {
+    self.date = date
+    self.filename = filename
+    self.notes = notes
+    self.fileURL = fileURL
   }
 }
