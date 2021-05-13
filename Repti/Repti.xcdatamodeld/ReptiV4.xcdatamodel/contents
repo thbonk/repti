@@ -16,7 +16,6 @@
         <attribute name="data" optional="YES" attributeType="Binary"/>
         <relationship name="document" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Document" inverseName="documentData" inverseEntity="Document"/>
     </entity>
-    <entity name="Event" representedClassName="Event" parentEntity="BaseEntity" syncable="YES"/>
     <entity name="Individual" representedClassName="Individual" parentEntity="BaseEntity" syncable="YES">
         <attribute name="dateOfSale" optional="YES" attributeType="Date" usesScalarValueType="YES"/>
         <attribute name="genderVal" attributeType="Integer 16" defaultValueString="255" usesScalarValueType="YES" customClassName="."/>
@@ -57,6 +56,5 @@
         <element name="PictureData" positionX="-18" positionY="90" width="128" height="59"/>
         <element name="Species" positionX="-54" positionY="18" width="128" height="74"/>
         <element name="Weight" positionX="0" positionY="117" width="128" height="74"/>
-        <element name="Event" positionX="-27" positionY="90" width="128" height="29"/>
     </elements>
 </model>

@@ -39,6 +39,7 @@ struct DocumentsSubview: View {
             Text("Date").fontWeight(.bold)
             Text("Notes").fontWeight(.bold)
           }
+          .padding(.all, 10)
           List {
             let dateFormatter = dateFormatter()
             
@@ -52,6 +53,8 @@ struct DocumentsSubview: View {
                 Text(dateFormatter.string(from: document.date!))
                 Text(document.notes!)
               }
+              .padding(.all, 10)
+              .backgroundIf(document.isEqual(selectedDocument), Color.accentColor)
               // This is a little bit hacky, but otherwise doesn't work reliably
               .onHover { hovering in
                 guard hovering else { return }

@@ -166,6 +166,8 @@ struct WeighingsSubview: View {
               Text(dateFormatter.string(from: weighing.date))
               Text(String(format: "%.0f", weighing.weight))
             }
+            .padding(.vertical, 10)
+            .backgroundIf(weighing.isEqual(selectedWeighing), Color.accentColor)
             // This is a little bit hacky, but otherwise doesn't work reliably
             .onHover { hovering in
               guard hovering else { return }
