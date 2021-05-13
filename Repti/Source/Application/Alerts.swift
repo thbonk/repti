@@ -61,3 +61,7 @@ func errorAlert(
     message: "\(message)\nError: \(error.localizedDescription)",
     handler: handler)
 }
+
+func warningAlert(message: String, handler: ((UIAlertAction) -> Void)? = nil) {
+  alert(title: NSLocalizedString("Warning", comment: "Alert Controller Title"), message: message, handler: handler)
+}
