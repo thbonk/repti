@@ -167,11 +167,10 @@ struct WeighingsSubview: View {
               Text(String(format: "%.0f", weighing.weight))
             }
             // This is a little bit hacky, but otherwise doesn't work reliably
-            .onLongPressGesture(minimumDuration: 0.0, maximumDistance: 1, pressing: { _ in
+            .onHover { hovering in
+              guard hovering else { return }
               selectedWeighing = weighing
-            }, perform: {
-              selectedWeighing = weighing
-            })
+            }
             .contextMenu {
               Button {
                 editWeighing.value = (weight: selectedWeighing, dao: WeightDAO(weighing: selectedWeighing), mode: .edit)

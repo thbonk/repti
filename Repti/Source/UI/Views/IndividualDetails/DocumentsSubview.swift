@@ -53,11 +53,10 @@ struct DocumentsSubview: View {
                 Text(document.notes!)
               }
               // This is a little bit hacky, but otherwise doesn't work reliably
-              .onLongPressGesture(minimumDuration: 0.0, maximumDistance: 1, pressing: { _ in
+              .onHover { hovering in
+                guard hovering else { return }
                 selectedDocument = document
-              }, perform: {
-                selectedDocument = document
-              })
+              }
               .contextMenu {
                 Button {
                   openDocument()
@@ -210,9 +209,18 @@ struct DocumentsSubview: View {
         URL(fileURLWithPath: NSTemporaryDirectory())
         .appendingPathComponent(selectedDocument.filename!)
       
-      try! selectedDocument.documentData!.data?.write(to: temporaryFileURL)
+      try selectedDocument.documentData!.data?.write(to: temporaryFileURL)
       
-      UIApplication.shared.openURL(temporaryFileURL)
+      UIApplication
+        .shared
+        .open(
+          temporaryFileURL,
+          options: [.universalLinksOnly: false]) { success in
+          guard success else {
+            warningAlert(message: "Error while opneing the document '\(selectedDocument.filename!)'")
+            return
+          }
+        }
     } catch {
       errorAlert(
         message: "Error while deleting a document.",
