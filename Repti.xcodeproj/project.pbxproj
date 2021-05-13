@@ -12,6 +12,7 @@
 		E91D5A3F2645D59500D74507 /* FeatureFlags in Frameworks */ = {isa = PBXBuildFile; productRef = E91D5A3E2645D59500D74507 /* FeatureFlags */; };
 		E91D5A412645D6AE00D74507 /* features.json in Resources */ = {isa = PBXBuildFile; fileRef = E91D5A402645D6AE00D74507 /* features.json */; };
 		E91D5A432645D72200D74507 /* Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91D5A422645D72200D74507 /* Features.swift */; };
+		E9214971264D0B94006D82F0 /* Repti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E921496D264D0B94006D82F0 /* Repti.xcdatamodeld */; };
 		E92FB1BF262784FC004D488A /* IndividualRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92FB1B9262784FC004D488A /* IndividualRowView.swift */; };
 		E92FB1C0262784FC004D488A /* IndividualsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92FB1BA262784FC004D488A /* IndividualsListView.swift */; };
 		E92FB1C1262784FC004D488A /* SpeciesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92FB1BD262784FC004D488A /* SpeciesListView.swift */; };
@@ -34,7 +35,6 @@
 		E9C2DDF326286F74002BC9BF /* WeighingsSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2DDF226286F74002BC9BF /* WeighingsSubview.swift */; };
 		E9C6356325A3C6AD00BA2748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C6356225A3C6AD00BA2748 /* Assets.xcassets */; };
 		E9C6356625A3C6AD00BA2748 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9C6356525A3C6AD00BA2748 /* Preview Assets.xcassets */; };
-		E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9C6356925A3C6AD00BA2748 /* Repti.xcdatamodeld */; };
 		E9C6357A25A3C72000BA2748 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6357525A3C72000BA2748 /* RootView.swift */; };
 		E9C6357B25A3C72000BA2748 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6357725A3C72000BA2748 /* Persistence.swift */; };
 		E9C6357C25A3C72000BA2748 /* ReptiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C6357925A3C72000BA2748 /* ReptiApp.swift */; };
@@ -55,6 +55,10 @@
 		E91D5A392643ADAF00D74507 /* DocumentsSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsSubview.swift; sourceTree = "<group>"; };
 		E91D5A402645D6AE00D74507 /* features.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = features.json; sourceTree = "<group>"; };
 		E91D5A422645D72200D74507 /* Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Features.swift; sourceTree = "<group>"; };
+		E921496E264D0B94006D82F0 /* Repti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Repti.xcdatamodel; sourceTree = "<group>"; };
+		E921496F264D0B94006D82F0 /* ReptiV3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV3.xcdatamodel; sourceTree = "<group>"; };
+		E9214970264D0B94006D82F0 /* ReptiV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV2.xcdatamodel; sourceTree = "<group>"; };
+		E9214972264D0C67006D82F0 /* ReptiV4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV4.xcdatamodel; sourceTree = "<group>"; };
 		E92FB1B9262784FC004D488A /* IndividualRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualRowView.swift; sourceTree = "<group>"; };
 		E92FB1BA262784FC004D488A /* IndividualsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualsListView.swift; sourceTree = "<group>"; };
 		E92FB1BD262784FC004D488A /* SpeciesListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesListView.swift; sourceTree = "<group>"; };
@@ -78,7 +82,6 @@
 		E9C6355B25A3C6AB00BA2748 /* Repti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9C6356225A3C6AD00BA2748 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9C6356525A3C6AD00BA2748 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E9C6356A25A3C6AD00BA2748 /* Repti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Repti.xcdatamodel; sourceTree = "<group>"; };
 		E9C6356C25A3C6AD00BA2748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9C6357525A3C72000BA2748 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		E9C6357725A3C72000BA2748 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -94,11 +97,8 @@
 		E9C6358F25A3D3C200BA2748 /* BaseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseEntity.swift; sourceTree = "<group>"; };
 		E9C6359625A3D43F00BA2748 /* Repti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Repti.entitlements; sourceTree = "<group>"; };
 		E9C635B425A587E900BA2748 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
-		E9CCBBA325E13A530056845C /* ReptiV2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV2.xcdatamodel; sourceTree = "<group>"; };
-		E9CCBBA525E247D90056845C /* ReptiV3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV3.xcdatamodel; sourceTree = "<group>"; };
 		E9CCBBA725E2488F0056845C /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		E9CCBBAA25E248DE0056845C /* DocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentData.swift; sourceTree = "<group>"; };
-		E9CCBBAF25E42EE40056845C /* ReptiV4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReptiV4.xcdatamodel; sourceTree = "<group>"; };
 		E9F6D4D82646EB690055AA3E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E9F6D4D92646EBA60055AA3E /* ExternalConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ExternalConfig.xcconfig; sourceTree = "<group>"; };
 		E9F6D4DD2649AA440055AA3E /* DocumentEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEditorView.swift; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		E9A517AE25A60D710088986B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E9C6356925A3C6AD00BA2748 /* Repti.xcdatamodeld */,
+				E921496D264D0B94006D82F0 /* Repti.xcdatamodeld */,
 				E9A517C825A8E6F30088986B /* Credits.rtf */,
 				E9C6359625A3D43F00BA2748 /* Repti.entitlements */,
 				E9C6356225A3C6AD00BA2748 /* Assets.xcassets */,
@@ -461,12 +461,12 @@
 				E9C6357A25A3C72000BA2748 /* RootView.swift in Sources */,
 				E9AE47F62628B0A70084B20B /* WeighingsEditorView.swift in Sources */,
 				E9C6359225A3D3C200BA2748 /* Picture.swift in Sources */,
+				E9214971264D0B94006D82F0 /* Repti.xcdatamodeld in Sources */,
 				E9C6357C25A3C72000BA2748 /* ReptiApp.swift in Sources */,
 				E92FB1C1262784FC004D488A /* SpeciesListView.swift in Sources */,
 				E92FB1CC26278FBE004D488A /* GeneralDataSubview.swift in Sources */,
 				E9CCBBAB25E248DE0056845C /* DocumentData.swift in Sources */,
 				E9A0328F2642FD6E002DFE91 /* ImageViewer.swift in Sources */,
-				E9C6356B25A3C6AD00BA2748 /* Repti.xcdatamodeld in Sources */,
 				E9C2DDF326286F74002BC9BF /* WeighingsSubview.swift in Sources */,
 				E92FB1CF2627FFC6004D488A /* DatesSubview.swift in Sources */,
 				E9CCBBA825E2488F0056845C /* Document.swift in Sources */,
@@ -616,7 +616,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4;
+				MARKETING_VERSION = 5;
 				PRODUCT_BUNDLE_IDENTIFIER = de.meandmymac.universal.Repti;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -643,7 +643,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4;
+				MARKETING_VERSION = 5;
 				PRODUCT_BUNDLE_IDENTIFIER = de.meandmymac.universal.Repti;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -735,15 +735,15 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		E9C6356925A3C6AD00BA2748 /* Repti.xcdatamodeld */ = {
+		E921496D264D0B94006D82F0 /* Repti.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E9CCBBAF25E42EE40056845C /* ReptiV4.xcdatamodel */,
-				E9CCBBA525E247D90056845C /* ReptiV3.xcdatamodel */,
-				E9CCBBA325E13A530056845C /* ReptiV2.xcdatamodel */,
-				E9C6356A25A3C6AD00BA2748 /* Repti.xcdatamodel */,
+				E9214972264D0C67006D82F0 /* ReptiV4.xcdatamodel */,
+				E921496E264D0B94006D82F0 /* Repti.xcdatamodel */,
+				E921496F264D0B94006D82F0 /* ReptiV3.xcdatamodel */,
+				E9214970264D0B94006D82F0 /* ReptiV2.xcdatamodel */,
 			);
-			currentVersion = E9CCBBA525E247D90056845C /* ReptiV3.xcdatamodel */;
+			currentVersion = E921496F264D0B94006D82F0 /* ReptiV3.xcdatamodel */;
 			path = Repti.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

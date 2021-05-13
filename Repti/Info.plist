@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSFileProviderDomainUsageDescription</key>
-	<string>Importing Documents</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -24,6 +22,8 @@
 	<string>public.app-category.lifestyle</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSFileProviderDomainUsageDescription</key>
+	<string>Importing Documents</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Import Fotos</string>
 	<key>UIApplicationSceneManifest</key>
