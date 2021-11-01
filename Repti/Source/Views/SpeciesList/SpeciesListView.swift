@@ -42,7 +42,7 @@ struct SpeciesListView: View {
         Text("Arten")
           .font(.title)
       }
-      
+
       ToolbarItem(placement: .automatic) {
         Spacer()
       }
@@ -53,7 +53,6 @@ struct SpeciesListView: View {
         } label: {
           Image(systemName: "plus.app")
         }
-
       }
     }
   }
