@@ -15,10 +15,12 @@
 		E91A51D7272EB616006062D6 /* SpeciesRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A51D6272EB616006062D6 /* SpeciesRowView.swift */; };
 		E91A51DF272F545C006062D6 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A51DE272F545C006062D6 /* Alert.swift */; };
 		E91A51E1272F5AAB006062D6 /* AlertContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A51E0272F5AAB006062D6 /* AlertContentView.swift */; };
+		E91CD6EF27307FEC008806EC /* IndividualsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91CD6EE27307FEC008806EC /* IndividualsListView.swift */; };
 		E9482DDD27300D5900777327 /* LocalizedStringKey+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DDC27300D5900777327 /* LocalizedStringKey+ToString.swift */; };
 		E9482DE027300F6F00777327 /* ValueWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DDF27300F6F00777327 /* ValueWrapper.swift */; };
 		E9482DE22730141800777327 /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DE12730141800777327 /* SpeciesEditorView.swift */; };
 		E9482DE5273077A000777327 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E9482DE4273077A000777327 /* PureSwiftUI */; };
+		E9482DE827307C1700777327 /* ExyteGrid in Frameworks */ = {isa = PBXBuildFile; productRef = E9482DE727307C1700777327 /* ExyteGrid */; };
 		E9B00060272EAFBE00FAF3DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B0005F272EAFBE00FAF3DD /* Assets.xcassets */; };
 		E9B00063272EAFBE00FAF3DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B00062272EAFBE00FAF3DD /* Preview Assets.xcassets */; };
 		E9B00068272EAFBE00FAF3DD /* Repti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B00066272EAFBE00FAF3DD /* Repti.xcdatamodeld */; };
@@ -39,6 +41,7 @@
 		E91A51D6272EB616006062D6 /* SpeciesRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesRowView.swift; sourceTree = "<group>"; };
 		E91A51DE272F545C006062D6 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		E91A51E0272F5AAB006062D6 /* AlertContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertContentView.swift; sourceTree = "<group>"; };
+		E91CD6EE27307FEC008806EC /* IndividualsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualsListView.swift; sourceTree = "<group>"; };
 		E9482DDC27300D5900777327 /* LocalizedStringKey+ToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+ToString.swift"; sourceTree = "<group>"; };
 		E9482DDF27300F6F00777327 /* ValueWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueWrapper.swift; sourceTree = "<group>"; };
 		E9482DE12730141800777327 /* SpeciesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9482DE827307C1700777327 /* ExyteGrid in Frameworks */,
 				E9482DE5273077A000777327 /* PureSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,14 +86,22 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
-		E91A51D3272EB500006062D6 /* SpeciesList */ = {
+		E91A51D3272EB500006062D6 /* Species */ = {
 			isa = PBXGroup;
 			children = (
 				E91A51D4272EB517006062D6 /* SpeciesListView.swift */,
 				E91A51D6272EB616006062D6 /* SpeciesRowView.swift */,
 				E9482DE12730141800777327 /* SpeciesEditorView.swift */,
 			);
-			path = SpeciesList;
+			path = Species;
+			sourceTree = "<group>";
+		};
+		E91CD6ED27307FA2008806EC /* Individuals */ = {
+			isa = PBXGroup;
+			children = (
+				E91CD6EE27307FEC008806EC /* IndividualsListView.swift */,
+			);
+			path = Individuals;
 			sourceTree = "<group>";
 		};
 		E9482DDB27300D3900777327 /* Extensions */ = {
@@ -180,7 +192,8 @@
 			children = (
 				E9B00075272EB02B00FAF3DD /* ContentView.swift */,
 				E91A51E0272F5AAB006062D6 /* AlertContentView.swift */,
-				E91A51D3272EB500006062D6 /* SpeciesList */,
+				E91A51D3272EB500006062D6 /* Species */,
+				E91CD6ED27307FA2008806EC /* Individuals */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,6 +228,7 @@
 			name = Repti;
 			packageProductDependencies = (
 				E9482DE4273077A000777327 /* PureSwiftUI */,
+				E9482DE727307C1700777327 /* ExyteGrid */,
 			);
 			productName = Repti;
 			productReference = E9B00058272EAFBD00FAF3DD /* Repti.app */;
@@ -245,6 +259,7 @@
 			mainGroup = E9B0004F272EAFBD00FAF3DD;
 			packageReferences = (
 				E9482DE3273077A000777327 /* XCRemoteSwiftPackageReference "pure-swift-ui" */,
+				E9482DE627307C1700777327 /* XCRemoteSwiftPackageReference "Grid" */,
 			);
 			productRefGroup = E9B00059272EAFBD00FAF3DD /* Products */;
 			projectDirPath = "";
@@ -295,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9482DDD27300D5900777327 /* LocalizedStringKey+ToString.swift in Sources */,
+				E91CD6EF27307FEC008806EC /* IndividualsListView.swift in Sources */,
 				E9482DE22730141800777327 /* SpeciesEditorView.swift in Sources */,
 				E9B00068272EAFBE00FAF3DD /* Repti.xcdatamodeld in Sources */,
 				E91A51D2272EB42D006062D6 /* Species.swift in Sources */,
@@ -443,7 +459,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "👨🏻‍💻 with ❤️ in Saarland, Germany";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -470,7 +486,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "👨🏻‍💻 with ❤️ in Saarland, Germany";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -515,6 +531,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		E9482DE627307C1700777327 /* XCRemoteSwiftPackageReference "Grid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/Grid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -522,6 +546,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E9482DE3273077A000777327 /* XCRemoteSwiftPackageReference "pure-swift-ui" */;
 			productName = PureSwiftUI;
+		};
+		E9482DE727307C1700777327 /* ExyteGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9482DE627307C1700777327 /* XCRemoteSwiftPackageReference "Grid" */;
+			productName = ExyteGrid;
 		};
 /* End XCSwiftPackageProductDependency section */
 

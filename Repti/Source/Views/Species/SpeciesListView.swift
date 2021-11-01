@@ -25,28 +25,43 @@ struct SpeciesListView: View {
   // MARK: - Public Properties
   
   var body: some View {
-    List {
-      ForEach(species, id: \.id) { spcs in
-        NavigationLink(
-          destination: Text(spcs.name!),
-          tag: spcs.id!,
-          selection: $selectedId) {
-            SpeciesRowView(species: spcs, edit: { edit(species: spcs) })
-          }
-          .contextMenu {
-            Button {
-              edit(species: spcs)
-            } label: {
-              HStack {
-                Image(sfSymbol: .square_and_pencil)
-                Text("Bearbeiten")
+    RenderIf(species.count > 0) {
+      List {
+        ForEach(species) { spcs in
+          NavigationLink(
+            destination: IndividualsListView(species: spcs),
+            tag: spcs.id!,
+            selection: $selectedId) {
+              SpeciesRowView(species: spcs, edit: { edit(species: spcs) })
+            }
+            .contextMenu {
+              Button {
+                edit(species: spcs)
+              } label: {
+                HStack {
+                  Image(sfSymbol: .square_and_pencil)
+                  Text("Bearbeiten")
+                }
+              }
+
+              Button {
+                delete(species: spcs)
+              } label: {
+                HStack {
+                  Image(sfSymbol: .trash_square)
+                  Text("Löschen")
+                }
               }
             }
-          }
+        }
       }
-      .onDelete(perform: deleteSpecies)
+      .listStyle(SidebarListStyle())
     }
-    .listStyle(SidebarListStyle())
+    .elseRender {
+      Spacer()
+      Text("Keine Art gefunden.")
+      Spacer()
+    }
     .toolbar {
       ToolbarItem(placement: .automatic) {
         Text("Arten")
@@ -115,12 +130,9 @@ struct SpeciesListView: View {
     viewContext.rollback()
   }
 
-  private func deleteSpecies(offsets: IndexSet) {
+  private func delete(species: Species) {
     withAnimation(.easeOut) {
-      offsets.map {
-        species[$0]
-      }
-      .forEach(viewContext.delete)
+      viewContext.delete(species)
 
       do {
         try viewContext.save()

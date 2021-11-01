@@ -37,8 +37,8 @@ struct AlertContentView: View {
         VStack {
           Text(message.stringValue())
 
-          if let err = error {
-            Text("Fehler:\n \(err.localizedDescription)")
+          RenderIf(error != nil) {
+            Text("Fehler:\n \(error!.localizedDescription)")
               .padding(.top, 5)
           }
         }
