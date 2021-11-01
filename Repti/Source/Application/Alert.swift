@@ -19,7 +19,7 @@
 //
 
 import Foundation
-import SwiftUI
+import PureSwiftUI
 
 extension Notification.Name {
   static let showAlert = Notification.Name("ShowAlert")

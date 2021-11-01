@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-import SwiftUI
+import PureSwiftUI
 
 struct SpeciesListView: View {
 
@@ -38,7 +38,7 @@ struct SpeciesListView: View {
               edit(species: spcs)
             } label: {
               HStack {
-                Image(systemName: "square.and.pencil")
+                Image(sfSymbol: .square_and_pencil)
                 Text("Bearbeiten")
               }
             }
@@ -61,7 +61,7 @@ struct SpeciesListView: View {
         Button {
           createSpecies()
         } label: {
-          Image(systemName: "plus.app")
+          Image(sfSymbol: .plus_app)
         }
       }
     }

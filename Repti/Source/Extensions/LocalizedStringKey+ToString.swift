@@ -19,7 +19,7 @@
 //
 
 import Foundation
-import SwiftUI
+import PureSwiftUI
 
 extension LocalizedStringKey {
   var stringKey: String {

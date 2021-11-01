@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-import SwiftUI
+import PureSwiftUI
 
 struct SpeciesEditorView: View {
 

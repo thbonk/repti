@@ -19,7 +19,7 @@
 //
 
 import CoreData
-import SwiftUI
+import PureSwiftUI
 
 struct ContentView: View {
 

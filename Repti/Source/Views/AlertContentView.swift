@@ -18,7 +18,7 @@
 //  limitations under the License.
 //
 
-import SwiftUI
+import PureSwiftUI
 
 struct AlertContentView: View {
 
@@ -56,26 +56,6 @@ struct AlertContentView: View {
       .padding(.bottom, 10)
       .buttonStyle(BorderedProminentButtonStyle())
     }
-    /*VStack(alignment: .center) {
-      HStack(alignment: .center) {
-        AlertImage()
-
-        VStack(alignment: .leading) {
-          Text(message)
-
-          /*if let err = error {
-            Text("Fehler: \(err.localizedDescription)")
-              .padding(.top, 5)
-          }*/
-        }
-      }
-
-      Button {
-        presentationMode.wrappedValue.dismiss()
-      } label: {
-        Text("OK")
-      }
-    }*/
   }
 
   var alertType: AlertData.`Type`
@@ -113,27 +93,27 @@ struct AlertContentView: View {
 
     switch alertType {
       case .information:
-        image = Image(systemName: "info.circle.fill")
+        image = Image(sfSymbol: .info_circle_fill)
         color = .green
         break
 
       case .warning:
-        image = Image(systemName: "exclamationmark.triangle.fill")
+        image = Image(sfSymbol: .exclamationmark_triangle_fill)
         color = .yellow
         break
 
       case .error:
-        image = Image(systemName: "exclamationmark.octagon.fill")
+        image = Image(sfSymbol: .exclamationmark_octagon_fill)
         color = .red
         break
 
       case .fatalError:
-        image = Image(systemName: "xmark.octagon.fill")
+        image = Image(sfSymbol: .xmark_octagon_fill)
         color = .red
         break
     }
 
-    return image.resizable().frame(width: 64, height: 64).foregroundColor(color)
+    return image.resizedToFit(64, 64).foregroundColor(color)
   }
 }
 

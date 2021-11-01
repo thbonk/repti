@@ -18,6 +18,7 @@
 		E9482DDD27300D5900777327 /* LocalizedStringKey+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DDC27300D5900777327 /* LocalizedStringKey+ToString.swift */; };
 		E9482DE027300F6F00777327 /* ValueWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DDF27300F6F00777327 /* ValueWrapper.swift */; };
 		E9482DE22730141800777327 /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DE12730141800777327 /* SpeciesEditorView.swift */; };
+		E9482DE5273077A000777327 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E9482DE4273077A000777327 /* PureSwiftUI */; };
 		E9B00060272EAFBE00FAF3DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B0005F272EAFBE00FAF3DD /* Assets.xcassets */; };
 		E9B00063272EAFBE00FAF3DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B00062272EAFBE00FAF3DD /* Preview Assets.xcassets */; };
 		E9B00068272EAFBE00FAF3DD /* Repti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B00066272EAFBE00FAF3DD /* Repti.xcdatamodeld */; };
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9482DE5273077A000777327 /* PureSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +214,7 @@
 			);
 			name = Repti;
 			packageProductDependencies = (
+				E9482DE4273077A000777327 /* PureSwiftUI */,
 			);
 			productName = Repti;
 			productReference = E9B00058272EAFBD00FAF3DD /* Repti.app */;
@@ -241,6 +244,7 @@
 			);
 			mainGroup = E9B0004F272EAFBD00FAF3DD;
 			packageReferences = (
+				E9482DE3273077A000777327 /* XCRemoteSwiftPackageReference "pure-swift-ui" */,
 			);
 			productRefGroup = E9B00059272EAFBD00FAF3DD /* Products */;
 			projectDirPath = "";
@@ -501,6 +505,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E9482DE3273077A000777327 /* XCRemoteSwiftPackageReference "pure-swift-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CodeSlicing/pure-swift-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E9482DE4273077A000777327 /* PureSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9482DE3273077A000777327 /* XCRemoteSwiftPackageReference "pure-swift-ui" */;
+			productName = PureSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E9B00066272EAFBE00FAF3DD /* Repti.xcdatamodeld */ = {
