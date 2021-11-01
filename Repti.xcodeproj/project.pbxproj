@@ -17,6 +17,7 @@
 		E91A51E1272F5AAB006062D6 /* AlertContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91A51E0272F5AAB006062D6 /* AlertContentView.swift */; };
 		E9482DDD27300D5900777327 /* LocalizedStringKey+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DDC27300D5900777327 /* LocalizedStringKey+ToString.swift */; };
 		E9482DE027300F6F00777327 /* ValueWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DDF27300F6F00777327 /* ValueWrapper.swift */; };
+		E9482DE22730141800777327 /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DE12730141800777327 /* SpeciesEditorView.swift */; };
 		E9B00060272EAFBE00FAF3DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B0005F272EAFBE00FAF3DD /* Assets.xcassets */; };
 		E9B00063272EAFBE00FAF3DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B00062272EAFBE00FAF3DD /* Preview Assets.xcassets */; };
 		E9B00068272EAFBE00FAF3DD /* Repti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B00066272EAFBE00FAF3DD /* Repti.xcdatamodeld */; };
@@ -39,6 +40,7 @@
 		E91A51E0272F5AAB006062D6 /* AlertContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertContentView.swift; sourceTree = "<group>"; };
 		E9482DDC27300D5900777327 /* LocalizedStringKey+ToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+ToString.swift"; sourceTree = "<group>"; };
 		E9482DDF27300F6F00777327 /* ValueWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueWrapper.swift; sourceTree = "<group>"; };
+		E9482DE12730141800777327 /* SpeciesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
 		E9B00058272EAFBD00FAF3DD /* Repti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B0005F272EAFBE00FAF3DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9B00062272EAFBE00FAF3DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				E91A51D4272EB517006062D6 /* SpeciesListView.swift */,
 				E91A51D6272EB616006062D6 /* SpeciesRowView.swift */,
+				E9482DE12730141800777327 /* SpeciesEditorView.swift */,
 			);
 			path = SpeciesList;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9482DDD27300D5900777327 /* LocalizedStringKey+ToString.swift in Sources */,
+				E9482DE22730141800777327 /* SpeciesEditorView.swift in Sources */,
 				E9B00068272EAFBE00FAF3DD /* Repti.xcdatamodeld in Sources */,
 				E91A51D2272EB42D006062D6 /* Species.swift in Sources */,
 				E91A51D7272EB616006062D6 /* SpeciesRowView.swift in Sources */,

@@ -33,6 +33,16 @@ struct SpeciesListView: View {
           selection: $selectedId) {
             SpeciesRowView(species: spcs, edit: { edit(species: spcs) })
           }
+          .contextMenu {
+            Button {
+              edit(species: spcs)
+            } label: {
+              HStack {
+                Image(systemName: "square.and.pencil")
+                Text("Bearbeiten")
+              }
+            }
+          }
       }
       .onDelete(perform: deleteSpecies)
     }
@@ -49,10 +59,19 @@ struct SpeciesListView: View {
 
       ToolbarItem(placement: .automatic) {
         Button {
-
+          createSpecies()
         } label: {
           Image(systemName: "plus.app")
         }
+      }
+    }
+    .sheet(isPresented: $showSpeciesEditor) {
+      if let edit = editSpecies.value {
+        SpeciesEditorView(
+          mode: edit.mode,
+          species: edit.species!,
+          onSave: save(species:),
+          onCancel: cancel(species:))
       }
     }
   }
@@ -69,11 +88,31 @@ struct SpeciesListView: View {
   @State
   private var selectedId: UUID!
 
+  @State
+  private var showSpeciesEditor = false
+
+  private var editSpecies = ValueWrapper<(species: Species?, mode: SpeciesEditorView.Mode)>()
+
 
   // MARK: - Private Methods
 
-  private func edit(species: Species) {
+  private func createSpecies() {
+    let species = Species.create(in: viewContext)
+    editSpecies.value = (species: species, mode: .create)
+    showSpeciesEditor = true
+  }
 
+  private func edit(species: Species) {
+    editSpecies.value = (species: species, mode: .edit)
+    showSpeciesEditor = true
+  }
+
+  private func save(species: Species) throws {
+    try viewContext.save()
+  }
+
+  private func cancel(species: Species) throws {
+    viewContext.rollback()
   }
 
   private func deleteSpecies(offsets: IndexSet) {
@@ -91,11 +130,5 @@ struct SpeciesListView: View {
           error: error)
       }
     }
-  }
-}
-
-struct SpeciesListView_Previews: PreviewProvider {
-  static var previews: some View {
-    SpeciesListView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
   }
 }

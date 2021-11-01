@@ -33,16 +33,6 @@ struct SpeciesRowView: View {
         .font(.subheadline)
     }
     .padding(.all, 10)
-    .contextMenu {
-      Button {
-        edit()
-      } label: {
-        HStack {
-          Image(systemName: "square.and.pencil")
-          Text("Bearbeiten")
-        }
-      }
-    }
   }
 
   var species: Species
