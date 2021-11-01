@@ -3,11 +3,95 @@
 //  Repti
 //
 //  Created by Thomas Bonk on 31.10.21.
+//  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
+struct ContentView: View {
+
+  // MARK: - Public Properties
+
+  var body: some View {
+    NavigationView {
+      SpeciesListView()
+      EmptyView()
+      EmptyView()
+    }
+    .sheet(
+      isPresented: $showAlert,
+      onDismiss: {
+        data.value?.dismissCallback()
+      }, content: {
+        AlertContentView(
+          alertType: data.value?.type ?? .information,
+            message: data.value?.message ?? "",
+              error: data.value?.error)
+      })
+    .onAppear(perform: registerForToastNotification)
+    .onDisappear(perform: deregisterFromToastNotification)
+  }
+
+  init() {
+    showAlert = false
+  }
+
+
+  // MARK: - Private Properties
+
+  @State
+  private var showAlert: Bool
+
+  //@State
+  private var data: ValueWrapper<AlertData> = ValueWrapper()
+
+  @State
+  private var observer: NSObject!
+
+
+  // MARK: - Private Methods
+
+  private func registerForToastNotification() {
+    observer =
+      NotificationCenter
+        .default
+        .addObserver(
+          forName: .showAlert,
+           object: nil,
+            queue: OperationQueue.main,
+            using: showToast(notification:)) as? NSObject
+  }
+
+  private func deregisterFromToastNotification() {
+    NotificationCenter.default.removeObserver(observer as Any)
+  }
+
+  private func showToast(notification: Notification) {
+    self.data.value = notification.alertData
+    self.showAlert = true
+  }
+}
+
+struct ContentView_Previews: PreviewProvider {
+  static var previews: some View {
+    ContentView()
+  }
+}
+
+/*
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -83,3 +167,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+*/
