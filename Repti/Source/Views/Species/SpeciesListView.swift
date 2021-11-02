@@ -32,7 +32,7 @@ struct SpeciesListView: View {
             destination: IndividualsListView(species: spcs),
             tag: spcs.id!,
             selection: $selectedId) {
-              SpeciesRowView(species: spcs, edit: { edit(species: spcs) })
+              SpeciesRowView(species: spcs)
             }
             .contextMenu {
               Button {
@@ -65,7 +65,8 @@ struct SpeciesListView: View {
     .toolbar {
       ToolbarItem(placement: .automatic) {
         Text("Arten")
-          .font(.title)
+          .font(.title3)
+          .bold()
       }
 
       ToolbarItem(placement: .automatic) {
@@ -84,9 +85,9 @@ struct SpeciesListView: View {
       if let edit = editSpecies.value {
         SpeciesEditorView(
           mode: edit.mode,
-          species: edit.species!,
-          onSave: save(species:),
-          onCancel: cancel(species:))
+          species: edit.species,
+          onSave: save,
+          onCancel: cancel)
       }
     }
   }
@@ -112,8 +113,7 @@ struct SpeciesListView: View {
   // MARK: - Private Methods
 
   private func createSpecies() {
-    let species = Species.create(in: viewContext)
-    editSpecies.value = (species: species, mode: .create)
+    editSpecies.value = (species: nil, mode: .create)
     showSpeciesEditor = true
   }
 
@@ -122,12 +122,25 @@ struct SpeciesListView: View {
     showSpeciesEditor = true
   }
 
-  private func save(species: Species) throws {
+  private func save(_ name: String, _ scientificName: String) throws {
+    if editSpecies.value!.mode == .create {
+      let species = Species.create(in: viewContext)
+      species.name = name
+      species.scientificName = scientificName
+
+      selectedId = species.id
+    } else {
+      editSpecies.value!.species!.name = name
+      editSpecies.value!.species!.scientificName = scientificName
+    }
+
     try viewContext.save()
+    editSpecies.value?.species = nil
   }
 
-  private func cancel(species: Species) throws {
+  private func cancel() throws {
     viewContext.rollback()
+    editSpecies.value?.species = nil
   }
 
   private func delete(species: Species) {

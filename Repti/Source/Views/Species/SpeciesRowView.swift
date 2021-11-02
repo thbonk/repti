@@ -36,11 +36,4 @@ struct SpeciesRowView: View {
   }
 
   var species: Species
-  var edit: () -> ()
-}
-
-struct SpeciesRowView_Previews: PreviewProvider {
-  static var previews: some View {
-    SpeciesRowView(species: Species(), edit: {})
-  }
 }

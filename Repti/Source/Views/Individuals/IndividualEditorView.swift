@@ -1,8 +1,8 @@
 //
-//  SpeciesEditorView.swift
+//  IndividualEditorView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 01.11.21.
+//  Created by Thomas Bonk on 02.11.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,37 +18,27 @@
 //  limitations under the License.
 //
 
-import PureSwiftUI
 import SwiftUI
 
-struct SpeciesEditorView: View {
+struct IndividualEditorView: View {
 
   // MARK: - Public Type Aliases
 
-  public typealias SaveCallback = (String, String) throws -> Void
+  public typealias SaveCallback = (String) throws -> Void
   public typealias CancelCallback = () throws -> Void
-
-
-  // MARK: - Public Enums
-
-  public enum Mode {
-    case create
-    case edit
-  }
 
 
   // MARK: - Public Properties
 
   var body: some View {
     VStack {
-      Text(editorTitle())
+      Text("Individuum erstellen")
         .font(.title)
         .padding(.horizontal, 30)
         .padding(.bottom, 30)
 
       VStack {
         TextField("Name", text: $name)
-        TextField("Wissenschaftlicher Name", text: $scientificName)
       }
 
       HStack {
@@ -59,23 +49,10 @@ struct SpeciesEditorView: View {
       .padding(.top, 30)
     }
     .padding(30)
-    .onAppear {
-      if let species = species {
-        self.name = species.name!
-        self.scientificName = species.scientificName!
-      }
-    }
   }
 
-
-  // MARK: - Initialization
-
-  init(mode: Mode, species: Species? = nil, onSave: SaveCallback? = nil, onCancel: CancelCallback? = nil) {
-    self.mode = mode
-    self.species = species
-    self.onSave = onSave
-    self.onCancel = onCancel
-  }
+  var onSave: SaveCallback? = nil
+  var onCancel: CancelCallback? = nil
 
 
   // MARK: - Private Properties
@@ -85,28 +62,17 @@ struct SpeciesEditorView: View {
 
   @State
   private var name: String = ""
-  @State
-  private var scientificName: String = ""
-
-  private var mode: Mode
-  private var species: Species?
-  private var onSave: SaveCallback? = nil
-  private var onCancel: CancelCallback? = nil
 
 
   // MARK: - Private Methods
 
-  private func editorTitle() -> LocalizedStringKey {
-    return mode == .edit ? "Art bearbeiten" : "Neue Art erstellen"
-  }
-
   private func save() {
     do {
-      try onSave?(name, scientificName)
+      try onSave?(name)
       presentationMode.wrappedValue.dismiss()
     } catch {
       errorAlert(
-        message: "Fehler beim Speichern der Art.",
+        message: "Fehler beim Speichern des Individuums.",
         error: error)
     }
   }

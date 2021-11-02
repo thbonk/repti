@@ -1,8 +1,8 @@
 //
-//  Species.swift
+//  IndividualRowView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 05.01.21.
+//  Created by Thomas Bonk on 02.11.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,24 +18,20 @@
 //  limitations under the License.
 //
 
-import Foundation
-import CoreData
+import PureSwiftUI
 
-extension Species {
+struct IndividualRowView: View {
 
-  // MARK: - Properties
+  // MARK: - Public Properties
 
-  var longName: String {
-    return "\(self.name!) (\(self.scientificName!))"
+  var body: some View {
+    HStack {
+      Text(individual.name!)
+      Spacer()
+      Text(individual.gender.displayName)
+    }
+    .padding(.all, 10)
   }
 
-  // MARK: - Class Methods
-
-  public class func create(in managedObjectContext: NSManagedObjectContext) -> Species {
-    return
-      NSEntityDescription
-        .insertNewObject(
-          forEntityName: Species.entityName,
-          into: managedObjectContext) as! Species
-  }
+  var individual: Individual
 }

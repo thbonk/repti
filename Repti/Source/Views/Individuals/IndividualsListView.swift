@@ -28,15 +28,14 @@ struct IndividualsListView: View {
     List {
       ForEach(individuals) { individual in
         NavigationLink(
-          destination: Text(individual.name!), // TODO
+          destination: IndividualDetailsView(individual: individual),
           tag: individual.id!,
           selection: $selectedId) {
-            // TODO IndividualRowView(species: spcs, edit: { edit(species: spcs) })
-            Text(individual.name!)
+            IndividualRowView(individual: individual)
           }
           .contextMenu {
             Button {
-              // TODO delete(species: spcs)
+              delete(individual: individual)
             } label: {
               HStack {
                 Image(sfSymbol: .trash_square)
@@ -46,15 +45,18 @@ struct IndividualsListView: View {
           }
       }
     }
-    .navigationTitle(Text("\(species.name!) (\(species.scientificName!))"))
+    .navigationTitle(Text(species.longName))
     .toolbar {
       ToolbarItem(placement: .automatic) {
         Button {
-          
+          showIndividualEditor = true
         } label: {
           Image(sfSymbol: .plus_app)
         }
       }
+    }
+    .sheet(isPresented: $showIndividualEditor) {
+      IndividualEditorView(onSave: save, onCancel: cancel)
     }
     .onAppear(perform: filterForSpecies)
   }
@@ -73,11 +75,44 @@ struct IndividualsListView: View {
   @State
   private var selectedId: UUID!
 
+  @State
+  private var showIndividualEditor = false
+
 
   // MARK: - Private Methods
 
   private func filterForSpecies() {
     individuals.nsPredicate = NSPredicate(format: "species.id == %@", argumentArray: [species.id!])
+  }
+
+  private func save(_ name: String) throws {
+    let individual = Individual.create(in: viewContext)
+
+    individual.name = name
+    individual.species = species
+    species.addToIndividuals(individual)
+
+    try viewContext.save()
+
+    selectedId = individual.id
+  }
+
+  private func cancel() throws {
+    viewContext.rollback()
+  }
+
+  private func delete(individual: Individual) {
+    withAnimation(.easeOut) {
+      viewContext.delete(individual)
+
+      do {
+        try viewContext.save()
+      } catch {
+        errorAlert(
+          message: "Fehler beim Löschen des Individuums.",
+          error: error)
+      }
+    }
   }
 }
 

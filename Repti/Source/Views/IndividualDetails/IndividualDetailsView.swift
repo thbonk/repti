@@ -1,8 +1,8 @@
 //
-//  Species.swift
+//  IndividualDetailsView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 05.01.21.
+//  Created by Thomas Bonk on 02.11.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,24 +18,17 @@
 //  limitations under the License.
 //
 
-import Foundation
-import CoreData
+import SwiftUI
 
-extension Species {
+struct IndividualDetailsView: View {
 
-  // MARK: - Properties
+  // MARK: - Public Properties
 
-  var longName: String {
-    return "\(self.name!) (\(self.scientificName!))"
+  var body: some View {
+    Text(individual.name!)
   }
 
-  // MARK: - Class Methods
-
-  public class func create(in managedObjectContext: NSManagedObjectContext) -> Species {
-    return
-      NSEntityDescription
-        .insertNewObject(
-          forEntityName: Species.entityName,
-          into: managedObjectContext) as! Species
-  }
+  @State
+  var individual: Individual
 }
+
