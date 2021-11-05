@@ -1,8 +1,8 @@
 //
-//  IndividualRowView.swift
+//  GeneralDataSubview.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 02.11.21.
+//  Created by Thomas Bonk on 03.11.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,21 +19,31 @@
 //
 
 import PureSwiftUI
-import SwiftUI
 
-struct IndividualRowView: View {
+struct GeneralDataSubview: View {
 
   // MARK: - Public Properties
 
   var body: some View {
-    HStack {
-      Text(individual.name!)
-      Spacer()
-      Text(individual.gender.displayName).font(.title2)
+    // Name and Gender
+    VStack(alignment: .leading) {
+      HStack {
+        TextField("Name", text: Binding($individual.name)!)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
+          .padding(.trailing, 10)
+
+        Picker(selection: Binding($individual.genderVal)!, label: Text("Geschlecht")) {
+          ForEach(Gender.allCases) { gender in
+            Text(gender.displayName).tag(gender.rawValue)
+          }
+        }
+        .pickerStyle(SegmentedPickerStyle())
+      }
     }
-    .padding(.all, 10)
+    .padding(.vertical, 10)
   }
 
-  @ObservedObject
+  @Binding
   var individual: Individual
 }
+

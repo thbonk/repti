@@ -20,6 +20,7 @@
 		E91CD6F32730F789008806EC /* IndividualRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91CD6F22730F789008806EC /* IndividualRowView.swift */; };
 		E91CD6F52730FA66008806EC /* IndividualEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91CD6F42730FA66008806EC /* IndividualEditorView.swift */; };
 		E91CD6FA2731E7AF008806EC /* IndividualDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91CD6F92731E7AF008806EC /* IndividualDetailsView.swift */; };
+		E91CD6FC27325609008806EC /* GeneralDataSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91CD6FB27325609008806EC /* GeneralDataSubview.swift */; };
 		E9482DDD27300D5900777327 /* LocalizedStringKey+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DDC27300D5900777327 /* LocalizedStringKey+ToString.swift */; };
 		E9482DE027300F6F00777327 /* ValueWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DDF27300F6F00777327 /* ValueWrapper.swift */; };
 		E9482DE22730141800777327 /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DE12730141800777327 /* SpeciesEditorView.swift */; };
@@ -30,6 +31,7 @@
 		E9B00076272EB02B00FAF3DD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B00071272EB02B00FAF3DD /* Persistence.swift */; };
 		E9B00077272EB02B00FAF3DD /* ReptiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B00073272EB02B00FAF3DD /* ReptiApp.swift */; };
 		E9B00078272EB02B00FAF3DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B00075272EB02B00FAF3DD /* ContentView.swift */; };
+		E9D084B0273501F400CBBA98 /* DatesSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D084AF273501F400CBBA98 /* DatesSubview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		E91CD6F22730F789008806EC /* IndividualRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualRowView.swift; sourceTree = "<group>"; };
 		E91CD6F42730FA66008806EC /* IndividualEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualEditorView.swift; sourceTree = "<group>"; };
 		E91CD6F92731E7AF008806EC /* IndividualDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDetailsView.swift; sourceTree = "<group>"; };
+		E91CD6FB27325609008806EC /* GeneralDataSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDataSubview.swift; sourceTree = "<group>"; };
+		E91CD6FE2733AAFB008806EC /* coredata.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = coredata.stencil; sourceTree = "<group>"; };
 		E9482DDC27300D5900777327 /* LocalizedStringKey+ToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+ToString.swift"; sourceTree = "<group>"; };
 		E9482DDF27300F6F00777327 /* ValueWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueWrapper.swift; sourceTree = "<group>"; };
 		E9482DE12730141800777327 /* SpeciesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 		E9B00071272EB02B00FAF3DD /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E9B00073272EB02B00FAF3DD /* ReptiApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReptiApp.swift; sourceTree = "<group>"; };
 		E9B00075272EB02B00FAF3DD /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E9D084AF273501F400CBBA98 /* DatesSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesSubview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +122,18 @@
 			isa = PBXGroup;
 			children = (
 				E91CD6F92731E7AF008806EC /* IndividualDetailsView.swift */,
+				E91CD6FB27325609008806EC /* GeneralDataSubview.swift */,
+				E9D084AF273501F400CBBA98 /* DatesSubview.swift */,
 			);
 			path = IndividualDetails;
+			sourceTree = "<group>";
+		};
+		E91CD6FD2733AAFB008806EC /* swiftgen-templates */ = {
+			isa = PBXGroup;
+			children = (
+				E91CD6FE2733AAFB008806EC /* coredata.stencil */,
+			);
+			path = "swiftgen-templates";
 			sourceTree = "<group>";
 		};
 		E9482DDB27300D3900777327 /* Extensions */ = {
@@ -143,6 +158,7 @@
 				E91A51CC272EB32F006062D6 /* LICENSE */,
 				E91A51CA272EB32F006062D6 /* README.md */,
 				E91A51CB272EB32F006062D6 /* swiftgen.yml */,
+				E91CD6FD2733AAFB008806EC /* swiftgen-templates */,
 				E9B0005A272EAFBD00FAF3DD /* Repti */,
 				E9B00059272EAFBD00FAF3DD /* Products */,
 			);
@@ -338,9 +354,11 @@
 				E91CD6F52730FA66008806EC /* IndividualEditorView.swift in Sources */,
 				E9B00076272EB02B00FAF3DD /* Persistence.swift in Sources */,
 				E91A51E1272F5AAB006062D6 /* AlertContentView.swift in Sources */,
+				E9D084B0273501F400CBBA98 /* DatesSubview.swift in Sources */,
 				E91A51DF272F545C006062D6 /* Alert.swift in Sources */,
 				E9482DE027300F6F00777327 /* ValueWrapper.swift in Sources */,
 				E91CD6FA2731E7AF008806EC /* IndividualDetailsView.swift in Sources */,
+				E91CD6FC27325609008806EC /* GeneralDataSubview.swift in Sources */,
 				E91A51D0272EB37E006062D6 /* Model.swift in Sources */,
 				E9B00078272EB02B00FAF3DD /* ContentView.swift in Sources */,
 				E9B00077272EB02B00FAF3DD /* ReptiApp.swift in Sources */,

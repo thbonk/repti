@@ -18,17 +18,35 @@
 //  limitations under the License.
 //
 
-import SwiftUI
+import PureSwiftUI
 
 struct IndividualDetailsView: View {
 
   // MARK: - Public Properties
 
   var body: some View {
-    Text(individual.name!)
+    VStack {
+      //Form {
+        GeneralDataSubview(individual: $individual)
+        DatesSubview(individual: $individual, expanded: $datesExpanded)
+      //}
+
+      Spacer()
+    }
+    .navigationTitle(individual.name!)
+    .padding(15)
   }
 
-  @State
+  @Binding
   var individual: Individual
+
+
+  // MARK: - Private Properties
+
+  @Environment(\.managedObjectContext)
+  private var viewContext
+
+  @State
+  private var datesExpanded = true
 }
 

@@ -18,33 +18,52 @@
 //  limitations under the License.
 //
 
+import CoreData
 import PureSwiftUI
+import SwiftUI
 
 struct IndividualsListView: View {
 
   // MARK: - Public Properties
 
   var body: some View {
-    List {
-      ForEach(individuals) { individual in
-        NavigationLink(
-          destination: IndividualDetailsView(individual: individual),
-          tag: individual.id!,
-          selection: $selectedId) {
-            IndividualRowView(individual: individual)
-          }
-          .contextMenu {
-            Button {
-              delete(individual: individual)
-            } label: {
-              HStack {
-                Image(sfSymbol: .trash_square)
-                Text("Löschen")
+    RenderIf(individuals.count > 0) {
+      List {
+        ForEach(individuals) { individual in
+          NavigationLink(
+            destination:
+              IndividualDetailsView(
+                individual:
+                  Binding(
+                    get: {
+                      return individual
+                    }, set: { _ in
+                      do {
+                        try viewContext.save()
+                      } catch {
+                        errorAlert(message: "Fehler beim Speichern der Daten.", error: error)
+                      }
+                    })),
+            tag: individual.id!,
+            selection: $selectedId) {
+              IndividualRowView(individual: individual)
+            }
+            .contextMenu {
+              Button {
+                delete(individual: individual)
+              } label: {
+                HStack {
+                  Image(sfSymbol: .trash_square)
+                  Text("Löschen")
+                }
               }
             }
-          }
+        }
       }
     }
+    .elseRender(content: {
+      Text("Keine Daten gefunden.")
+    })
     .navigationTitle(Text(species.longName))
     .toolbar {
       ToolbarItem(placement: .automatic) {
@@ -55,12 +74,15 @@ struct IndividualsListView: View {
         }
       }
     }
+    .onAppear {
+      individuals.nsPredicate = NSPredicate(format: "species = %@", argumentArray: [species])
+    }
     .sheet(isPresented: $showIndividualEditor) {
       IndividualEditorView(onSave: save, onCancel: cancel)
     }
-    .onAppear(perform: filterForSpecies)
   }
 
+  @State
   var species: Species
 
 
@@ -80,10 +102,6 @@ struct IndividualsListView: View {
 
 
   // MARK: - Private Methods
-
-  private func filterForSpecies() {
-    individuals.nsPredicate = NSPredicate(format: "species.id == %@", argumentArray: [species.id!])
-  }
 
   private func save(_ name: String) throws {
     let individual = Individual.create(in: viewContext)

@@ -20,7 +20,7 @@
 
 import CoreData
 
-enum Gender: Int16, CaseIterable, Identifiable {
+enum Gender: Int16, CaseIterable, Identifiable, RawRepresentable {
   var id: Int16 { return self.rawValue }
 
   case male = 0
