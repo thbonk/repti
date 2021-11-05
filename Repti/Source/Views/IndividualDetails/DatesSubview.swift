@@ -88,9 +88,6 @@ struct DatesSubview: View {
   @Binding
   var individual: Individual
 
-  @Binding
-  var expanded: Bool
-
 
   // MARK: - Private Properties
 

@@ -26,10 +26,8 @@ struct IndividualDetailsView: View {
 
   var body: some View {
     VStack {
-      //Form {
-        GeneralDataSubview(individual: $individual)
-        DatesSubview(individual: $individual, expanded: $datesExpanded)
-      //}
+      GeneralDataSubview(individual: $individual)
+      DatesSubview(individual: $individual)
 
       Spacer()
     }
@@ -39,14 +37,5 @@ struct IndividualDetailsView: View {
 
   @Binding
   var individual: Individual
-
-
-  // MARK: - Private Properties
-
-  @Environment(\.managedObjectContext)
-  private var viewContext
-
-  @State
-  private var datesExpanded = true
 }
 
