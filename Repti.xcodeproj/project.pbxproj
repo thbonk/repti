@@ -21,6 +21,8 @@
 		E91CD6F52730FA66008806EC /* IndividualEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91CD6F42730FA66008806EC /* IndividualEditorView.swift */; };
 		E91CD6FA2731E7AF008806EC /* IndividualDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91CD6F92731E7AF008806EC /* IndividualDetailsView.swift */; };
 		E91CD6FC27325609008806EC /* GeneralDataSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91CD6FB27325609008806EC /* GeneralDataSubview.swift */; };
+		E923CDEA2736A75100ADE6F4 /* WeightEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923CDE92736A75100ADE6F4 /* WeightEditorView.swift */; };
+		E923CDEC2737EDA600ADE6F4 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = E923CDEB2737EDA600ADE6F4 /* Weight.swift */; };
 		E9482DDD27300D5900777327 /* LocalizedStringKey+ToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DDC27300D5900777327 /* LocalizedStringKey+ToString.swift */; };
 		E9482DE027300F6F00777327 /* ValueWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DDF27300F6F00777327 /* ValueWrapper.swift */; };
 		E9482DE22730141800777327 /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DE12730141800777327 /* SpeciesEditorView.swift */; };
@@ -32,6 +34,8 @@
 		E9B00077272EB02B00FAF3DD /* ReptiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B00073272EB02B00FAF3DD /* ReptiApp.swift */; };
 		E9B00078272EB02B00FAF3DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B00075272EB02B00FAF3DD /* ContentView.swift */; };
 		E9D084B0273501F400CBBA98 /* DatesSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D084AF273501F400CBBA98 /* DatesSubview.swift */; };
+		E9D084B22735A67100CBBA98 /* WeighingsSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D084B12735A67100CBBA98 /* WeighingsSubview.swift */; };
+		E9D084B52735DEEC00CBBA98 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E9D084B42735DEEC00CBBA98 /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,8 @@
 		E91CD6F92731E7AF008806EC /* IndividualDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDetailsView.swift; sourceTree = "<group>"; };
 		E91CD6FB27325609008806EC /* GeneralDataSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralDataSubview.swift; sourceTree = "<group>"; };
 		E91CD6FE2733AAFB008806EC /* coredata.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = coredata.stencil; sourceTree = "<group>"; };
+		E923CDE92736A75100ADE6F4 /* WeightEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEditorView.swift; sourceTree = "<group>"; };
+		E923CDEB2737EDA600ADE6F4 /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		E9482DDC27300D5900777327 /* LocalizedStringKey+ToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+ToString.swift"; sourceTree = "<group>"; };
 		E9482DDF27300F6F00777327 /* ValueWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueWrapper.swift; sourceTree = "<group>"; };
 		E9482DE12730141800777327 /* SpeciesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 		E9B00073272EB02B00FAF3DD /* ReptiApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReptiApp.swift; sourceTree = "<group>"; };
 		E9B00075272EB02B00FAF3DD /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E9D084AF273501F400CBBA98 /* DatesSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesSubview.swift; sourceTree = "<group>"; };
+		E9D084B12735A67100CBBA98 /* WeighingsSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighingsSubview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9482DE5273077A000777327 /* PureSwiftUI in Frameworks */,
+				E9D084B52735DEEC00CBBA98 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +93,7 @@
 				E91A51C6272EB21F006062D6 /* BaseEntity.swift */,
 				E91CD6F02730F675008806EC /* Individual.swift */,
 				E91A51D1272EB42D006062D6 /* Species.swift */,
+				E923CDEB2737EDA600ADE6F4 /* Weight.swift */,
 				E91A51CD272EB340006062D6 /* Generated */,
 			);
 			path = Model;
@@ -124,6 +133,8 @@
 				E91CD6F92731E7AF008806EC /* IndividualDetailsView.swift */,
 				E91CD6FB27325609008806EC /* GeneralDataSubview.swift */,
 				E9D084AF273501F400CBBA98 /* DatesSubview.swift */,
+				E9D084B12735A67100CBBA98 /* WeighingsSubview.swift */,
+				E923CDE92736A75100ADE6F4 /* WeightEditorView.swift */,
 			);
 			path = IndividualDetails;
 			sourceTree = "<group>";
@@ -262,6 +273,7 @@
 			name = Repti;
 			packageProductDependencies = (
 				E9482DE4273077A000777327 /* PureSwiftUI */,
+				E9D084B42735DEEC00CBBA98 /* SwiftUICharts */,
 			);
 			productName = Repti;
 			productReference = E9B00058272EAFBD00FAF3DD /* Repti.app */;
@@ -292,6 +304,7 @@
 			mainGroup = E9B0004F272EAFBD00FAF3DD;
 			packageReferences = (
 				E9482DE3273077A000777327 /* XCRemoteSwiftPackageReference "pure-swift-ui" */,
+				E9D084B32735DEEC00CBBA98 /* XCRemoteSwiftPackageReference "SwiftUICharts" */,
 			);
 			productRefGroup = E9B00059272EAFBD00FAF3DD /* Products */;
 			projectDirPath = "";
@@ -342,10 +355,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9482DDD27300D5900777327 /* LocalizedStringKey+ToString.swift in Sources */,
+				E923CDEA2736A75100ADE6F4 /* WeightEditorView.swift in Sources */,
 				E91CD6EF27307FEC008806EC /* IndividualsListView.swift in Sources */,
 				E9482DE22730141800777327 /* SpeciesEditorView.swift in Sources */,
 				E9B00068272EAFBE00FAF3DD /* Repti.xcdatamodeld in Sources */,
 				E91CD6F32730F789008806EC /* IndividualRowView.swift in Sources */,
+				E9D084B22735A67100CBBA98 /* WeighingsSubview.swift in Sources */,
 				E91CD6F12730F675008806EC /* Individual.swift in Sources */,
 				E91A51D2272EB42D006062D6 /* Species.swift in Sources */,
 				E91A51D7272EB616006062D6 /* SpeciesRowView.swift in Sources */,
@@ -362,6 +377,7 @@
 				E91A51D0272EB37E006062D6 /* Model.swift in Sources */,
 				E9B00078272EB02B00FAF3DD /* ContentView.swift in Sources */,
 				E9B00077272EB02B00FAF3DD /* ReptiApp.swift in Sources */,
+				E923CDEC2737EDA600ADE6F4 /* Weight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +585,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		E9D084B32735DEEC00CBBA98 /* XCRemoteSwiftPackageReference "SwiftUICharts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mecid/SwiftUICharts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -576,6 +600,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E9482DE3273077A000777327 /* XCRemoteSwiftPackageReference "pure-swift-ui" */;
 			productName = PureSwiftUI;
+		};
+		E9D084B42735DEEC00CBBA98 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9D084B32735DEEC00CBBA98 /* XCRemoteSwiftPackageReference "SwiftUICharts" */;
+			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 

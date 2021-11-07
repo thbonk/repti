@@ -20,10 +20,11 @@
 
 import Foundation
 
-class ValueWrapper<Value> {
+class ValueWrapper<Value>: ObservableObject {
 
   // MARK: - Public Properties
 
+  @Published
   var value: Value?
 
 

@@ -1,8 +1,8 @@
 //
-//  IndividualDetailsView.swift
+//  Weight.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 02.11.21.
+//  Created by Thomas Bonk on 07.11.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,27 +18,18 @@
 //  limitations under the License.
 //
 
-import PureSwiftUI
+import CoreData
+import Foundation
 
-struct IndividualDetailsView: View {
+extension Weight {
 
-  // MARK: - Public Properties
+  // MARK: - Class Methods
 
-  var body: some View {
-    ScrollView {
-      VStack {
-        GeneralDataSubview(individual: $individual)
-        DatesSubview(individual: $individual)
-        WeighingsSubview(individual: $individual)
-
-        Spacer()
-      }
-    }
-    .navigationTitle(individual.name!)
-    .padding(15)
+  class func create(in managedObjectContext: NSManagedObjectContext) -> Weight {
+    return
+      NSEntityDescription
+        .insertNewObject(
+          forEntityName: Weight.entityName,
+          into: managedObjectContext) as! Weight
   }
-
-  @Binding
-  var individual: Individual
 }
-

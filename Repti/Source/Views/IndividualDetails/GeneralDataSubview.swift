@@ -27,9 +27,10 @@ struct GeneralDataSubview: View {
   var body: some View {
     // Name and Gender
     VStack(alignment: .leading) {
-      HStack {
+      HStack(alignment: .center) {
         TextField("Name", text: Binding($individual.name)!)
-          .textFieldStyle(RoundedBorderTextFieldStyle())
+          .textFieldStyle(PlainTextFieldStyle())
+          .font(.title)
           .padding(.trailing, 10)
 
         Picker(selection: Binding($individual.genderVal)!, label: Text("Geschlecht")) {

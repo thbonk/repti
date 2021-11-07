@@ -27,24 +27,23 @@ struct DatesSubview: View {
   var body: some View {
     VStack(alignment: .leading) {
       Divider()
-      HStack {
-        HStack(alignment: .center) {
-          Text("Daten").bold()
-          Spacer()
-          Toggle(isOn: dateIsBound($individual.ovipositionDate)) {
-            Text(LocalizedStringKey("Eiablagedatum"))
-          }
-          Toggle(isOn: dateIsBound($individual.hatchingDate)) {
-            Text(LocalizedStringKey("Schlupfdatum"))
-          }
-          Toggle(isOn: dateIsBound($individual.purchasingDate)) {
-            Text(LocalizedStringKey("Kaufdatum"))
-          }
-          Toggle(isOn: dateIsBound($individual.dateOfSale)) {
-            Text(LocalizedStringKey("Verkaufsdatum"))
-          }
+      HStack(alignment: .center) {
+        Text("Daten").bold()
+        Spacer()
+        Toggle(isOn: dateIsBound($individual.ovipositionDate)) {
+          Text(LocalizedStringKey("Eiablagedatum"))
+        }
+        Toggle(isOn: dateIsBound($individual.hatchingDate)) {
+          Text(LocalizedStringKey("Schlupfdatum"))
+        }
+        Toggle(isOn: dateIsBound($individual.purchasingDate)) {
+          Text(LocalizedStringKey("Kaufdatum"))
+        }
+        Toggle(isOn: dateIsBound($individual.dateOfSale)) {
+          Text(LocalizedStringKey("Verkaufsdatum"))
         }
       }
+      .padding(.bottom, 10)
 
       RenderIf(anyDateAvailable) {
         LazyVGrid(
@@ -69,7 +68,6 @@ struct DatesSubview: View {
                 DatePicker(Binding($individual.dateOfSale)!)
               }
             })
-        Spacer()
       }
       .elseRender {
         HStack {

@@ -72,7 +72,7 @@ func warningAlert(message: LocalizedStringKey, dismissCallback callback: (() -> 
   showAlert(data: AlertData(toastType: .warning, message: message, dismissCallback: callback ?? {}))
 }
 
-func errorAlert(message: LocalizedStringKey, error: Error, dismissCallback callback: (() -> ())? = nil) {
+func errorAlert(message: LocalizedStringKey, error: Error? = nil, dismissCallback callback: (() -> ())? = nil) {
   showAlert(data: AlertData(toastType: .error, message: message, error: error, dismissCallback: callback ?? {}))
 }
 
