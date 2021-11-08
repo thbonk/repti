@@ -70,7 +70,7 @@ struct WeightEditorView: View {
   private var mode: Mode
 
   @Environment(\.presentationMode)
-  var presentationMode
+  private var presentationMode
 
   @State
   private var dateVal: Date = Date()

@@ -1,8 +1,8 @@
 //
-//  BaseEntity.swift
+//  Formatters.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 05.01.21.
+//  Created by Thomas Bonk on 07.11.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,23 +19,11 @@
 //
 
 import Foundation
-import CoreData
 
-extension BaseEntity: Identifiable {
+let weighingDateFormatter: DateFormatter = {
+  let formatter = DateFormatter()
+  formatter.dateStyle = .short
+  formatter.timeStyle = .none
 
-  // MARK: - NSManagedObject Overrides
-
-  override func awakeFromInsert() {
-    setPrimitiveValue(UUID(), forKey: "id")
-    setPrimitiveValue(Date(), forKey: "createdAt")
-    setPrimitiveValue(nil, forKey: "modifiedAt")
-  }
-
-  override func willSave() {
-    if modifiedAt == nil {
-      setPrimitiveValue(createdAt, forKey: "modifiedAt")
-    } else {
-      setPrimitiveValue(Date(), forKey: "modifiedAt")
-    }
-  }
-}
+  return formatter
+}()

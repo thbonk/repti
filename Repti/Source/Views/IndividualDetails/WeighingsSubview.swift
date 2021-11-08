@@ -20,11 +20,12 @@
 
 import PureSwiftUI
 import SwiftUICharts
+import SwiftUI
 
 struct WeighingsSubview: View {
 
   // MARK: - Public Properties
-  
+
   var body: some View {
     VStack(alignment: .leading) {
       Divider()
@@ -35,11 +36,10 @@ struct WeighingsSubview: View {
         LineChartView(dataPoints: sortedWeights())
           .tabItem { Text("Diagramm") }
           .padding()
+
         DataList()
           .tabItem { Text("Daten") }
-          .padding()
       }
-      .font(.headline)
     }
     .sheet(isPresented: $showWeighingEditor) {
       WeightEditorView(
@@ -60,9 +60,11 @@ struct WeighingsSubview: View {
   private var viewContext
 
   @State
-  private var selectedWeight: UUID!
-  @State
   private var showWeighingEditor: Bool = false
+  @State
+  private var weighings: [Weight] = [Weight]()
+  @State
+  private var selectedWeight: Weight!
   @ObservedObject
   private var editWeight = ValueWrapper<(weight: Weight?, mode: WeightEditorView.Mode)>()
 
@@ -74,35 +76,35 @@ struct WeighingsSubview: View {
       HStack(alignment: .center) {
         Text("Gewicht").bold()
         Spacer()
-        Button(action: addWeight, label: { Image(sfSymbol: .calendar_badge_plus) })
+        Button(action: addWeight, label: { SFSymbol(.calendar_badge_plus) })
           .padding(.trailing, 10)
-        Button {
-          // TODO edit selected weight
-        } label: {
-          Image(sfSymbol: .square_and_pencil)
-        }
-        .disabled(selectedWeight == nil)
-        .padding(.trailing, 10)
-        Button {
-          // TODO delete selected weight
-        } label: {
-          Image(sfSymbol: .trash_square)
-        }
-        .disabled(selectedWeight == nil)
+        Button(action: editSelectedWeight, label: { SFSymbol(.square_and_pencil) })
+          .padding(.trailing, 10)
+          .disabled(selectedWeight == nil)
+        Button(action: deleteSelectedWeight, label: { SFSymbol(.calendar_badge_minus) })
+          .disabled(selectedWeight == nil)
       }
       .buttonStyle(BorderlessButtonStyle())
   }
 
   private func DataList() -> some View {
-    let dateFormatter = weighingDateFormatter()
-
-    return List(Array(individual.weighings ?? []), selection: $selectedWeight) { weight in
-      HStack {
-        Text("\(dateFormatter.string(from: weight.date!))")
-        Spacer()
-        Text("\(Int(weight.weight!))")
+    return ScrollView {
+      LazyVGrid(columns: [.init(alignment: .center)/*, .init(alignment: .leading)*/]) {
+        ForEach(weighings) { weight in
+          Text("\(weighingDateFormatter.string(from: weight.date!))\t\t\t\(Int(weight.weight!))")
+            .padding(10)
+            .backgroundIf(selectedWeight == weight, Rectangle().fill(.selection).cornerRadius(5))
+            .onTapGesture {
+              selectedWeight = weight
+            }
+        }
       }
     }
+    .onAppear(perform: mapToWeighingsList)
+    .onDisappear {
+      selectedWeight = nil
+    }
+    .padding()
   }
 
   private func addWeight() {
@@ -110,9 +112,29 @@ struct WeighingsSubview: View {
     showWeighingEditor = true
   }
 
+  private func editSelectedWeight() {
+    editWeight.value = (weight: selectedWeight, mode: .edit)
+    showWeighingEditor = true
+  }
+
+  private func deleteSelectedWeight() {
+    do {
+      individual.removeFromWeighings(selectedWeight)
+      viewContext.delete(selectedWeight)
+      try viewContext.save()
+      DispatchQueue.main.async {
+        mapToWeighingsList()
+      }
+    } catch {
+      errorAlert(
+        message: "Fehler beim Löschen der Daten.",
+        error: error)
+    }
+  }
+
   private func sortedWeights() -> [DataPoint] {
     let legend = Legend(color: .red, label: "Gewicht", order: 1)
-    let dateFormatter = weighingDateFormatter()
+    let dateFormatter = weighingDateFormatter
 
     return
       Array(individual.weighings!)
@@ -127,12 +149,17 @@ struct WeighingsSubview: View {
         }
   }
 
-  private func weighingDateFormatter() -> DateFormatter {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .none
+  private func mapToWeighingsList() {
+    let we =
+      individual
+        .weighings?
+        .map { weight in weight } ?? []
 
-    return formatter
+    weighings =
+      we
+        .sorted { (weight1, weight2) -> Bool in
+          weight1.date! < weight2.date!
+        }
   }
 
   private func save(date: Date, weight: Float) {
@@ -150,6 +177,9 @@ struct WeighingsSubview: View {
 
     do {
       try viewContext.save()
+      DispatchQueue.main.async {
+        mapToWeighingsList()
+      }
     } catch {
       errorAlert(
         message: "Fehler beim Speichern der Daten.",
