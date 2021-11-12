@@ -41,6 +41,7 @@ struct WeighingsSubview: View {
           .tabItem { Text("Daten") }
       }
     }
+    .padding(.vertical, 20)
     .sheet(isPresented: $showWeighingEditor) {
       WeightEditorView(
           weight: editWeight.value?.weight,
@@ -93,7 +94,7 @@ struct WeighingsSubview: View {
         ForEach(weighings) { weight in
           Text("\(weighingDateFormatter.string(from: weight.date!))\t\t\t\(Int(weight.weight!))")
             .padding(10)
-            .backgroundIf(selectedWeight == weight, Rectangle().fill(.selection).cornerRadius(5))
+            .backgroundIf(selectedWeight == weight, Color.accentColor).cornerRadius(5)
             .onTapGesture {
               selectedWeight = weight
             }

@@ -1,8 +1,8 @@
 //
-//  Formatters.swift
+//  UTType+AdditionalTypes.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 07.11.21.
+//  Created by Thomas Bonk on 09.11.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,12 +18,8 @@
 //  limitations under the License.
 //
 
-import Foundation
+import UniformTypeIdentifiers
 
-let weighingDateFormatter: DateFormatter = {
-  let formatter = DateFormatter()
-  formatter.dateStyle = .medium
-  formatter.timeStyle = .none
-
-  return formatter
-}()
+extension UTType {
+  static let openXml = UTType(filenameExtension: "docx")!
+}

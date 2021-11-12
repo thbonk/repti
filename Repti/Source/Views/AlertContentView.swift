@@ -38,7 +38,9 @@ struct AlertContentView: View {
           Text(message.stringValue())
 
           RenderIf(error != nil) {
-            Text("Fehler:\n \(error!.localizedDescription)")
+            Text("Fehler: \(error!.localizedDescription)")
+              .lineLimit(nil)
+              .multilineTextAlignment(.leading)
               .padding(.top, 5)
           }
         }
@@ -52,8 +54,7 @@ struct AlertContentView: View {
         Text("OK")
           .padding(.horizontal, 50)
       }
-      .padding(.top, 20)
-      .padding(.bottom, 10)
+      .padding(.vertical, 30)
       .buttonStyle(BorderedProminentButtonStyle())
     }
   }

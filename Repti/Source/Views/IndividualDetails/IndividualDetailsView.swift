@@ -30,6 +30,7 @@ struct IndividualDetailsView: View {
         GeneralDataSubview(individual: $individual)
         DatesSubview(individual: $individual)
         WeighingsSubview(individual: $individual)
+        DocumentsSubview(individual: $individual)
 
         Spacer()
       }

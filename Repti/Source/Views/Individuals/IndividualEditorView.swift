@@ -42,9 +42,9 @@ struct IndividualEditorView: View {
       }
 
       HStack {
-        Button(action: save, label: { Text("Sichern").padding(.all, 5) })
-        Spacer()
         Button(action: cancel, label: { Text("Abbrechen").padding(.all, 5) })
+        Spacer()
+        Button(action: save, label: { Text("Sichern").padding(.all, 5) })
       }
       .padding(.top, 30)
     }

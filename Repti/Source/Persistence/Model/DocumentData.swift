@@ -1,8 +1,8 @@
 //
-//  Formatters.swift
+//  DocumentData.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 07.11.21.
+//  Created by Thomas Bonk on 09.11.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,12 +18,18 @@
 //  limitations under the License.
 //
 
+import CoreData
 import Foundation
 
-let weighingDateFormatter: DateFormatter = {
-  let formatter = DateFormatter()
-  formatter.dateStyle = .medium
-  formatter.timeStyle = .none
+extension DocumentData {
 
-  return formatter
-}()
+  // MARK: - Class Methods
+
+  class func create(in managedObjectContext: NSManagedObjectContext) -> DocumentData {
+    return
+      NSEntityDescription
+        .insertNewObject(
+          forEntityName: DocumentData.entityName,
+          into: managedObjectContext) as! DocumentData
+  }
+}

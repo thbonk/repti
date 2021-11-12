@@ -1,8 +1,8 @@
 //
-//  WeightEditorView.swift
+//  DocumentEditorView.swift
 //  Repti
 //
-//  Created by Thomas Bonk on 06.11.21.
+//  Created by Thomas Bonk on 09.11.21.
 //  Copyright 2021 Thomas Bonk <thomas@meandmymac.de>
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,14 +19,14 @@
 //
 
 import PureSwiftUI
+import SwiftUI
 
-struct WeightEditorView: View {
+struct DocumentEditorView: View {
 
   // MARK: - Public Typealiases
 
-  typealias SaveCallback = (Date, Float) -> Void
+  typealias SaveCallback = (URL?, Date, String) -> Void
   typealias CancelCallback = () -> Void
-
 
   // MARK: - Public Enums
 
@@ -34,7 +34,7 @@ struct WeightEditorView: View {
     case create
     case edit
   }
-
+  
 
   // MARK: - Public Properties
 
@@ -43,10 +43,12 @@ struct WeightEditorView: View {
       EditorTitle()
 
       LazyVGrid(columns: [.init(alignment: .trailing), .init(alignment: .leading)]) {
+        Text("Dateiname:")
+        Text(filename)
         Text("Datum:")
-        DatePicker("", selection: $dateVal, displayedComponents: .date).pickerStyle(MenuPickerStyle())
-        Text("Gewicht:")
-        TextField("", value: $weightVal, formatter: NumberFormatter())
+        DatePicker("", selection: $date, displayedComponents: .date).pickerStyle(MenuPickerStyle())
+        Text("Bemerkung:")
+        TextField("", text: $notes)
       }
 
       HStack {
@@ -57,37 +59,27 @@ struct WeightEditorView: View {
       .padding(.top, 30)
     }
     .padding(30)
-    .onAppear(perform: initializeState)
+    .onAppear(perform: initializeFromValues)
   }
 
-  var weight: Weight?
-  var onSave: SaveCallback?
-  var onCancel: CancelCallback?
+  var document: Document?
+  var url: URL?
+  var mode: Mode
+  var onSave: SaveCallback? = nil
+  var onCancel: CancelCallback? = nil
 
 
   // MARK: - Private Properties
-
-  private var mode: Mode
 
   @Environment(\.presentationMode)
   private var presentationMode
 
   @State
-  private var dateVal: Date = Date()
+  private var filename: String = ""
   @State
-  private var weightVal: Float = 0
-
-
-  // MARK: - Initialization
-
-  init(weight: Weight? = nil, mode: Mode, onSave: SaveCallback? = nil, onCancel: CancelCallback? = nil) {
-    self.weight = weight
-    self.mode = mode
-    self.onSave = onSave
-    self.onCancel = onCancel
-
-    initializeState()
-  }
+  private var date: Date = Date()
+  @State
+  private var notes: String = ""
 
 
   // MARK: - Private Methods
@@ -95,36 +87,24 @@ struct WeightEditorView: View {
   private func EditorTitle() -> some View {
     return
       RenderIf(mode == .create) {
-        Text("Gewicht erstellen")
+        Text("Dokument erstellen")
       }.elseRender {
-        Text("Gewicht bearbeiten")
+        Text("Dokument bearbeiten")
       }
       .font(.title)
       .padding(.horizontal, 30)
       .padding(.bottom, 30)
   }
 
-  private func initializeState() {
-    switch mode {
-      case .create:
-        dateVal = Date()
-        weightVal = 0
-        break
-
-      case .edit:
-        guard let weight = weight else {
-          // Show Error and close
-          DispatchQueue.main.async {
-            presentationMode.wrappedValue.dismiss()
-          }
-          DispatchQueue.main.async {
-            errorAlert(message: "Es wurde kein Gewicht zur Bearbeitung gefunden!")
-          }
-          return
-        }
-        dateVal = weight.date!
-        weightVal = weight.weight!
-        break
+  private func initializeFromValues() {
+    if let doc = document {
+      filename = doc.filename!
+      date = doc.date!
+      notes = doc.notes!
+    } else {
+      filename = url!.lastPathComponent
+      date = Date()
+      notes = ""
     }
   }
 
@@ -133,7 +113,7 @@ struct WeightEditorView: View {
       presentationMode.wrappedValue.dismiss()
     }
     DispatchQueue.main.async {
-      onSave?(dateVal, weightVal)
+      onSave?(url, date, notes)
     }
   }
 

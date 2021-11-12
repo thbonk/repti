@@ -28,6 +28,7 @@
 		E9482DE22730141800777327 /* SpeciesEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9482DE12730141800777327 /* SpeciesEditorView.swift */; };
 		E9482DE5273077A000777327 /* PureSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E9482DE4273077A000777327 /* PureSwiftUI */; };
 		E971070B273880150086E452 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E971070A273880150086E452 /* Formatters.swift */; };
+		E971070D273974D60086E452 /* DocumentsSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E971070C273974D60086E452 /* DocumentsSubview.swift */; };
 		E9B00060272EAFBE00FAF3DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B0005F272EAFBE00FAF3DD /* Assets.xcassets */; };
 		E9B00063272EAFBE00FAF3DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B00062272EAFBE00FAF3DD /* Preview Assets.xcassets */; };
 		E9B00068272EAFBE00FAF3DD /* Repti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9B00066272EAFBE00FAF3DD /* Repti.xcdatamodeld */; };
@@ -37,6 +38,11 @@
 		E9D084B0273501F400CBBA98 /* DatesSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D084AF273501F400CBBA98 /* DatesSubview.swift */; };
 		E9D084B22735A67100CBBA98 /* WeighingsSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D084B12735A67100CBBA98 /* WeighingsSubview.swift */; };
 		E9D084B52735DEEC00CBBA98 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E9D084B42735DEEC00CBBA98 /* SwiftUICharts */; };
+		E9EF5F88273AF0DE00EC0A52 /* UTType+AdditionalTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EF5F87273AF0DE00EC0A52 /* UTType+AdditionalTypes.swift */; };
+		E9EF5F8A273AF1DD00EC0A52 /* DocumentEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EF5F89273AF1DD00EC0A52 /* DocumentEditorView.swift */; };
+		E9EF5F8C273B00F600EC0A52 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EF5F8B273B00F600EC0A52 /* Document.swift */; };
+		E9EF5F8E273B014500EC0A52 /* DocumentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EF5F8D273B014500EC0A52 /* DocumentData.swift */; };
+		E9EF5F91273D938800EC0A52 /* QuickLookPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EF5F90273D938800EC0A52 /* QuickLookPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +70,7 @@
 		E9482DDF27300F6F00777327 /* ValueWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueWrapper.swift; sourceTree = "<group>"; };
 		E9482DE12730141800777327 /* SpeciesEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesEditorView.swift; sourceTree = "<group>"; };
 		E971070A273880150086E452 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		E971070C273974D60086E452 /* DocumentsSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsSubview.swift; sourceTree = "<group>"; };
 		E9B00058272EAFBD00FAF3DD /* Repti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Repti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B0005F272EAFBE00FAF3DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9B00062272EAFBE00FAF3DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -74,6 +81,11 @@
 		E9B00075272EB02B00FAF3DD /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E9D084AF273501F400CBBA98 /* DatesSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesSubview.swift; sourceTree = "<group>"; };
 		E9D084B12735A67100CBBA98 /* WeighingsSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighingsSubview.swift; sourceTree = "<group>"; };
+		E9EF5F87273AF0DE00EC0A52 /* UTType+AdditionalTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UTType+AdditionalTypes.swift"; sourceTree = "<group>"; };
+		E9EF5F89273AF1DD00EC0A52 /* DocumentEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEditorView.swift; sourceTree = "<group>"; };
+		E9EF5F8B273B00F600EC0A52 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		E9EF5F8D273B014500EC0A52 /* DocumentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentData.swift; sourceTree = "<group>"; };
+		E9EF5F90273D938800EC0A52 /* QuickLookPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +105,12 @@
 			isa = PBXGroup;
 			children = (
 				E91A51C6272EB21F006062D6 /* BaseEntity.swift */,
+				E9EF5F8B273B00F600EC0A52 /* Document.swift */,
 				E91CD6F02730F675008806EC /* Individual.swift */,
 				E91A51D1272EB42D006062D6 /* Species.swift */,
 				E923CDEB2737EDA600ADE6F4 /* Weight.swift */,
 				E91A51CD272EB340006062D6 /* Generated */,
+				E9EF5F8D273B014500EC0A52 /* DocumentData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,6 +151,8 @@
 				E9D084AF273501F400CBBA98 /* DatesSubview.swift */,
 				E9D084B12735A67100CBBA98 /* WeighingsSubview.swift */,
 				E923CDE92736A75100ADE6F4 /* WeightEditorView.swift */,
+				E971070C273974D60086E452 /* DocumentsSubview.swift */,
+				E9EF5F89273AF1DD00EC0A52 /* DocumentEditorView.swift */,
 			);
 			path = IndividualDetails;
 			sourceTree = "<group>";
@@ -153,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				E9482DDC27300D5900777327 /* LocalizedStringKey+ToString.swift */,
+				E9EF5F87273AF0DE00EC0A52 /* UTType+AdditionalTypes.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -239,6 +256,7 @@
 			children = (
 				E9B00075272EB02B00FAF3DD /* ContentView.swift */,
 				E91A51E0272F5AAB006062D6 /* AlertContentView.swift */,
+				E9EF5F8F273D936900EC0A52 /* Custom */,
 				E91A51D3272EB500006062D6 /* Species */,
 				E91CD6ED27307FA2008806EC /* Individuals */,
 				E91CD6F82731E791008806EC /* IndividualDetails */,
@@ -255,6 +273,14 @@
 				E91A51C8272EB31F006062D6 /* Credits.rtf */,
 			);
 			name = Ressources;
+			sourceTree = "<group>";
+		};
+		E9EF5F8F273D936900EC0A52 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				E9EF5F90273D938800EC0A52 /* QuickLookPreview.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,9 +383,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E971070D273974D60086E452 /* DocumentsSubview.swift in Sources */,
 				E9482DDD27300D5900777327 /* LocalizedStringKey+ToString.swift in Sources */,
 				E923CDEA2736A75100ADE6F4 /* WeightEditorView.swift in Sources */,
 				E91CD6EF27307FEC008806EC /* IndividualsListView.swift in Sources */,
+				E9EF5F8C273B00F600EC0A52 /* Document.swift in Sources */,
 				E9482DE22730141800777327 /* SpeciesEditorView.swift in Sources */,
 				E9B00068272EAFBE00FAF3DD /* Repti.xcdatamodeld in Sources */,
 				E91CD6F32730F789008806EC /* IndividualRowView.swift in Sources */,
@@ -367,6 +395,7 @@
 				E91CD6F12730F675008806EC /* Individual.swift in Sources */,
 				E91A51D2272EB42D006062D6 /* Species.swift in Sources */,
 				E91A51D7272EB616006062D6 /* SpeciesRowView.swift in Sources */,
+				E9EF5F88273AF0DE00EC0A52 /* UTType+AdditionalTypes.swift in Sources */,
 				E91A51C7272EB21F006062D6 /* BaseEntity.swift in Sources */,
 				E91A51D5272EB517006062D6 /* SpeciesListView.swift in Sources */,
 				E91CD6F52730FA66008806EC /* IndividualEditorView.swift in Sources */,
@@ -374,11 +403,14 @@
 				E9B00076272EB02B00FAF3DD /* Persistence.swift in Sources */,
 				E91A51E1272F5AAB006062D6 /* AlertContentView.swift in Sources */,
 				E9D084B0273501F400CBBA98 /* DatesSubview.swift in Sources */,
+				E9EF5F8E273B014500EC0A52 /* DocumentData.swift in Sources */,
 				E91A51DF272F545C006062D6 /* Alert.swift in Sources */,
 				E9482DE027300F6F00777327 /* ValueWrapper.swift in Sources */,
+				E9EF5F91273D938800EC0A52 /* QuickLookPreview.swift in Sources */,
 				E91CD6FA2731E7AF008806EC /* IndividualDetailsView.swift in Sources */,
 				E91CD6FC27325609008806EC /* GeneralDataSubview.swift in Sources */,
 				E91A51D0272EB37E006062D6 /* Model.swift in Sources */,
+				E9EF5F8A273AF1DD00EC0A52 /* DocumentEditorView.swift in Sources */,
 				E9B00078272EB02B00FAF3DD /* ContentView.swift in Sources */,
 				E9B00077272EB02B00FAF3DD /* ReptiApp.swift in Sources */,
 				E923CDEC2737EDA600ADE6F4 /* Weight.swift in Sources */,
